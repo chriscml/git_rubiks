@@ -50,6 +50,7 @@ int main(int argc, char** argv)
     Rotation_Sound = Mix_LoadWAV("bruitage.wav");
     Solve_Sound = Mix_LoadWAV("mario.wav");
     Restart_Sound = Mix_LoadWAV("restart.wav");
+    Tic_Sound = Mix_LoadWAV("tic.wav");
 
     isOpen=true;
     while(isOpen)
@@ -152,11 +153,33 @@ int main(int argc, char** argv)
         }
         else if (events.type==SDL_MOUSEMOTION)
         {
-            button_step(r_step_1,r_step_1_mouse,"STEP_1_MOUSE.bmp","STEP_1.bmp",events);
+            //mouvement
+            button_step(r_u,"Up_MOUSE.bmp","Up.bmp",events);
+            button_step(r_d,"Down_MOUSE.bmp","Down.bmp",events);
+            button_step(r_l,"Left_MOUSE.bmp","Left.bmp",events);
+            button_step(r_r,"Right_MOUSE.bmp","Right.bmp",events);
+            button_step(r_f,"Front_MOUSE.bmp","Front.bmp",events);
+            button_step(r_b,"Back_MOUSE.bmp","Back.bmp",events);
+
+            button_step(r_au,"Anti_Up_MOUSE.bmp","Anti_Up.bmp",events);
+            button_step(r_ad,"Anti_Down_MOUSE.bmp","Anti_Down.bmp",events);
+            button_step(r_al,"Anti_Left_MOUSE.bmp","Anti_Left.bmp",events);
+            button_step(r_ar,"Anti_Right_MOUSE.bmp","Anti_Right.bmp",events);
+            button_step(r_af,"Anti_Front_MOUSE.bmp","Anti_Front.bmp",events);
+            button_step(r_ab,"Anti_Back_MOUSE.bmp","Anti_Back.bmp",events);
+
+            //etape
+            button_step(r_step_1,"STEP_1_MOUSE.bmp","STEP_1.bmp",events);
+            button_step(r_step_2,"STEP_2_MOUSE.bmp","STEP_2.bmp",events);
+            button_step(r_step_3,"STEP_3_MOUSE.bmp","STEP_3.bmp",events);
+            button_step(r_step_6,"STEP_6_MOUSE.bmp","STEP_6.bmp",events);
+            button_step(r_step_5,"STEP_5_MOUSE.bmp","STEP_5.bmp",events);
+            button_step(r_step_4,"STEP_4_MOUSE.bmp","STEP_4.bmp",events);
+
         }
 
         remplissage_carre(renderer);
-        init_pic(renderer,window,"Up.bmp",r_u);
+        /*init_pic(renderer,window,"Up.bmp",r_u);
         init_pic(renderer,window,"Anti_Up.bmp",r_au);
         init_pic(renderer,window,"Down.bmp",r_d);
         init_pic(renderer,window,"Anti_Down.bmp",r_ad);
@@ -167,7 +190,7 @@ int main(int argc, char** argv)
         init_pic(renderer,window,"Front.bmp",r_f);
         init_pic(renderer,window,"Anti_Front.bmp",r_af);
         init_pic(renderer,window,"Back.bmp",r_b);
-        init_pic(renderer,window,"Anti_Back.bmp",r_ab);
+        init_pic(renderer,window,"Anti_Back.bmp",r_ab);*/
 
         init_pic(renderer,window,"Solve.bmp",r_solve);
         init_pic(renderer,window,"Restart.bmp",r_restart);

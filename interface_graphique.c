@@ -17,7 +17,7 @@ void init_sdl(void)
     {
         printf("creation fenetre et rendu reussi \n");
     }
-    SDL_SetRenderDrawColor(renderer, 255,0,0,255);
+    SDL_SetRenderDrawColor(renderer, 55,55,125,255);
     SDL_RenderClear(renderer);
 }
 
@@ -196,7 +196,7 @@ void remplissage_carre(SDL_Renderer* renderer)
     SDL_RenderFillRect(renderer, &rd9);
 
     // Dessin des lignes -------------------------------------------------------------
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    /*SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderDrawLine(renderer, 150, 50, 50, 480);
     SDL_RenderDrawLine(renderer, 100, 0, 100, 480);
     SDL_RenderDrawLine(renderer, 150, 0, 150, 480);
@@ -217,7 +217,7 @@ void remplissage_carre(SDL_Renderer* renderer)
     SDL_RenderDrawLine(renderer, 0, 300, 640, 300);
     SDL_RenderDrawLine(renderer, 0, 350, 640, 350);
     SDL_RenderDrawLine(renderer, 0, 400, 640, 400);
-    SDL_RenderDrawLine(renderer, 0, 450, 640, 450);
+    SDL_RenderDrawLine(renderer, 0, 450, 640, 450);*/
 
 
     SDL_RenderPresent(renderer);

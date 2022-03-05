@@ -10,6 +10,7 @@
 Mix_Chunk *Rotation_Sound;
 Mix_Chunk *Solve_Sound;
 Mix_Chunk *Restart_Sound;
+Mix_Chunk *Tic_Sound;
 
 
 
@@ -37,14 +38,6 @@ SDL_Rect r_step_5;
 SDL_Rect r_step_6;
 SDL_Rect r_step_7;
 
-SDL_Rect r_step_1_mouse;
-SDL_Rect r_step_2_mouse;
-SDL_Rect r_step_3_mouse;
-SDL_Rect r_step_4_mouse;
-SDL_Rect r_step_5_mouse;
-SDL_Rect r_step_6_mouse;
-SDL_Rect r_step_7_mouse;
-
 //declaration image et texture
 SDL_Surface *pic_u, *pic_au;
 SDL_Surface *pic_d, *pic_ad;
@@ -66,6 +59,6 @@ void fill_button (SDL_Renderer* renderer);
 void button_pos(void);
 void init_pic (SDL_Renderer* renderer,SDL_Window* window,char *picture, SDL_Rect rectangle);
 void button_press_moove (SDL_Rect rect,moove_t moove,SDL_Event events);
-void button_step (SDL_Rect rect1,SDL_Rect rect2,char *file_mouse,char *file,SDL_Event events);
+void button_step (SDL_Rect rect1,char *file_mouse,char *file,SDL_Event events);
 
 #endif // SDL_H_INCLUDED

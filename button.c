@@ -125,60 +125,36 @@ void button_pos(void)
     r_restart.w=150;
     r_restart.h=50;
 
+ //bouton etape
     r_step_1.x = 400;
-    r_step_1_mouse.x = r_step_1.x;
-    r_step_1.y = 350;
-    r_step_1_mouse.y = r_step_1.y;
+    r_step_1.y = 325;
     r_step_1.w = 100;
-    r_step_1_mouse.w = r_step_1.w;
     r_step_1.h = 50;
-    r_step_1_mouse.h = r_step_1.h;
 
-    r_step_2.x = 400;
-    r_step_2_mouse.x = r_step_2.x;
-    r_step_2.y = 400;
-    r_step_2_mouse.y = r_step_2.y;
+    r_step_2.x = 500;
+    r_step_2.y = 325;
     r_step_2.w = 100;
-    r_step_2_mouse.w = r_step_2.w;
     r_step_2.h = 50;
-    r_step_2_mouse.h = r_step_2.h;
 
-    /* r_step_1.x = 400;
-     r_step_1_mouse.x = r_step_1.x;
-     r_step_1.y = 350;
-     r_step_1_mouse.y = r_step_1.y;
-     r_step_1.w = 100;
-     r_step_1_mouse.w = r_step_1.w;
-     r_step_1.h = 50;
-     r_step_1_mouse.h = r_step_1.h;
+    r_step_4.x = 500;
+    r_step_4.y = 375;
+    r_step_4.w = 100;
+    r_step_4.h = 50;
 
-     r_step_1.x = 400;
-     r_step_1_mouse.x = r_step_1.x;
-     r_step_1.y = 350;
-     r_step_1_mouse.y = r_step_1.y;
-     r_step_1.w = 100;
-     r_step_1_mouse.w = r_step_1.w;
-     r_step_1.h = 50;
-     r_step_1_mouse.h = r_step_1.h;
+    r_step_3.x = 400;
+    r_step_3.y = 375;
+    r_step_3.w = 100;
+    r_step_3.h = 50;
 
-     r_step_1.x = 400;
-     r_step_1_mouse.x = r_step_1.x;
-     r_step_1.y = 350;
-     r_step_1_mouse.y = r_step_1.y;
-     r_step_1.w = 100;
-     r_step_1_mouse.w = r_step_1.w;
-     r_step_1.h = 50;
-     r_step_1_mouse.h = r_step_1.h;
+    r_step_5.x = 400;
+    r_step_5.y = 425;
+    r_step_5.w = 100;
+    r_step_5.h = 50;
 
-     r_step_1.x = 400;
-     r_step_1_mouse.x = r_step_1.x;
-     r_step_1.y = 350;
-     r_step_1_mouse.y = r_step_1.y;
-     r_step_1.w = 100;
-     r_step_1_mouse.w = r_step_1.w;
-     r_step_1.h = 50;
-     r_step_1_mouse.h = r_step_1.h;*/
-
+    r_step_6.x = 500;
+    r_step_6.y = 425;
+    r_step_6.w = 100;
+    r_step_6.h = 50;
 }
 
 void init_pic (SDL_Renderer* renderer,SDL_Window* window,char *picture, SDL_Rect rectangle)
@@ -220,18 +196,27 @@ void button_press_moove (SDL_Rect rect,moove_t moove,SDL_Event events)
     }
 }
 
-void button_step (SDL_Rect rect1,SDL_Rect rect2,char *file_mouse,char *file,SDL_Event events)
+void button_step (SDL_Rect rect1,char *file_mouse,char *file,SDL_Event events)
 {
-
+     char flag=0;
     if (events.type==SDL_MOUSEMOTION)
     {
         if( ((events.motion.x >= rect1.x) && (events.motion.x <= (rect1.x + rect1.w))) && ((events.motion.y >= rect1.y) && (events.motion.y <= (rect1.y + rect1.h))))
         {
-            init_pic(renderer,window,file_mouse,r_step_1_mouse);
+            init_pic(renderer,window,file_mouse,rect1);
+            if(flag==0)
+            {
+                flag=1;
+                Mix_PlayChannel(-1,Tic_Sound,0);
+            }
+            else
+            {
+
+            }
         }
         else
         {
-            init_pic(renderer,window,file,rect2);
+            init_pic(renderer,window,file,rect1);
         }
     }
 }
