@@ -6,8 +6,8 @@
 #include <SDL2/SDL.h>
 #include "INIT.h"
 
-#define WINDOW_WIDTH 800
-#define WINDOW_LENGHT 800
+#define WINDOW_WIDTH 1400
+#define WINDOW_LENGHT 900
 
 SDL_Renderer* renderer;
 SDL_Window* window;

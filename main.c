@@ -10,7 +10,6 @@
 #include "solve.h"
 #include "button.h"
 
-//test git
 int main(int argc, char** argv)
 {
     global_init();
@@ -62,7 +61,7 @@ int main(int argc, char** argv)
         }
         else if (events.type==SDL_KEYDOWN)
         {
-            SDL_RenderCopy(renderer,text_texte, NULL,&textRect);
+//          SDL_RenderCopy(renderer,text_texte, NULL,&textRect);
             switch(events.key.keysym.sym)
             {
             case SDLK_a:
@@ -106,8 +105,10 @@ int main(int argc, char** argv)
                 break;
             case SDLK_s:
                 printf("--------------------------solve----------------------\n");
-                // do_white_cross();
-                //  do_white_face();
+                nb_rotation=0;
+                do_white_cross();
+                do_white_face();
+                step_3_do_color_edges();
                 printf("\n Nombre de rotation : %d \n",nb_rotation);
                 break;
             default:
@@ -141,11 +142,17 @@ int main(int argc, char** argv)
                 if( ((events.button.x >= r_solve.x) && (events.button.x <= (r_solve.x + r_solve.w))) && ((events.button.y >= r_solve.y) && (events.button.y <= (r_solve.y + r_solve.h))))
                 {
                     printf("--------------------------solve----------------------\n");
-                    //do_white_cross();
-                    //do_white_face();
+                    nb_rotation=0;
+                    do_white_cross();
+                    do_white_face();
+                    step_3_do_color_edges();
                     Mix_PlayChannel(-1,Solve_Sound,0);
                 }
             }
+        }
+        else if (events.type==SDL_MOUSEMOTION)
+        {
+            button_step(r_step_1,r_step_1_mouse,"STEP_1_MOUSE.bmp","STEP_1.bmp",events);
         }
 
         remplissage_carre(renderer);
@@ -164,12 +171,13 @@ int main(int argc, char** argv)
 
         init_pic(renderer,window,"Solve.bmp",r_solve);
         init_pic(renderer,window,"Restart.bmp",r_restart);
+
         //display();
     }
 
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
-    TTF_CloseFont(police);
+//    TTF_CloseFont(police);
     TTF_Quit();
     TTF_Quit();
     SDL_Quit();

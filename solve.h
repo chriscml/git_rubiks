@@ -23,4 +23,11 @@ void get_corner_on_the_white_face(carre_t *face);
 void treat_this_white_corner(signed char id);
 void do_white_face(void);
 void verify_white_face(void);
+void step_3_do_color_edges(void);
+void get_colored_edges_on_this_face(carre_t *face);
+void get_this_edge_in_the_right_place(carre_t * carre, signed char cote);
+carre_t *get_face_on_the_left(carre_t *face);
+carre_t *get_face_on_the_right(carre_t *face);
+signed char get_id_from_searched_cube(color_t color1, color_t color2);
+void affich_id(void);
 #endif // SOLVE_H_INCLUDED

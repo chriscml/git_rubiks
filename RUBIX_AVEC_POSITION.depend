@@ -427,39 +427,42 @@
 
 1644679340 c:\users\chris\documents\travail_dut\s4\proj_rubix\rubix_avec_position\init.h
 
-1644611286 source:c:\users\chris\documents\travail_dut\s4\proj_rubix\rubix_avec_position\interface_graphique.c
+1646304097 source:c:\users\chris\documents\travail_dut\s4\proj_rubix\rubix_avec_position\interface_graphique.c
 	"interface_graphique.h"
 	"INIT.h"
 	<stdio.h>
 	<SDL2/SDL.h>
 
-1644611192 c:\users\chris\documents\travail_dut\s4\proj_rubix\rubix_avec_position\interface_graphique.h
+1646304976 c:\users\chris\documents\travail_dut\s4\proj_rubix\rubix_avec_position\interface_graphique.h
+	<stdbool.h>
 	<SDL2/SDL.h>
 	"INIT.h"
 
-1644860456 source:c:\users\chris\documents\travail_dut\s4\proj_rubix\rubix_avec_position\main.c
+1646304917 source:c:\users\chris\documents\travail_dut\s4\proj_rubix\rubix_avec_position\main.c
 	<stdio.h>
 	<stdlib.h>
+	<conio.h>
+	<stdbool.h>
+	<SDL2/SDL_ttf.h>
 	"INIT.h"
 	"interface_graphique.h"
 	"movement.h"
-	"interface_graphique.h"
-	<stdbool.h>
 	"solve.h"
+	"button.h"
 
-1644609766 c:\users\chris\documents\travail_dut\s4\proj_rubix\rubix_avec_position\movement.h
+1645805916 c:\users\chris\documents\travail_dut\s4\proj_rubix\rubix_avec_position\movement.h
 	"INIT.h"
 
-1644871392 c:\users\chris\documents\travail_dut\s4\proj_rubix\rubix_avec_position\solve.h
+1646299551 c:\users\chris\documents\travail_dut\s4\proj_rubix\rubix_avec_position\solve.h
 	"INIT.h"
 	<stdbool.h>
 
-1644871354 source:c:\users\chris\documents\travail_dut\s4\proj_rubix\rubix_avec_position\movement.c
+1645806018 source:c:\users\chris\documents\travail_dut\s4\proj_rubix\rubix_avec_position\movement.c
 	"movement.h"
 	"INIT.h"
 	<stdio.h>
 
-1644871456 source:c:\users\chris\documents\travail_dut\s4\proj_rubix\rubix_avec_position\solve.c
+1646301450 source:c:\users\chris\documents\travail_dut\s4\proj_rubix\rubix_avec_position\solve.c
 	"solve.h"
 	"INIT.h"
 	<stdio.h>
@@ -556,8 +559,40 @@
 	"begin_code.h"
 	"close_code.h"
 
-1376152951 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_ttf.h
+1641928995 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_ttf.h
 	"SDL.h"
 	"begin_code.h"
 	"close_code.h"
+
+1646304758 source:c:\users\chris\documents\travail_dut\s4\proj_rubix\rubix_avec_position\button.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<stdbool.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_mixer.h>
+	<SDL2/SDL_ttf.h>
+	"movement.h"
+	"INIT.h"
+	"interface_graphique.h"
+	"button.h"
+
+1646304785 c:\users\chris\documents\travail_dut\s4\proj_rubix\rubix_avec_position\button.h
+	<SDL2/SDL_mixer.h>
+	<SDL2/SDL_ttf.h>
+	"interface_graphique.h"
+	"movement.h"
+	"solve.h"
+
+1645826058 source:c:\users\chris\documents\travail_dut\s4\proj_rubix\rubix_avec_position\init_color.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	"init_color.h"
+	"INIT.h"
+
+1645493856 c:\users\chris\documents\travail_dut\s4\proj_rubix\rubix_avec_position\init_color.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
 

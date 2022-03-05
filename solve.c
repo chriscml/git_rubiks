@@ -366,27 +366,19 @@ carre_t *get_carre_on_the_same_cube(carre_t *face,  signed char position, type_c
 carre_t *get_face_from_color(color_t color)
 {
     carre_t *face_returned;
-    switch(color)
-    {
-    case 1:
+
+    if(color==BACK[4].color)
         face_returned=&BACK[0];
-        break;
-    case 2:
+    else if(color==DOWN[4].color)
         face_returned=&DOWN[0];
-        break;
-    case 3:
+    else if(color==UP[4].color)
         face_returned=&UP[0];
-        break;
-    case 4:
+    else if(color==FRONT[4].color)
         face_returned=&FRONT[0];
-        break;
-    case 5:
+    else if(color==RIGHT[4].color)
         face_returned=&RIGHT[0];
-        break;
-    case 6:
+    else if(color==LEFT[4].color)
         face_returned=&LEFT[0];
-        break;
-    }
     return face_returned;
 
 
@@ -459,16 +451,17 @@ void rotate_face(carre_t *face, signed char clockwise)
         printf("erreur");
         break;
     }
+    nb_rotation++;
 
 }
 
 void get_carre_blanc_on_the_white_face(carre_t *face)
 {
-    if(get_position(face, WHITE, EDGE, -1, -1, -1)!=-1) // gestion du cas ou 1, 2, 3, ou 4 carrés se trouvent déjà sur la face *face: partie fonctionnelle
+    if(get_position(face, UP[4].color, EDGE, -1, -1, -1)!=-1) // gestion du cas ou 1, 2, 3, ou 4 carrés se trouvent déjà sur la face *face: partie fonctionnelle
     {
         //printf("position carre: %d\n", get_position(face, WHITE, EDGE, -1, -1, -1));
-        unsigned char id_saved0_carre_blanc=face[get_position(face, WHITE, EDGE, -1, -1, -1)].id;
-        carre_t *near_cube=get_carre_on_the_same_cube(face, get_position(face, WHITE, EDGE, -1, -1, -1),EDGE);
+        unsigned char id_saved0_carre_blanc=face[get_position(face, UP[4].color, EDGE, -1, -1, -1)].id;
+        carre_t *near_cube=get_carre_on_the_same_cube(face, get_position(face, UP[4].color, EDGE, -1, -1, -1),EDGE);
         unsigned char id_saved0_near_cube=near_cube->id;
         carre_t *face_from_color= get_face_from_color(near_cube->color);
         carre_t *actual_face = get_face_from_carre(near_cube);
@@ -479,7 +472,6 @@ void get_carre_blanc_on_the_white_face(carre_t *face)
             while(actual_face!=face_from_color)
             {
                 rotate_face(face, 1);
-                // printf("actual_face : %d", actual_face);
                 actual_face =get_face_from_carre(get_carre_from_id(id_saved0_near_cube)) ;
             }
         }
@@ -488,12 +480,12 @@ void get_carre_blanc_on_the_white_face(carre_t *face)
             rotate_face(face_from_color, 1);
             rotate_face(face_from_color, 1);
         }
-        if(get_position(face, WHITE, EDGE, id_saved0_carre_blanc, -1, -1)!=-1)
+        if(get_position(face, UP[4].color, EDGE, id_saved0_carre_blanc, -1, -1)!=-1)
         {
             //printf("il y a un autre carré blanc\n");
             //printf("position carre: %d\n", get_position(face, WHITE, EDGE, id_saved0_carre_blanc, -1, -1));
-            unsigned char id_saved1_carre_blanc = face[get_position(face, WHITE, EDGE, id_saved0_carre_blanc, -1, -1)].id;
-            near_cube= get_carre_on_the_same_cube(face, get_position(face, WHITE, EDGE, id_saved0_carre_blanc, -1, -1), EDGE);
+            unsigned char id_saved1_carre_blanc = face[get_position(face, UP[4].color, EDGE, id_saved0_carre_blanc, -1, -1)].id;
+            near_cube= get_carre_on_the_same_cube(face, get_position(face, UP[4].color, EDGE, id_saved0_carre_blanc, -1, -1), EDGE);
             unsigned char id_saved1_near_cube=near_cube->id;
             carre_t *face_saved = get_face_from_carre(near_cube);
             face_from_color=get_face_from_color(near_cube->color);
@@ -519,12 +511,12 @@ void get_carre_blanc_on_the_white_face(carre_t *face)
                     rotate_face(face_from_color,1);
                 }
             }
-            if(get_position(face, WHITE, EDGE, id_saved0_carre_blanc, id_saved1_carre_blanc, -1)!=-1)
+            if(get_position(face, UP[4].color, EDGE, id_saved0_carre_blanc, id_saved1_carre_blanc, -1)!=-1)
             {
                 //printf("il y a encore un autre carré blanc\n");
                 //printf("position carre: %d\n", get_position(face, WHITE, EDGE, id_saved0_carre_blanc, id_saved1_carre_blanc, -1));
-                unsigned char id_saved2_carre_blanc = face[get_position(face, WHITE, EDGE, id_saved0_carre_blanc, id_saved1_carre_blanc, -1)].id;
-                near_cube= get_carre_on_the_same_cube(face, get_position(face, WHITE, EDGE, id_saved0_carre_blanc, id_saved1_carre_blanc, -1), EDGE);
+                unsigned char id_saved2_carre_blanc = face[get_position(face, UP[4].color, EDGE, id_saved0_carre_blanc, id_saved1_carre_blanc, -1)].id;
+                near_cube= get_carre_on_the_same_cube(face, get_position(face, UP[4].color, EDGE, id_saved0_carre_blanc, id_saved1_carre_blanc, -1), EDGE);
                 unsigned char id_saved2_near_cube=near_cube->id;
                 face_saved = get_face_from_carre(near_cube);
                 face_from_color=get_face_from_color(near_cube->color);
@@ -552,11 +544,11 @@ void get_carre_blanc_on_the_white_face(carre_t *face)
                         rotate_face(face_from_color,1);
                     }
                 }
-                if(get_position(face, WHITE, EDGE, id_saved0_carre_blanc, id_saved1_carre_blanc, id_saved2_carre_blanc)!=-1)
+                if(get_position(face, UP[4].color, EDGE, id_saved0_carre_blanc, id_saved1_carre_blanc, id_saved2_carre_blanc)!=-1)
                 {
                     // printf("il y a encore encore un autre carré blanc\n");
                     //printf("position carre: %d\n", get_position(face, WHITE, EDGE, id_saved0_carre_blanc, id_saved1_carre_blanc, id_saved2_carre_blanc));
-                    near_cube= get_carre_on_the_same_cube(face, get_position(face, WHITE, EDGE, id_saved0_carre_blanc, id_saved1_carre_blanc, id_saved2_carre_blanc), EDGE);
+                    near_cube= get_carre_on_the_same_cube(face, get_position(face, UP[4].color, EDGE, id_saved0_carre_blanc, id_saved1_carre_blanc, id_saved2_carre_blanc), EDGE);
                     unsigned char id_saved3_near_cube=near_cube->id;
                     face_saved = get_face_from_carre(near_cube);
                     face_from_color=get_face_from_color(near_cube->color);
@@ -599,13 +591,13 @@ void get_carre_blanc_on_the_white_face(carre_t *face)
 
 void get_edges_from_otherfaces_to_white_cross(carre_t *face)
 {
-    unsigned char id_saved0_carre_blanc=face[get_position(face, WHITE, EDGE, -1, -1, -1)].id;
-    carre_t *near_cube=get_carre_on_the_same_cube(face, get_position(face, WHITE, EDGE, -1, -1, -1),EDGE);
+    unsigned char id_saved0_carre_blanc=face[get_position(face, UP[4].color, EDGE, -1, -1, -1)].id;
+    carre_t *near_cube=get_carre_on_the_same_cube(face, get_position(face, UP[4].color, EDGE, -1, -1, -1),EDGE);
     unsigned char id_saved0_near_cube=near_cube->id;
     carre_t *face_from_color= get_face_from_color(near_cube->color);
     carre_t *actual_face = get_face_from_carre(near_cube);
 
-    switch(get_position(face, WHITE, EDGE, -1, -1, -1))
+    switch(get_position(face, UP[4].color, EDGE, -1, -1, -1))
     {
     case 1:
         rotate_face(get_face_from_carre(get_carre_from_id(id_saved0_carre_blanc)), 1);
@@ -677,18 +669,18 @@ void get_edges_from_otherfaces_to_white_cross(carre_t *face)
 }
 void verify_white_cross(void)
 {
-    if((UP[1].color==WHITE)&&(UP[3].color==WHITE)&&(UP[5].color==WHITE)&&(UP[7].color==WHITE)) {}
+    if((UP[1].color==UP[4].color)&&(UP[3].color==UP[4].color)&&(UP[5].color==UP[4].color)&&(UP[7].color==UP[4].color)) {}
     else
     {
-        if(get_position(DOWN, WHITE, EDGE, -1,-1, -1)!=-1)
+        if(get_position(DOWN, UP[4].color, EDGE, -1,-1, -1)!=-1)
             get_carre_blanc_on_the_white_face(DOWN);
-        if(get_position(LEFT, WHITE, EDGE, -1,-1, -1)!=-1)
+        if(get_position(LEFT, UP[4].color, EDGE, -1,-1, -1)!=-1)
             get_carre_blanc_on_the_white_face(LEFT);
-        if(get_position(RIGHT, WHITE, EDGE, -1,-1, -1)!=-1)
+        if(get_position(RIGHT, UP[4].color, EDGE, -1,-1, -1)!=-1)
             get_carre_blanc_on_the_white_face(RIGHT);
-        if(get_position(FRONT, WHITE, EDGE, -1,-1, -1)!=-1)
+        if(get_position(FRONT, UP[4].color, EDGE, -1,-1, -1)!=-1)
             get_carre_blanc_on_the_white_face(FRONT);
-        if(get_position(BACK, WHITE, EDGE, -1,-1, -1)!=-1)
+        if(get_position(BACK, UP[4].color, EDGE, -1,-1, -1)!=-1)
             get_carre_blanc_on_the_white_face(BACK);
 
     }
@@ -696,7 +688,7 @@ void verify_white_cross(void)
 
 void get_corner_on_the_white_face(carre_t *face)
 {
-    signed char init_position=get_position(face, WHITE, CORNER, -1, -1, -1);
+    signed char init_position=get_position(face, UP[4].color, CORNER, -1, -1, -1);
     if(init_position!=-1)
     {
         unsigned char id_saved0=face[init_position].id;
@@ -840,21 +832,237 @@ void treat_this_white_corner(signed char id)
         rotate_face(face_near_cube, 1);
     }
     else
-        printf("erreur fonction treat this white corer\n");
+        printf("erreur fonction treat this white corner\n");
 
 }
 
 void verify_white_face(void)
 {
-    if(get_position(DOWN, WHITE, CORNER, -1, -1, -1)!=-1)
+    if(get_position(DOWN, UP[4].color, CORNER, -1, -1, -1)!=-1)
         get_corner_on_the_white_face(DOWN);
-    if(get_position(LEFT, WHITE, CORNER, -1, -1, -1)!=-1)
+    if(get_position(LEFT, UP[4].color, CORNER, -1, -1, -1)!=-1)
         get_corner_on_the_white_face(LEFT);
-    if(get_position(RIGHT, WHITE, CORNER, -1, -1, -1)!=-1)
+    if(get_position(RIGHT, UP[4].color, CORNER, -1, -1, -1)!=-1)
         get_corner_on_the_white_face(RIGHT);
-    if(get_position(BACK, WHITE, CORNER, -1, -1, -1)!=-1)
+    if(get_position(BACK, UP[4].color, CORNER, -1, -1, -1)!=-1)
         get_corner_on_the_white_face(BACK);
-    if(get_position(FRONT, WHITE, CORNER, -1, -1, -1)!=-1)
+    if(get_position(FRONT, UP[4].color, CORNER, -1, -1, -1)!=-1)
         get_corner_on_the_white_face(FRONT);
 }
 
+void step_3_do_color_edges(void)
+{
+    get_colored_edges_on_this_face(FRONT);
+    get_colored_edges_on_this_face(BACK);
+    get_colored_edges_on_this_face(LEFT);
+    get_colored_edges_on_this_face(RIGHT);
+}
+
+void get_colored_edges_on_this_face(carre_t *face)
+{
+    if((face[3].color==face[4].color)&&(get_face_from_carre(get_carre_on_the_same_cube(face, 3, EDGE))==get_face_from_color(get_carre_on_the_same_cube(face, 3, EDGE)->color)))
+    {}
+    else
+    {
+        signed char id_of_searched_cube=get_id_from_searched_cube(face[4].color, ((get_face_from_carre(get_carre_on_the_same_cube(face, 3, EDGE)))[4]).color);
+        signed char position=get_position_from_id(id_of_searched_cube);
+        if(position==3)
+        {
+            get_this_edge_in_the_right_place(&(get_face_from_carre(get_carre_from_id(id_of_searched_cube))[7]), 1);
+            id_of_searched_cube=get_carre_on_the_same_cube(get_face_from_carre(get_carre_from_id(id_of_searched_cube)),get_position_from_id(id_of_searched_cube), EDGE)->id;
+        }
+        if(position==5)
+        {
+            get_this_edge_in_the_right_place(&(get_face_from_carre(get_carre_from_id(id_of_searched_cube))[7]), 0);
+            id_of_searched_cube=get_carre_on_the_same_cube(get_face_from_carre(get_carre_from_id(id_of_searched_cube)),get_position_from_id(id_of_searched_cube), EDGE)->id;
+        }
+        carre_t *actual_face=get_face_from_carre(get_carre_from_id(id_of_searched_cube));
+        carre_t *face_needed=get_face_from_color(get_carre_from_id(id_of_searched_cube)->color);
+        while(actual_face!=face_needed)
+        {
+            rotate_face(DOWN, 1);
+            actual_face =get_face_from_carre(get_carre_from_id(id_of_searched_cube)) ;
+            if(actual_face==DOWN)
+            {
+                actual_face=get_face_from_carre(get_carre_on_the_same_cube(get_face_from_carre(get_carre_from_id(id_of_searched_cube)), get_position_from_id(id_of_searched_cube), EDGE));
+            }
+        }
+        if(get_carre_on_the_same_cube(actual_face, 7, EDGE)->color==get_face_from_carre(get_carre_on_the_same_cube(actual_face, 3, EDGE))[4].color)
+            get_this_edge_in_the_right_place(get_carre_from_id(id_of_searched_cube), 1);
+        else if(get_carre_on_the_same_cube(actual_face, 7, EDGE)->color==get_face_from_carre(get_carre_on_the_same_cube(actual_face, 5, EDGE))[4].color)
+            get_this_edge_in_the_right_place(get_carre_from_id(id_of_searched_cube), 0);
+        else
+            printf("erreur\n");
+    }
+}
+
+//PARTIES ENTIEREMENT FONCTIONNELLE VERIFIEE
+void get_this_edge_in_the_right_place(carre_t * carre, signed char cote) //cote droit: 1, cote gauche: 0
+{
+    carre_t *face=get_face_from_carre(carre);
+    carre_t *face_right=get_face_on_the_right(face);
+    carre_t *face_left=get_face_on_the_left(face);
+    if(cote)
+    {
+        rotate_face(DOWN, 1);
+        rotate_face(face_right, 1);
+        rotate_face(DOWN, 0);
+        rotate_face(face_right, 0);
+        rotate_face(DOWN, 0);
+        rotate_face(face, 0);
+        rotate_face(DOWN, 1);
+        rotate_face(face, 1);
+    }
+    else
+    {
+        rotate_face(DOWN, 0);
+        rotate_face(face_left, 0);
+        rotate_face(DOWN, 1);
+        rotate_face(face_left, 1);
+        rotate_face(DOWN, 1);
+        rotate_face(face, 1);
+        rotate_face(DOWN, 0);
+        rotate_face(face, 0);
+    }
+}
+carre_t *get_face_on_the_right(carre_t *face)
+{
+    carre_t *retour;
+    if(face==LEFT)
+        retour=BACK;
+    if(face==RIGHT)
+        retour=FRONT;
+    if(face==FRONT)
+        retour=LEFT;
+    if(face==BACK)
+        retour=RIGHT;
+    return retour;
+}
+
+carre_t *get_face_on_the_left(carre_t *face)
+{
+    carre_t *retour;
+    if(face==LEFT)
+        retour=FRONT;
+    if(face==RIGHT)
+        retour=BACK;
+    if(face==FRONT)
+        retour=RIGHT;
+    if(face==BACK)
+        retour=LEFT;
+    return retour;
+}
+
+
+signed char get_id_from_searched_cube(color_t color1, color_t color2)
+{
+    signed char id_returned=0;
+    signed char position0 = 0;
+    signed char id_excluded[3]= {0,0,0};
+    for(int i=0; i<3; i++)
+    {
+        position0=get_position(LEFT, color1, EDGE, LEFT[1].id, id_excluded[0], id_excluded[1]);
+        if(position0==-1)
+            break;
+        else
+        {
+            if(get_carre_on_the_same_cube(LEFT, position0, EDGE)->color==color2)
+            {
+                id_returned=LEFT[position0].id;
+                goto fin;
+            }
+            else
+            {
+                id_excluded[i]=LEFT[position0].id;
+            }
+        }
+    }
+    for(int i=0; i<3; i++)
+    {
+        position0=get_position(RIGHT, color1, EDGE, RIGHT[1].id, id_excluded[0], id_excluded[1]);
+        if(position0==-1)
+            break;
+        else
+        {
+            if(get_carre_on_the_same_cube(RIGHT, position0, EDGE)->color==color2)
+            {
+                id_returned=RIGHT[position0].id;
+                goto fin;
+            }
+            else
+            {
+                id_excluded[i]=RIGHT[position0].id;
+            }
+        }
+    }
+
+    for(int i=0; i<3; i++)
+    {
+        position0=get_position(FRONT, color1, EDGE, FRONT[1].id, id_excluded[0], id_excluded[1]);
+        if(position0==-1)
+            break;
+        else
+        {
+            if(get_carre_on_the_same_cube(FRONT, position0, EDGE)->color==color2)
+            {
+                id_returned=FRONT[position0].id;
+                goto fin;
+            }
+            else
+            {
+                id_excluded[i]=FRONT[position0].id;
+            }
+        }
+    }
+
+    for(int i=0; i<3; i++)
+    {
+        position0=get_position(BACK, color1, EDGE, BACK[1].id, id_excluded[0], id_excluded[1]);
+        if(position0==-1)
+            break;
+        else
+        {
+            if(get_carre_on_the_same_cube(BACK, position0, EDGE)->color==color2)
+            {
+                id_returned=BACK[position0].id;
+                goto fin;
+            }
+            else
+            {
+                id_excluded[i]=BACK[position0].id;
+            }
+        }
+    }
+
+    for(int i=0; i<3; i++)
+    {
+        position0=get_position(DOWN, color1, EDGE, id_excluded[0], id_excluded[1], id_excluded[2]);
+        if(position0==-1)
+            break;
+        else
+        {
+            if(get_carre_on_the_same_cube(DOWN, position0, EDGE)->color==color2)
+            {
+                id_returned=get_carre_on_the_same_cube(DOWN, position0, EDGE)->id;
+                goto fin;
+            }
+            else
+            {
+                id_excluded[i]=DOWN[position0].id;
+            }
+        }
+    }
+fin:
+    return id_returned;
+}
+void affich_id(void)
+{
+    for(int i=0; i<9; i++)
+        printf("BACK[%d].id=%d\n",i,BACK[i].id);
+    for(int i=0; i<9; i++)
+        printf("FRONT[%d].id=%d\n",i,FRONT[i].id);
+    for(int i=0; i<9; i++)
+        printf("LEFT[%d].id=%d\n",i,LEFT[i].id);
+    for(int i=0; i<9; i++)
+        printf("RIGHT[%d].id=%d\n",i,RIGHT[i].id);
+}
