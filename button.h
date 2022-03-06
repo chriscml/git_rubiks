@@ -10,10 +10,10 @@
 Mix_Chunk *Rotation_Sound;
 Mix_Chunk *Solve_Sound;
 Mix_Chunk *Restart_Sound;
-Mix_Chunk *Tic_Sound;
+Mix_Chunk *Tic_Sound,*Tic_Sound2,*Tic_Sound3;
+char flag;
 
-
-
+SDL_Rect anc_rectangle;
 SDL_Rect r_u;
 SDL_Rect r_au;
 SDL_Rect r_d;
@@ -59,6 +59,6 @@ void fill_button (SDL_Renderer* renderer);
 void button_pos(void);
 void init_pic (SDL_Renderer* renderer,SDL_Window* window,char *picture, SDL_Rect rectangle);
 void button_press_moove (SDL_Rect rect,moove_t moove,SDL_Event events);
-void button_step (SDL_Rect rect1,char *file_mouse,char *file,SDL_Event events);
+void button_step (SDL_Rect rect1,char *file_mouse,char *file,SDL_Event events,Mix_Chunk *Sound);
 
 #endif // SDL_H_INCLUDED

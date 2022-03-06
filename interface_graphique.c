@@ -196,28 +196,34 @@ void remplissage_carre(SDL_Renderer* renderer)
     SDL_RenderFillRect(renderer, &rd9);
 
     // Dessin des lignes -------------------------------------------------------------
-    /*SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-    SDL_RenderDrawLine(renderer, 150, 50, 50, 480);
-    SDL_RenderDrawLine(renderer, 100, 0, 100, 480);
-    SDL_RenderDrawLine(renderer, 150, 0, 150, 480);
-    SDL_RenderDrawLine(renderer, 200, 0, 200, 480);
-    SDL_RenderDrawLine(renderer, 250, 0, 250, 480);
-    SDL_RenderDrawLine(renderer, 300, 0, 300, 480);
-    SDL_RenderDrawLine(renderer, 350, 0, 350, 480);
-    SDL_RenderDrawLine(renderer, 400, 0, 400, 480);
-    SDL_RenderDrawLine(renderer, 450, 0, 450, 480);
-    SDL_RenderDrawLine(renderer, 500, 0, 500, 480);
-    SDL_RenderDrawLine(renderer, 550, 0, 550, 480);
 
-    SDL_RenderDrawLine(renderer, 0, 50, 640, 50);
-    SDL_RenderDrawLine(renderer, 0, 100, 640, 100);
-    SDL_RenderDrawLine(renderer, 0, 150, 640, 150);
-    SDL_RenderDrawLine(renderer, 0, 200, 640, 200);
-    SDL_RenderDrawLine(renderer, 0, 250, 640, 250);
-    SDL_RenderDrawLine(renderer, 0, 300, 640, 300);
-    SDL_RenderDrawLine(renderer, 0, 350, 640, 350);
-    SDL_RenderDrawLine(renderer, 0, 400, 640, 400);
-    SDL_RenderDrawLine(renderer, 0, 450, 640, 450);*/
+    //verticale
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderDrawLine(renderer, 150, 0, 300, 0);
+    SDL_RenderDrawLine(renderer, 150, 50, 300, 50);
+    SDL_RenderDrawLine(renderer, 150, 100, 300, 100);
+    SDL_RenderDrawLine(renderer, 0, 150, 600, 150);
+    SDL_RenderDrawLine(renderer, 0, 200, 600, 200);
+    SDL_RenderDrawLine(renderer, 0, 250, 600, 250);
+    SDL_RenderDrawLine(renderer, 0, 300, 600, 300);
+    SDL_RenderDrawLine(renderer, 150, 350, 300, 350);
+    SDL_RenderDrawLine(renderer, 150, 400, 300, 400);
+    SDL_RenderDrawLine(renderer, 150, 450, 300, 450);
+
+    //horizontale
+    SDL_RenderDrawLine(renderer, 0, 150, 0, 300);
+    SDL_RenderDrawLine(renderer, 50, 150, 50, 300);
+    SDL_RenderDrawLine(renderer, 100, 150, 100, 300);
+    SDL_RenderDrawLine(renderer, 150, 0, 150, 450);
+    SDL_RenderDrawLine(renderer, 200, 0, 200, 450);
+    SDL_RenderDrawLine(renderer, 250, 0, 250, 450);
+    SDL_RenderDrawLine(renderer, 300, 0, 300, 450);
+    SDL_RenderDrawLine(renderer, 350, 150, 350, 300);
+    SDL_RenderDrawLine(renderer, 400, 150, 400, 300);
+    SDL_RenderDrawLine(renderer, 450, 150, 450, 300);
+    SDL_RenderDrawLine(renderer, 500, 150, 500, 300);
+    SDL_RenderDrawLine(renderer, 550, 150, 550, 300);
+    SDL_RenderDrawLine(renderer, 600, 150, 600, 300);
 
 
     SDL_RenderPresent(renderer);

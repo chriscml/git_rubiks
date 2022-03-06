@@ -12,6 +12,7 @@
 
 int main(int argc, char** argv)
 {
+    flag=0;
     global_init();
     nb_rotation=0;
     for(int i=0; i<9; i++)
@@ -51,6 +52,8 @@ int main(int argc, char** argv)
     Solve_Sound = Mix_LoadWAV("mario.wav");
     Restart_Sound = Mix_LoadWAV("restart.wav");
     Tic_Sound = Mix_LoadWAV("tic.wav");
+    Tic_Sound2 = Mix_LoadWAV("tic_pes2.wav");
+    Tic_Sound3 = Mix_LoadWAV("tic_pes3.wav");
 
     isOpen=true;
     while(isOpen)
@@ -139,6 +142,7 @@ int main(int argc, char** argv)
                 {
                     init_color("monfichier.txt");
                     Mix_PlayChannel(-1,Restart_Sound,2);
+                    Mix_VolumeChunk(Restart_Sound,100);
                 }
                 if( ((events.button.x >= r_solve.x) && (events.button.x <= (r_solve.x + r_solve.w))) && ((events.button.y >= r_solve.y) && (events.button.y <= (r_solve.y + r_solve.h))))
                 {
@@ -148,33 +152,35 @@ int main(int argc, char** argv)
                     do_white_face();
                     step_3_do_color_edges();
                     Mix_PlayChannel(-1,Solve_Sound,0);
+                    Mix_VolumeChunk(Solve_Sound,15);
+                    printf("\n Nombre de rotation : %d \n",nb_rotation);
                 }
             }
         }
         else if (events.type==SDL_MOUSEMOTION)
         {
             //mouvement
-            button_step(r_u,"Up_MOUSE.bmp","Up.bmp",events);
-            button_step(r_d,"Down_MOUSE.bmp","Down.bmp",events);
-            button_step(r_l,"Left_MOUSE.bmp","Left.bmp",events);
-            button_step(r_r,"Right_MOUSE.bmp","Right.bmp",events);
-            button_step(r_f,"Front_MOUSE.bmp","Front.bmp",events);
-            button_step(r_b,"Back_MOUSE.bmp","Back.bmp",events);
+            button_step(r_u,"Up_MOUSE.bmp","Up.bmp",events,Tic_Sound);
+            button_step(r_d,"Down_MOUSE.bmp","Down.bmp",events,Tic_Sound);
+            button_step(r_l,"Left_MOUSE.bmp","Left.bmp",events,Tic_Sound);
+            button_step(r_r,"Right_MOUSE.bmp","Right.bmp",events,Tic_Sound);
+            button_step(r_f,"Front_MOUSE.bmp","Front.bmp",events,Tic_Sound);
+            button_step(r_b,"Back_MOUSE.bmp","Back.bmp",events,Tic_Sound);
 
-            button_step(r_au,"Anti_Up_MOUSE.bmp","Anti_Up.bmp",events);
-            button_step(r_ad,"Anti_Down_MOUSE.bmp","Anti_Down.bmp",events);
-            button_step(r_al,"Anti_Left_MOUSE.bmp","Anti_Left.bmp",events);
-            button_step(r_ar,"Anti_Right_MOUSE.bmp","Anti_Right.bmp",events);
-            button_step(r_af,"Anti_Front_MOUSE.bmp","Anti_Front.bmp",events);
-            button_step(r_ab,"Anti_Back_MOUSE.bmp","Anti_Back.bmp",events);
+            button_step(r_au,"Anti_Up_MOUSE.bmp","Anti_Up.bmp",events,Tic_Sound);
+            button_step(r_ad,"Anti_Down_MOUSE.bmp","Anti_Down.bmp",events,Tic_Sound);
+            button_step(r_al,"Anti_Left_MOUSE.bmp","Anti_Left.bmp",events,Tic_Sound);
+            button_step(r_ar,"Anti_Right_MOUSE.bmp","Anti_Right.bmp",events,Tic_Sound);
+            button_step(r_af,"Anti_Front_MOUSE.bmp","Anti_Front.bmp",events,Tic_Sound);
+            button_step(r_ab,"Anti_Back_MOUSE.bmp","Anti_Back.bmp",events,Tic_Sound);
 
             //etape
-            button_step(r_step_1,"STEP_1_MOUSE.bmp","STEP_1.bmp",events);
-            button_step(r_step_2,"STEP_2_MOUSE.bmp","STEP_2.bmp",events);
-            button_step(r_step_3,"STEP_3_MOUSE.bmp","STEP_3.bmp",events);
-            button_step(r_step_6,"STEP_6_MOUSE.bmp","STEP_6.bmp",events);
-            button_step(r_step_5,"STEP_5_MOUSE.bmp","STEP_5.bmp",events);
-            button_step(r_step_4,"STEP_4_MOUSE.bmp","STEP_4.bmp",events);
+            button_step(r_step_1,"STEP_1_MOUSE.bmp","STEP_1.bmp",events,Tic_Sound);
+            button_step(r_step_2,"STEP_2_MOUSE.bmp","STEP_2.bmp",events,Tic_Sound);
+            button_step(r_step_3,"STEP_3_MOUSE.bmp","STEP_3.bmp",events,Tic_Sound);
+            button_step(r_step_6,"STEP_6_MOUSE.bmp","STEP_6.bmp",events,Tic_Sound);
+            button_step(r_step_5,"STEP_5_MOUSE.bmp","STEP_5.bmp",events,Tic_Sound);
+            button_step(r_step_4,"STEP_4_MOUSE.bmp","STEP_4.bmp",events,Tic_Sound);
 
         }
 

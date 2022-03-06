@@ -125,7 +125,7 @@ void button_pos(void)
     r_restart.w=150;
     r_restart.h=50;
 
- //bouton etape
+//bouton etape
     r_step_1.x = 400;
     r_step_1.y = 325;
     r_step_1.w = 100;
@@ -192,27 +192,36 @@ void button_press_moove (SDL_Rect rect,moove_t moove,SDL_Event events)
         {
             rotate_moove(moove);
             Mix_PlayChannel(-1,Rotation_Sound,0);
+             Mix_VolumeChunk(Rotation_Sound,40);
+
         }
     }
 }
 
-void button_step (SDL_Rect rect1,char *file_mouse,char *file,SDL_Event events)
+void button_step (SDL_Rect rect1,char *file_mouse,char *file,SDL_Event events,Mix_Chunk *Sound)
 {
-     char flag=0;
     if (events.type==SDL_MOUSEMOTION)
     {
         if( ((events.motion.x >= rect1.x) && (events.motion.x <= (rect1.x + rect1.w))) && ((events.motion.y >= rect1.y) && (events.motion.y <= (rect1.y + rect1.h))))
         {
             init_pic(renderer,window,file_mouse,rect1);
-            if(flag==0)
+            if((anc_rectangle.x != rect1.y) && (anc_rectangle.y != rect1.y))
             {
-                flag=1;
-                Mix_PlayChannel(-1,Tic_Sound,0);
+                Mix_PlayChannel(-1,Sound,0);
             }
             else
             {
-
             }
+            if((anc_rectangle.x != rect1.x) && (anc_rectangle.y != rect1.x))
+            {
+                    Mix_PlayChannel(-1,Sound,0);
+                    Mix_VolumeChunk(Sound,50);
+            }
+            else
+            {
+            }
+            anc_rectangle.x = rect1.x;
+            anc_rectangle.y = rect1.y;
         }
         else
         {
