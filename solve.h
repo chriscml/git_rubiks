@@ -6,7 +6,7 @@ typedef enum {
     EDGE =1, CENTER=2, CORNER=3
 }type_cube_t;
 
-char nb_rotation;
+unsigned char nb_rotation;
 
 carre_t *get_carre_from_id(unsigned char id);
 carre_t *get_carre_on_the_same_cube(carre_t *face,  signed char position, type_cube_t type);
@@ -30,4 +30,9 @@ carre_t *get_face_on_the_left(carre_t *face);
 carre_t *get_face_on_the_right(carre_t *face);
 signed char get_id_from_searched_cube(color_t color1, color_t color2);
 void affich_id(void);
+void step_4_yellow_cross(void);
+unsigned char get_configuration_yellow_cross(void);
+void treat_this_yellow_cross_configuration(unsigned char config);
+unsigned char get_configuration_yellow_corner(void);
+void step_5_yellow_corner(void);
 #endif // SOLVE_H_INCLUDED

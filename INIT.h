@@ -15,8 +15,6 @@ typedef struct carre{
     face_t face;
 }carre_t;
 
-
-
 carre_t UP[9], DOWN[9], LEFT[9], RIGHT[9], FRONT[9], BACK[9];
 
 void init_carre(carre_t *carre);

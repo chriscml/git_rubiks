@@ -5,6 +5,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_ttf.h>
+#include <time.h>
 
 #include"movement.h"
 #include"INIT.h"
@@ -227,6 +228,17 @@ void button_step (SDL_Rect rect1,char *file_mouse,char *file,SDL_Event events,Mi
         {
             init_pic(renderer,window,file,rect1);
         }
+    }
+}
+
+void shuffle_rubik(void)
+{
+    srand(time(NULL));
+    moove_t face_rand;
+    for(int i=0;i<100;i++)
+    {
+       face_rand = rand() % 12;
+       rotate_moove(face_rand);
     }
 }
 

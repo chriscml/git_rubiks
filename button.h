@@ -60,5 +60,6 @@ void button_pos(void);
 void init_pic (SDL_Renderer* renderer,SDL_Window* window,char *picture, SDL_Rect rectangle);
 void button_press_moove (SDL_Rect rect,moove_t moove,SDL_Event events);
 void button_step (SDL_Rect rect1,char *file_mouse,char *file,SDL_Event events,Mix_Chunk *Sound);
+void shuffle_rubik(void);
 
 #endif // SDL_H_INCLUDED

@@ -598,3 +598,28 @@ void carrre_init_pos(void){
     rd9.w=50;
     rd9.h=50;
 }
+
+void display_nb_roation(void)
+{
+
+    sprintf(nb_rotation_txt, "NB:%.3d",nb_rotation);
+
+    police = TTF_OpenFont("arial.ttf",30);
+    Color_white.a=255;
+    Color_white.r=255;
+    Color_white.g=255;
+    Color_white.b=255;
+    Rect_text.y  =300;
+    Rect_text.x  =700;
+
+    SDL_SetRenderDrawColor(renderer,55,55,125,255);
+    SDL_RenderFillRect(renderer, &Rect_text);
+
+
+    texte=TTF_RenderText_Solid(police, nb_rotation_txt,Color_white);
+    text_texte = SDL_CreateTextureFromSurface(renderer,texte);
+
+    SDL_QueryTexture(text_texte,NULL,NULL,&Rect_text.w,&Rect_text.h);
+    SDL_RenderCopy(renderer,text_texte, NULL,&Rect_text);
+    SDL_FreeSurface(texte);
+}

@@ -5,6 +5,7 @@
 #include "movement.h"
 #include "interface_graphique.h"
 
+
 carre_t *get_carre_from_id(unsigned char id)
 {
     carre_t *retour;
@@ -153,15 +154,17 @@ signed char get_position(carre_t *face, color_t color23, type_cube_t type, signe
         break;
 
     case CORNER:
-        if(face[0].color==color23)
-            retour= 0;
-        else if(face[2].color==color23)
-            retour= 2;
-        else if(face[6].color==color23)
-            retour= 6;
-        else if(face[8].color==color23)
-            retour= 8;
-        else retour=-1;
+        for(int i=0; i<9; i++)
+        {
+            if((face[i].id==id0_excluded)||(face[i].id==id1_excluded)||(face[i].id==id2_excluded))
+                continue;
+            if(i%2==0){
+                if(i==4)
+                    continue;
+                else if(face[i].color==color23)
+                    retour=i;
+            }
+        }
         break;
 
     default:
@@ -417,6 +420,8 @@ carre_t *get_face_from_carre(carre_t *carre)
 
 void rotate_face(carre_t *face, signed char clockwise)
 {
+    static int i=0;
+    carre_t *nb_rotation_sauvegarde[3];
     switch(clockwise)
     {
     case 1:
@@ -452,6 +457,44 @@ void rotate_face(carre_t *face, signed char clockwise)
         break;
     }
     nb_rotation++;
+
+    nb_rotation_sauvegarde[i] = face;
+    if(i>0)
+    {
+        if(nb_rotation_sauvegarde[i] ==nb_rotation_sauvegarde[i-1] )
+        {
+            nb_rotation--;
+        }
+        if(((nb_rotation_sauvegarde[i] == nb_rotation_sauvegarde[i-2]) && (nb_rotation_sauvegarde[i] ==nb_rotation_sauvegarde[i-1])) && (i>1))
+        {
+            nb_rotation--;
+        }
+    }
+    if(i==0){
+        if(nb_rotation_sauvegarde[0]==nb_rotation_sauvegarde[3])
+        {
+            nb_rotation--;
+        }
+        if((nb_rotation_sauvegarde[0]==nb_rotation_sauvegarde[2]) && (nb_rotation_sauvegarde[0]==nb_rotation_sauvegarde[1]))
+        {
+            nb_rotation--;
+        }
+    }
+    if(i==1){
+        if(nb_rotation_sauvegarde[1]==nb_rotation_sauvegarde[3] && nb_rotation_sauvegarde[1]==nb_rotation_sauvegarde[2])
+        {
+            nb_rotation--;
+        }
+    }
+    if(i==3)
+    {
+        i=0;
+    }
+    else
+    {
+        i++;
+    }
+
 
 }
 
@@ -1065,4 +1108,359 @@ void affich_id(void)
         printf("LEFT[%d].id=%d\n",i,LEFT[i].id);
     for(int i=0; i<9; i++)
         printf("RIGHT[%d].id=%d\n",i,RIGHT[i].id);
+}
+void step_4_yellow_cross(void)
+{
+    while((DOWN[1].color!=DOWN[4].color)||(DOWN[3].color!=DOWN[4].color)||(DOWN[5].color!=DOWN[4].color)||(DOWN[7].color!=DOWN[4].color))
+    {
+        if(get_configuration_yellow_cross()==7)
+        {
+            printf("config initiale =7\n");
+            treat_this_yellow_cross_configuration(1);
+            treat_this_yellow_cross_configuration(get_configuration_yellow_cross());
+        }
+        else
+            treat_this_yellow_cross_configuration(get_configuration_yellow_cross());
+    }
+
+}
+
+unsigned char get_configuration_yellow_cross(void)
+{
+    unsigned char returned_config;
+    if((DOWN[3].color==DOWN[4].color)&&(DOWN[5].color==DOWN[4].color))
+    {
+        returned_config=1;
+    }
+    else if((DOWN[1].color==DOWN[4].color)&&(DOWN[7].color==DOWN[4].color))
+    {
+        returned_config=2;
+    }
+    else if((DOWN[1].color==DOWN[4].color)&&(DOWN[3].color==DOWN[4].color))
+    {
+        returned_config=3;
+    }
+    else if((DOWN[1].color==DOWN[4].color)&&(DOWN[5].color==DOWN[4].color))
+    {
+        returned_config=4;
+    }
+    else if((DOWN[3].color==DOWN[4].color)&&(DOWN[7].color==DOWN[4].color))
+    {
+        returned_config=5;
+    }
+    else if((DOWN[5].color==DOWN[4].color)&&(DOWN[7].color==DOWN[4].color))
+    {
+        returned_config=6;
+    }
+    else
+    {
+        returned_config=7;
+    }
+    return returned_config;
+}
+
+void treat_this_yellow_cross_configuration(unsigned char config)
+{
+    switch(config)
+    {
+    case 1:
+        rotate_face(FRONT, 1);
+        rotate_face(LEFT, 1);
+        rotate_face(DOWN, 1);
+        rotate_face(LEFT, 0);
+        rotate_face(DOWN, 0);
+        rotate_face(FRONT, 0);
+        break;
+    case 2:
+        rotate_face(RIGHT, 1);
+        rotate_face(FRONT, 1);
+        rotate_face(DOWN, 1);
+        rotate_face(FRONT, 0);
+        rotate_face(DOWN, 0);
+        rotate_face(RIGHT, 0);
+        break;
+    case 3:
+        rotate_face(BACK, 1);
+        rotate_face(DOWN, 1);
+        rotate_face(RIGHT, 1);
+        rotate_face(DOWN, 0);
+        rotate_face(RIGHT, 0);
+        rotate_face(BACK, 0);
+        break;
+    case 4:
+        rotate_face(LEFT, 1);
+        rotate_face(DOWN, 1);
+        rotate_face(BACK, 1);
+        rotate_face(DOWN, 0);
+        rotate_face(BACK, 0);
+        rotate_face(LEFT, 0);
+        break;
+    case 5:
+        rotate_face(RIGHT, 1);
+        rotate_face(DOWN, 1);
+        rotate_face(FRONT, 1);
+        rotate_face(DOWN, 0);
+        rotate_face(FRONT, 0);
+        rotate_face(RIGHT, 0);
+        break;
+    case 6:
+        rotate_face(FRONT, 1);
+        rotate_face(DOWN, 1);
+        rotate_face(LEFT, 1);
+        rotate_face(DOWN, 0);
+        rotate_face(LEFT, 0);
+        rotate_face(FRONT, 0);
+        break;
+    case 7:
+        break;
+    default:
+        printf("erreur fonction treat_this_yellow_cross_configuration");
+        break;
+    }
+}
+
+void step_5_yellow_corner(void)
+{
+    unsigned char config=get_configuration_yellow_corner();
+    carre_t *faceR;
+    carre_t *faceU=DOWN;
+    carre_t *faceL;
+    carre_t *faceF;
+    carre_t *faceD=UP;;
+    if((config==1)||(config==5)||(config==9)||(config==13)||(config==17)||(config==21)||(config==23))
+    {
+        faceR=LEFT;
+        faceL=RIGHT;
+        faceF=FRONT;
+    }
+    else if((config==2)||(config==6)||(config==10)||(config==14)||(config==18)||(config==24)||(config==22))
+    {
+        faceR=FRONT;
+        faceL=BACK;
+        faceF=RIGHT;
+    }
+    else if((config==3)||(config==7)||(config==11)||(config==15)||(config==19)||(config==25))
+    {
+        faceR=RIGHT;
+        faceL=LEFT;
+        faceF=BACK;
+    }
+    else if((config==4)||(config==8)||(config==12)||(config==16)||(config==20)||(config==26))
+    {
+        faceR=BACK;
+        faceL=FRONT;
+        faceF=LEFT;
+    }
+    //cas 5
+    if((config>=1)&&(config<=4))
+    {
+        rotate_face(faceR, 0);
+        if(config==1)
+        {
+            faceU=FRONT;
+            faceD=BACK;
+        }
+        if(config==2)
+        {
+            faceU=RIGHT;
+            faceD=LEFT;
+        }
+        if(config==3)
+        {
+            faceU=BACK;
+            faceD=FRONT;
+        }
+        if(config==4)
+        {
+            faceU=LEFT;
+            faceD=RIGHT;
+        }
+        rotate_face(faceU, 0);
+        rotate_face(faceR, 1);
+        rotate_face(faceD, 0);
+        rotate_face(faceR, 0);
+        rotate_face(faceU, 1);
+        rotate_face(faceR, 1);
+        rotate_face(faceD, 1);
+    }
+    //cas 6
+    else if((config>=5)&&(config<=8))
+    {
+        rotate_face(faceR, 0);
+        if(config==5)
+        {
+            faceU=FRONT;
+            faceD=BACK;
+        }
+        else if(config==6)
+        {
+            faceU=RIGHT;
+            faceD=LEFT;
+        }
+        else if(config==7)
+        {
+            faceU=BACK;
+            faceD=FRONT;
+        }
+        else if(config==8)
+        {
+            faceU=LEFT;
+            faceD=RIGHT;
+        }
+        rotate_face(faceU, 1);
+        rotate_face(faceR, 1);
+        rotate_face(faceD, 0);
+        rotate_face(faceR, 0);
+        rotate_face(faceU, 0);
+        rotate_face(faceR, 1);
+        rotate_face(faceD, 1);
+    }
+    //cas 7
+    else if((config>=9)&&(config<=12))
+    {
+        rotate_face(faceR, 1);
+        rotate_face(faceR, 1);
+        rotate_face(faceD, 1);
+        rotate_face(faceR, 0);
+        rotate_face(faceU, 1);
+        rotate_face(faceU, 1);
+        rotate_face(faceR, 1);
+        rotate_face(faceD, 0);
+        rotate_face(faceR, 0);
+        rotate_face(faceU, 1);
+        rotate_face(faceU, 1);
+        rotate_face(faceR, 0);
+    }
+    //cas 1
+    else if((config>=13)&&(config<=16))
+    {
+        rotate_face(faceR, 1);
+        rotate_face(faceU, 0);
+        rotate_face(faceL, 0);
+        rotate_face(faceU, 1);
+        rotate_face(faceR, 0);
+        rotate_face(faceU, 0);
+        rotate_face(faceL, 1);
+    }
+    //cas 2
+    else if((config>=17)&&(config<=20))
+    {
+        rotate_face(faceL, 0);
+        rotate_face(faceU, 1);
+        rotate_face(faceR, 1);
+        rotate_face(faceU, 0);
+        rotate_face(faceL, 1);
+        rotate_face(faceU, 1);
+        rotate_face(faceR, 0);
+    }
+    //cas 3
+    else if((config>=21)&&(config<=22))
+    {
+        rotate_face(faceF, 1);
+        for(int i=0; i<3; i++)
+        {
+            rotate_face(faceR, 1);
+            rotate_face(faceU, 1);
+            rotate_face(faceR, 0);
+            rotate_face(faceU, 0);
+        }
+        rotate_face(faceF, 0);
+    }
+    //cas 4
+    else if((config>=23)&&(config<=26))
+    {
+        rotate_face(faceR, 1);
+        rotate_face(DOWN, 1);
+        rotate_face(DOWN, 1);
+        rotate_face(faceR, 0);
+        rotate_face(faceR, 0);
+        rotate_face(DOWN, 0);
+        rotate_face(faceR, 1);
+        rotate_face(faceR, 1);
+        rotate_face(DOWN, 0);
+        rotate_face(faceR, 0);
+        rotate_face(faceR, 0);
+        rotate_face(DOWN, 0);
+        rotate_face(DOWN, 0);
+        rotate_face(faceR, 1);
+    }
+}
+unsigned char get_configuration_yellow_corner(void)
+{
+    unsigned char returned_config=0;//https://www.theologeek.ch/rubiks-cube/
+
+    signed char position=get_position(DOWN, DOWN[4].color, CORNER, -1, -1, -1);
+    if(position!=-1)
+    {
+        signed char position2=get_position(DOWN, DOWN[4].color, CORNER, DOWN[position].id, -1, -1);
+        if(position2!=-1)
+        {
+            //cas 5
+            if((LEFT[6].color==DOWN[4].color)&&(RIGHT[8].color==DOWN[4].color))
+                returned_config=1;
+            else if((FRONT[6].color==DOWN[4].color)&&(BACK[8].color==DOWN[4].color))
+                returned_config=2;
+            else if((RIGHT[6].color==DOWN[4].color)&&(LEFT[8].color==DOWN[4].color))
+                returned_config=3;
+            else if((FRONT[8].color==DOWN[4].color)&&(BACK[6].color==DOWN[4].color))
+                returned_config=4;
+            //cas 6
+            else if((FRONT[8].color==DOWN[4].color)&&(LEFT[6].color==DOWN[4].color))
+                returned_config=5;
+            else if((FRONT[6].color==DOWN[4].color)&&(RIGHT[8].color==DOWN[4].color))
+                returned_config=6;
+            else if((RIGHT[6].color==DOWN[4].color)&&(BACK[8].color==DOWN[4].color))
+                returned_config=7;
+            else if((BACK[6].color==DOWN[4].color)&&(LEFT[8].color==DOWN[4].color))
+                returned_config=8;
+            //cas 7
+            else if((FRONT[6].color==DOWN[4].color)&&(FRONT[8].color==DOWN[4].color))
+                returned_config=9;
+            else if((RIGHT[6].color==DOWN[4].color)&&(RIGHT[8].color==DOWN[4].color))
+                returned_config=10;
+            else if((BACK[6].color==DOWN[4].color)&&(BACK[8].color==DOWN[4].color))
+                returned_config=11;
+            else if((LEFT[6].color==DOWN[4].color)&&(LEFT[8].color==DOWN[4].color))
+                returned_config=12;
+        }
+        else
+        {
+            //cas 1
+            if((FRONT[6].color==DOWN[4].color)&&(BACK[6].color==DOWN[4].color)&&(LEFT[6].color==DOWN[4].color))
+                returned_config=13;
+            else if((FRONT[6].color==DOWN[4].color)&&(RIGHT[6].color==DOWN[4].color)&&(LEFT[6].color==DOWN[4].color))
+                returned_config=14;
+            else if((BACK[6].color==DOWN[4].color)&&(RIGHT[6].color==DOWN[4].color)&&(FRONT[6].color==DOWN[4].color))
+                returned_config=15;
+            else if((LEFT[6].color==DOWN[4].color)&&(BACK[6].color==DOWN[4].color)&&(RIGHT[6].color==DOWN[4].color))
+                returned_config=16;
+            //cas 2
+            else if((FRONT[8].color==DOWN[4].color)&&(RIGHT[8].color==DOWN[4].color)&&(BACK[8].color==DOWN[4].color))
+                returned_config=17;
+            else if((RIGHT[8].color==DOWN[4].color)&&(BACK[8].color==DOWN[4].color)&&(LEFT[8].color==DOWN[4].color))
+                returned_config=18;
+            else if((BACK[8].color==DOWN[4].color)&&(LEFT[8].color==DOWN[4].color)&&(FRONT[8].color==DOWN[4].color))
+                returned_config=19;
+            else if((LEFT[8].color==DOWN[4].color)&&(FRONT[8].color==DOWN[4].color)&&(RIGHT[8].color==DOWN[4].color))
+                returned_config=20;
+        }
+    }
+    else
+    {
+        //cas 3
+        if((FRONT[6].color==DOWN[4].color)&&(FRONT[8].color==DOWN[4].color)&&(BACK[6].color==DOWN[4].color)&&(BACK[8].color==DOWN[4].color))
+            returned_config=21;
+        else if((RIGHT[6].color==DOWN[4].color)&&(RIGHT[8].color==DOWN[4].color)&&(LEFT[6].color==DOWN[4].color)&&(LEFT[8].color==DOWN[4].color))
+            returned_config=22;
+        //cas 4
+        else if((FRONT[6].color==DOWN[4].color)&&(RIGHT[6].color==DOWN[4].color)&&(RIGHT[8].color==DOWN[4].color)&&(BACK[8].color==DOWN[4].color))
+            returned_config=23;
+        else if((RIGHT[6].color==DOWN[4].color)&&(BACK[6].color==DOWN[4].color)&&(BACK[8].color==DOWN[4].color)&&(LEFT[8].color==DOWN[4].color))
+            returned_config=24;
+        else if((BACK[6].color==DOWN[4].color)&&(LEFT[6].color==DOWN[4].color)&&(LEFT[8].color==DOWN[4].color)&&(FRONT[8].color==DOWN[4].color))
+            returned_config=25;
+        else if((LEFT[6].color==DOWN[4].color)&&(FRONT[6].color==DOWN[4].color)&&(FRONT[8].color==DOWN[4].color)&&(RIGHT[8].color==DOWN[4].color))
+            returned_config=26;
+    }
+    return returned_config;
 }
