@@ -602,7 +602,7 @@ void carrre_init_pos(void){
 void display_nb_roation(void)
 {
 
-    sprintf(nb_rotation_txt, "NB:%.3d",nb_rotation);
+    sprintf(nb_rotation_txt, "rotations:%d",nb_rotation);
 
     police = TTF_OpenFont("arial.ttf",30);
     Color_white.a=255;

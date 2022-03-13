@@ -81,7 +81,7 @@ SDL_Texture *text_texte;
 TTF_Font *police;
 SDL_Color Color_white;
 SDL_Rect Rect_text;
-char nb_rotation_txt[20];
+char nb_rotation_txt[30];
 
 void init_sdl(void);
 void init_sdl2(void);
