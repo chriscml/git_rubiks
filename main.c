@@ -227,6 +227,7 @@ int main(int argc, char** argv)
         }
         init_pic(renderer,window,"Solve.bmp",r_solve);
         init_pic(renderer,window,"Restart.bmp",r_restart);
+        init_pic(renderer, window, "next_move.bmp", r_next_move);
         //display();
 
     }
