@@ -42,6 +42,7 @@ int main(int argc, char** argv)
     Tic_Sound3 = Mix_LoadWAV("tic_pes3.wav");
 
     isOpen=true;
+    flag2=0;
     while(isOpen)
     {
         SDL_WaitEvent(&events);
@@ -54,45 +55,91 @@ int main(int argc, char** argv)
             switch(events.key.keysym.sym)
             {
             case SDLK_a:
+                flag2=0;
+                indice_next=0;
+                indice_tableau_next=0;
                 rotate_moove(F);
                 break;
             case SDLK_b:
+                flag2=0;
+                indice_next=0;
+                indice_tableau_next=0;
                 rotate_moove(AF);
                 break;
             case SDLK_c:
+                flag2=0;
+                indice_next=0;
+                indice_tableau_next=0;
                 rotate_moove(R);
                 break;
             case SDLK_d:
+                flag2=0;
+                indice_next=0;
+                indice_tableau_next=0;
                 rotate_moove(AR);
                 break;
             case SDLK_e:
+                flag2=0;
+                indice_next=0;
+                indice_tableau_next=0;
                 rotate_moove(U);
                 break;
             case SDLK_f:
+                flag2=0;
+                indice_next=0;
+                indice_tableau_next=0;
                 rotate_moove(AU);
                 break;
             case SDLK_g:
+                flag2=0;
+                indice_next=0;
+                indice_tableau_next=0;
                 rotate_moove(B);
                 break;
             case SDLK_h:
+                flag2=0;
+                indice_next=0;
+                indice_tableau_next=0;
                 rotate_moove(AB);
                 break;
             case SDLK_i:
+                flag2=0;
+                indice_next=0;
+                indice_tableau_next=0;
                 rotate_moove(L);
                 break;
             case SDLK_j:
+                flag2=0;
+                indice_next=0;
+                indice_tableau_next=0;
                 rotate_moove(AL);
                 break;
             case SDLK_k:
+                flag2=0;
+                indice_next=0;
+                indice_tableau_next=0;
                 rotate_moove(D);
                 break;
             case SDLK_l:
+                flag2=0;
+                indice_next=0;
+                indice_tableau_next=0;
                 rotate_moove(AD);
                 break;
             case SDLK_z:
+                flag2=0;
+                indice_next=0;
+                indice_tableau_next=0;
                 init_color("monfichier.txt");
                 break;
             case SDLK_s:
+                flag2=0;
+                indice_next=0;
+                indice_tableau_next=0;
+                for(int i=0;i<200;i++)
+                    {
+                      tableau_next[i]=15;
+                    }
                 printf("--------------------------solve----------------------\n");
                 nb_rotation=0;
                 indice_tab_moove=0;
@@ -105,8 +152,15 @@ int main(int argc, char** argv)
                 step_7_yellow_arretes();
                 printf("\n Nombre de rotation : %d \n",nb_rotation);
                 display_nb_roation();
+                for(int i=0;i<200;i++)
+                    {
+                      printf("tableau[%d] = %d\n",i,tableau_next[i]);
+                    }
                 break;
             case SDLK_m:
+                //flag2=0;
+                indice_next=0;
+                indice_tableau_next=0;
                 shuffle_rubik();
                 break;
             default:
@@ -140,6 +194,10 @@ int main(int argc, char** argv)
                 }
                 if( ((events.button.x >= r_solve.x) && (events.button.x <= (r_solve.x + r_solve.w))) && ((events.button.y >= r_solve.y) && (events.button.y <= (r_solve.y + r_solve.h))))
                 {
+                    for(int i=0;i<200;i++)
+                    {
+                      tableau_next[i]=15;
+                    }
                     printf("--------------------------solve----------------------\n");
                     nb_rotation=0;
                     indice_tab_moove=0;
@@ -154,6 +212,10 @@ int main(int argc, char** argv)
                     Mix_VolumeChunk(Solve_Sound,15);
                     printf("\n Nombre de rotation : %d \n",nb_rotation);
                     display_nb_roation();
+                    for(int i=0;i<200;i++)
+                    {
+                      printf("tableau[%d] = %d\n",i,tableau_next[i]);
+                    }
                 }
                 if(((events.button.x >= r_step_1.x) && (events.button.x <= (r_step_1.x + r_step_1.w))) && ((events.button.y >= r_step_1.y) && (events.button.y <= (r_step_1.y + r_step_1.h))))
                     step_1_do_white_cross();
@@ -169,6 +231,10 @@ int main(int argc, char** argv)
                 {
                     step_6_yellow_corner_near_cubes();
                     step_7_yellow_arretes();
+                }
+                if(((events.button.x >= r_next_move.x) && (events.button.x <= (r_next_move.x + r_next_move.w))) && ((events.button.y >= r_next_move.y) && (events.button.y <= (r_next_move.y + r_next_move.h))))
+                {
+                    fonction_next();
                 }
                 verify_increment_color(events.button.x, events.button.y);
             }
@@ -228,8 +294,6 @@ int main(int argc, char** argv)
         init_pic(renderer,window,"Solve.bmp",r_solve);
         init_pic(renderer,window,"Restart.bmp",r_restart);
         init_pic(renderer, window, "next_move.bmp", r_next_move);
-        //display();
-
     }
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);

@@ -191,14 +191,16 @@ void init_pic (SDL_Renderer* renderer,SDL_Window* window,char *picture, SDL_Rect
 
 void button_press_moove (SDL_Rect rect,moove_t moove,SDL_Event events)
 {
-
+    //flag2=0;
+    //indice_next=0;
+    indice_tableau_next=0;
     if(events.button.button == SDL_BUTTON_LEFT)
     {
         if( ((events.button.x >= rect.x) && (events.button.x <= (rect.x + rect.w))) && ((events.button.y >= rect.y) && (events.button.y <= (rect.y + rect.h))))
         {
             rotate_moove(moove);
             Mix_PlayChannel(-1,Rotation_Sound,0);
-             Mix_VolumeChunk(Rotation_Sound,40);
+            Mix_VolumeChunk(Rotation_Sound,40);
 
         }
     }
@@ -220,8 +222,8 @@ void button_step (SDL_Rect rect1,char *file_mouse,char *file,SDL_Event events,Mi
             }
             if((anc_rectangle.x != rect1.x) && (anc_rectangle.y != rect1.x))
             {
-                    Mix_PlayChannel(-1,Sound,0);
-                    Mix_VolumeChunk(Sound,50);
+                Mix_PlayChannel(-1,Sound,0);
+                Mix_VolumeChunk(Sound,50);
             }
             else
             {
@@ -240,13 +242,92 @@ void shuffle_rubik(void)
 {
     srand(time(NULL));
     moove_t face_rand;
-    for(int i=0;i<100;i++)
+    for(int i=0; i<100; i++)
     {
-       face_rand = rand() % 12;
-       rotate_moove(face_rand);
+        face_rand = rand() % 12;
+        rotate_moove(face_rand);
     }
 }
 
+void fonction_next (void)
+{
+    carre_t sauv_up[9];
+    carre_t sauv_down[9];
+    carre_t sauv_back[9];
+    carre_t sauv_right[9];
+    carre_t sauv_left[9];
+    carre_t sauv_front[9];
+    printf("flag2 :%d", flag2);
+    if(flag2==0)
+    {
+        for(int i=0; i<9; i++)
+        {
+            sauv_up[i]=UP[i];
+        }
+        for(int i=0; i<9; i++)
+        {
+            sauv_down[i]=DOWN[i];
+        }
+        for(int i=0; i<9; i++)
+        {
+            sauv_back[i]=BACK[i];
+        }
+        for(int i=0; i<9; i++)
+        {
+            sauv_right[i]=RIGHT[i];
+        }
+        for(int i=0; i<9; i++)
+        {
+            sauv_left[i]=LEFT[i];
+        }
+        for(int i=0; i<9; i++)
+        {
+            sauv_front[i]=FRONT[i];
+        }
+        step_1_do_white_cross();
+        step_2_do_white_face();
+        step_3_do_color_edges();
+        step_4_yellow_cross();
+        step_5_yellow_corner();
+        step_6_yellow_corner_near_cubes();
+        step_7_yellow_arretes();
+        for(int i=0; i<9; i++)
+        {
+            UP[i]= sauv_up[i];
+        }
+        for(int i=0; i<9; i++)
+        {
+            DOWN[i]=sauv_down[i];
+        }
+        for(int i=0; i<9; i++)
+        {
+            BACK[i]=sauv_back[i];
+        }
+        for(int i=0; i<9; i++)
+        {
+            RIGHT[i]=sauv_right[i];
+        }
+        for(int i=0; i<9; i++)
+        {
+            LEFT[i]=sauv_left[i];
+        }
+        for(int i=0; i<9; i++)
+        {
+            FRONT[i] = sauv_front[i];
+        }
+        flag2=10;
+    }
+    rotate_moove(tableau_next[indice_next]);
+    if(indice_next>=200)
+    {
+        indice_next=0;
+    }
+    else
+    {
+        indice_next++;
+    }
+    printf("indice next : %d\n",indice_next);
 
+}
 
 

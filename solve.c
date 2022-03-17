@@ -461,7 +461,6 @@ void rotate_face(carre_t *face, signed char clockwise)
         break;
     }
     nb_rotation++;
-
     nb_rotation_sauvegarde[indice_tab_moove] = face;
     if(indice_tab_moove>0)
     {

@@ -54,6 +54,9 @@ SDL_Texture *text_r,*text_ar;
 SDL_Texture *text_f,*text_af;
 SDL_Texture *text_b,*text_ab;
 
+int flag2;
+int indice_next;
+
 
 void button_sound (Mix_Chunk *Sound, char *Sound_File);
 void fill_button (SDL_Renderer* renderer);
