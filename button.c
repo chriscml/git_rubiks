@@ -156,6 +156,11 @@ void button_pos(void)
     r_step_6.y = 425;
     r_step_6.w = 100;
     r_step_6.h = 50;
+
+    r_next_move.x = 650;
+    r_next_move.y = 500;
+    r_next_move.w = 200;
+    r_next_move.h = 100;
 }
 
 void init_pic (SDL_Renderer* renderer,SDL_Window* window,char *picture, SDL_Rect rectangle)

@@ -15,7 +15,7 @@ void init_carre(carre_t *carre)
         for(int j=0; j<9; j++)
         {
             (carre+j)->color=WHITE;
-            (carre+j)->face=face_up;
+            //(carre+j)->face=face_up;
         }
     }
     else if(carre==DOWN){
@@ -23,7 +23,7 @@ void init_carre(carre_t *carre)
         for(int j=0; j<9; j++)
         {
             (carre+j)->color=BLUE;
-            (carre+j)->face=face_down;
+            //(carre+j)->face=face_down;
         }
     }
     else if(carre==LEFT){
@@ -31,7 +31,7 @@ void init_carre(carre_t *carre)
         for(int j=0; j<9; j++)
         {
             (carre+j)->color=ORANGE;
-            (carre+j)->face=face_left;
+            //(carre+j)->face=face_left;
         }
     }
     else if(carre==RIGHT){
@@ -39,7 +39,7 @@ void init_carre(carre_t *carre)
         for(int j=0; j<9; j++)
         {
             (carre+j)->color=YELLOW;
-            (carre+j)->face=face_right;
+            //(carre+j)->face=face_right;
         }
     }
     else if(carre==FRONT){
@@ -47,7 +47,7 @@ void init_carre(carre_t *carre)
         for(int j=0; j<9; j++)
         {
             (carre+j)->color=GREEN;
-            (carre+j)->face=face_front;
+            //(carre+j)->face=face_front;
         }
     }
     else if(carre==BACK){
@@ -55,7 +55,7 @@ void init_carre(carre_t *carre)
         for(int j=0; j<9; j++)
         {
             (carre+j)->color=RED;
-            (carre+j)->face=face_back;
+            //(carre+j)->face=face_back;
         }
     }
 

@@ -1,5 +1,6 @@
 #ifndef INIT_H_INCLUDED
 #define INIT_H_INCLUDED
+#include <SDL2/SDL.h>
 typedef enum {
     RED = 1 ,BLUE = 2,WHITE = 3,GREEN = 4,YELLOW = 5 ,ORANGE = 6
 } color_t;
@@ -9,10 +10,11 @@ typedef enum{
 }face_t;
 
 typedef struct carre{
-    unsigned char position;
+    //unsigned char position;
     unsigned char id;
     color_t color;
-    face_t face;
+    //face_t face;
+    SDL_Rect rect;
 }carre_t;
 
 carre_t UP[9], DOWN[9], LEFT[9], RIGHT[9], FRONT[9], BACK[9];

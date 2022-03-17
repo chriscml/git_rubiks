@@ -559,7 +559,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1641928995 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_ttf.h
+1376152951 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_ttf.h
 	"SDL.h"
 	"begin_code.h"
 	"close_code.h"
@@ -751,6 +751,172 @@
 	<stdio.h>
 
 1646910365 source:c:\users\chris\documents\github\git_rubiks\solve.c
+	"solve.h"
+	"INIT.h"
+	<stdio.h>
+	<stdbool.h>
+	"movement.h"
+	"interface_graphique.h"
+
+1647376601 source:c:\users\jeufr\desktop\iut\mo\programme 3.0 fonctionnel\git_rubiks\button.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<stdbool.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_mixer.h>
+	<SDL2/SDL_ttf.h>
+	<time.h>
+	"movement.h"
+	"INIT.h"
+	"interface_graphique.h"
+	"button.h"
+
+1647188313 c:\users\jeufr\desktop\iut\mo\programme 3.0 fonctionnel\git_rubiks\movement.h
+	"INIT.h"
+
+1647188312 c:\users\jeufr\desktop\iut\mo\programme 3.0 fonctionnel\git_rubiks\init.h
+
+1647377261 c:\users\jeufr\desktop\iut\mo\programme 3.0 fonctionnel\git_rubiks\interface_graphique.h
+	<stdbool.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	"INIT.h"
+	"solve.h"
+
+1647190365 c:\users\jeufr\desktop\iut\mo\programme 3.0 fonctionnel\git_rubiks\solve.h
+	"INIT.h"
+	<stdbool.h>
+
+1647188311 c:\users\jeufr\desktop\iut\mo\programme 3.0 fonctionnel\git_rubiks\button.h
+	<SDL2/SDL_mixer.h>
+	<SDL2/SDL_ttf.h>
+	"interface_graphique.h"
+	"movement.h"
+	"solve.h"
+
+1647188311 source:c:\users\jeufr\desktop\iut\mo\programme 3.0 fonctionnel\git_rubiks\init.c
+	"INIT.h"
+
+1647188312 source:c:\users\jeufr\desktop\iut\mo\programme 3.0 fonctionnel\git_rubiks\init_color.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	"init_color.h"
+	"INIT.h"
+
+1647188312 c:\users\jeufr\desktop\iut\mo\programme 3.0 fonctionnel\git_rubiks\init_color.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1647422418 source:c:\users\jeufr\desktop\iut\mo\programme 3.0 fonctionnel\git_rubiks\interface_graphique.c
+	"interface_graphique.h"
+	"INIT.h"
+	<stdio.h>
+	<SDL2/SDL.h>
+
+1647377106 source:c:\users\jeufr\desktop\iut\mo\programme 3.0 fonctionnel\git_rubiks\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<stdbool.h>
+	"INIT.h"
+	"interface_graphique.h"
+	"movement.h"
+	"solve.h"
+	"button.h"
+
+1647188313 source:c:\users\jeufr\desktop\iut\mo\programme 3.0 fonctionnel\git_rubiks\movement.c
+	"movement.h"
+	"INIT.h"
+	<stdio.h>
+
+1647424075 source:c:\users\jeufr\desktop\iut\mo\programme 3.0 fonctionnel\git_rubiks\solve.c
+	"solve.h"
+	"INIT.h"
+	<stdio.h>
+	<stdbool.h>
+	"movement.h"
+	"interface_graphique.h"
+
+1647466754 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\button.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<stdbool.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_mixer.h>
+	<SDL2/SDL_ttf.h>
+	<time.h>
+	"movement.h"
+	"INIT.h"
+	"interface_graphique.h"
+	"button.h"
+
+1647454187 c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\movement.h
+	"INIT.h"
+
+1647453881 c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\init.h
+	<SDL2/SDL.h>
+
+1647462651 c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\interface_graphique.h
+	<stdbool.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	"INIT.h"
+	"solve.h"
+
+1647508256 c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\solve.h
+	"INIT.h"
+	<stdbool.h>
+
+1647508464 c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\button.h
+	<SDL2/SDL_mixer.h>
+	<SDL2/SDL_ttf.h>
+	"interface_graphique.h"
+	"movement.h"
+	"solve.h"
+
+1647453933 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\init.c
+	"INIT.h"
+
+1647188312 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\init_color.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	"init_color.h"
+	"INIT.h"
+
+1647188312 c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\init_color.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1647466990 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\interface_graphique.c
+	"interface_graphique.h"
+	"INIT.h"
+	<stdio.h>
+	<SDL2/SDL.h>
+
+1647508323 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<stdbool.h>
+	"INIT.h"
+	"interface_graphique.h"
+	"movement.h"
+	"solve.h"
+	"button.h"
+	"init_color.h"
+
+1647456916 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\movement.c
+	"movement.h"
+	"INIT.h"
+	<stdio.h>
+
+1647508230 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\solve.c
 	"solve.h"
 	"INIT.h"
 	<stdio.h>

@@ -8,7 +8,7 @@
 #include "movement.h"
 #include "solve.h"
 #include "button.h"
-
+#include "init_color.h"
 
 int main(int argc, char** argv)
 {
@@ -95,11 +95,14 @@ int main(int argc, char** argv)
             case SDLK_s:
                 printf("--------------------------solve----------------------\n");
                 nb_rotation=0;
-                do_white_cross();
-                do_white_face();
+                indice_tab_moove=0;
+                step_1_do_white_cross();
+                step_2_do_white_face();
                 step_3_do_color_edges();
                 step_4_yellow_cross();
                 step_5_yellow_corner();
+                step_6_yellow_corner_near_cubes();
+                step_7_yellow_arretes();
                 printf("\n Nombre de rotation : %d \n",nb_rotation);
                 display_nb_roation();
                 break;
@@ -139,16 +142,35 @@ int main(int argc, char** argv)
                 {
                     printf("--------------------------solve----------------------\n");
                     nb_rotation=0;
-                    do_white_cross();
-                    do_white_face();
+                    indice_tab_moove=0;
+                    step_1_do_white_cross();
+                    step_2_do_white_face();
                     step_3_do_color_edges();
                     step_4_yellow_cross();
                     step_5_yellow_corner();
+                    step_6_yellow_corner_near_cubes();
+                    step_7_yellow_arretes();
                     Mix_PlayChannel(-1,Solve_Sound,0);
                     Mix_VolumeChunk(Solve_Sound,15);
                     printf("\n Nombre de rotation : %d \n",nb_rotation);
                     display_nb_roation();
                 }
+                if(((events.button.x >= r_step_1.x) && (events.button.x <= (r_step_1.x + r_step_1.w))) && ((events.button.y >= r_step_1.y) && (events.button.y <= (r_step_1.y + r_step_1.h))))
+                    step_1_do_white_cross();
+                if(((events.button.x >= r_step_2.x) && (events.button.x <= (r_step_2.x + r_step_2.w))) && ((events.button.y >= r_step_2.y) && (events.button.y <= (r_step_2.y + r_step_2.h))))
+                    step_2_do_white_face();
+                if(((events.button.x >= r_step_3.x) && (events.button.x <= (r_step_3.x + r_step_3.w))) && ((events.button.y >= r_step_3.y) && (events.button.y <= (r_step_3.y + r_step_3.h))))
+                    step_3_do_color_edges();
+                if(((events.button.x >= r_step_4.x) && (events.button.x <= (r_step_4.x + r_step_4.w))) && ((events.button.y >= r_step_4.y) && (events.button.y <= (r_step_4.y + r_step_4.h))))
+                    step_4_yellow_cross();
+                if(((events.button.x >= r_step_5.x) && (events.button.x <= (r_step_5.x + r_step_5.w))) && ((events.button.y >= r_step_5.y) && (events.button.y <= (r_step_5.y + r_step_5.h))))
+                    step_5_yellow_corner();
+                if(((events.button.x >= r_step_6.x) && (events.button.x <= (r_step_6.x + r_step_6.w))) && ((events.button.y >= r_step_6.y) && (events.button.y <= (r_step_6.y + r_step_6.h))))
+                {
+                    step_6_yellow_corner_near_cubes();
+                    step_7_yellow_arretes();
+                }
+                verify_increment_color(events.button.x, events.button.y);
             }
         }
         else if (events.type==SDL_MOUSEMOTION)

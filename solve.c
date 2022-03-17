@@ -99,8 +99,9 @@ signed char get_position_from_id(signed char id)
 }
 
 
-void do_white_cross(void)
+void step_1_do_white_cross(void)
 {
+    printf("---------------------------STEP 1---------------------------------------\n");
     get_carre_blanc_on_the_white_face(UP);
     get_carre_blanc_on_the_white_face(DOWN);
     get_carre_blanc_on_the_white_face(LEFT);
@@ -114,17 +115,21 @@ void do_white_cross(void)
 
 }
 
-void do_white_face(void)
+void step_2_do_white_face(void)
 {
-    get_corner_on_the_white_face(DOWN);//faire down en premier: important
-    get_corner_on_the_white_face(UP);
-    get_corner_on_the_white_face(LEFT);
-    get_corner_on_the_white_face(RIGHT);
-    get_corner_on_the_white_face(FRONT);
-    get_corner_on_the_white_face(BACK);
-    verify_white_face();
-    verify_white_face();
-
+    printf("---------------------------STEP 2---------------------------------------\n");
+    if((UP[0].color==UP[4].color)&&(UP[2].color==UP[4].color)&&(UP[6].color==UP[4].color)&&(UP[8].color==UP[4].color)&&(FRONT[0].color==FRONT[4].color)&&(FRONT[2].color==FRONT[4].color)&&(RIGHT[0].color==RIGHT[4].color)&&(RIGHT[2].color==RIGHT[4].color)&&(LEFT[0].color==LEFT[4].color)&&(LEFT[2].color==LEFT[4].color)&&(BACK[0].color==BACK[4].color)&&(BACK[2].color==BACK[4].color)) {}
+    else
+    {
+        get_corner_on_the_white_face(DOWN);//faire down en premier: important
+        get_corner_on_the_white_face(UP);
+        get_corner_on_the_white_face(LEFT);
+        get_corner_on_the_white_face(RIGHT);
+        get_corner_on_the_white_face(FRONT);
+        get_corner_on_the_white_face(BACK);
+        verify_white_face();
+        verify_white_face();
+    }
 }
 
 signed char get_position(carre_t *face, color_t color23, type_cube_t type, signed char id0_excluded, signed char id1_excluded, signed char id2_excluded)
@@ -158,7 +163,8 @@ signed char get_position(carre_t *face, color_t color23, type_cube_t type, signe
         {
             if((face[i].id==id0_excluded)||(face[i].id==id1_excluded)||(face[i].id==id2_excluded))
                 continue;
-            if(i%2==0){
+            if(i%2==0)
+            {
                 if(i==4)
                     continue;
                 else if(face[i].color==color23)
@@ -420,8 +426,6 @@ carre_t *get_face_from_carre(carre_t *carre)
 
 void rotate_face(carre_t *face, signed char clockwise)
 {
-    static int i=0;
-    carre_t *nb_rotation_sauvegarde[3];
     switch(clockwise)
     {
     case 1:
@@ -458,49 +462,34 @@ void rotate_face(carre_t *face, signed char clockwise)
     }
     nb_rotation++;
 
-    nb_rotation_sauvegarde[i] = face;
-    if(i>0)
+    nb_rotation_sauvegarde[indice_tab_moove] = face;
+    if(indice_tab_moove>0)
     {
-        if(nb_rotation_sauvegarde[i] ==nb_rotation_sauvegarde[i-1] )
-        {
-            nb_rotation--;
-        }
-        if(((nb_rotation_sauvegarde[i] == nb_rotation_sauvegarde[i-2]) && (nb_rotation_sauvegarde[i] ==nb_rotation_sauvegarde[i-1])) && (i>1))
+        if(nb_rotation_sauvegarde[indice_tab_moove] == nb_rotation_sauvegarde[indice_tab_moove-1] )
         {
             nb_rotation--;
         }
     }
-    if(i==0){
+    if(indice_tab_moove==0)
+    {
         if(nb_rotation_sauvegarde[0]==nb_rotation_sauvegarde[3])
         {
             nb_rotation--;
         }
-        if((nb_rotation_sauvegarde[0]==nb_rotation_sauvegarde[2]) && (nb_rotation_sauvegarde[0]==nb_rotation_sauvegarde[1]))
-        {
-            nb_rotation--;
-        }
     }
-    if(i==1){
-        if(nb_rotation_sauvegarde[1]==nb_rotation_sauvegarde[3] && nb_rotation_sauvegarde[1]==nb_rotation_sauvegarde[2])
-        {
-            nb_rotation--;
-        }
-    }
-    if(i==3)
+    if(indice_tab_moove==3)
     {
-        i=0;
+        indice_tab_moove=0;
     }
     else
     {
-        i++;
+        indice_tab_moove++;
     }
-
-
 }
 
 void get_carre_blanc_on_the_white_face(carre_t *face)
 {
-    if(get_position(face, UP[4].color, EDGE, -1, -1, -1)!=-1) // gestion du cas ou 1, 2, 3, ou 4 carrés se trouvent déjà sur la face *face: partie fonctionnelle
+    if(get_position(face, UP[4].color, EDGE, -1, -1, -1)!=-1) // gestion du cas ou 1, 2, 3, ou 4 carrÃ©s se trouvent dÃ©jÃ  sur la face *face: partie fonctionnelle
     {
         //printf("position carre: %d\n", get_position(face, WHITE, EDGE, -1, -1, -1));
         unsigned char id_saved0_carre_blanc=face[get_position(face, UP[4].color, EDGE, -1, -1, -1)].id;
@@ -525,7 +514,7 @@ void get_carre_blanc_on_the_white_face(carre_t *face)
         }
         if(get_position(face, UP[4].color, EDGE, id_saved0_carre_blanc, -1, -1)!=-1)
         {
-            //printf("il y a un autre carré blanc\n");
+            //printf("il y a un autre carrÃ© blanc\n");
             //printf("position carre: %d\n", get_position(face, WHITE, EDGE, id_saved0_carre_blanc, -1, -1));
             unsigned char id_saved1_carre_blanc = face[get_position(face, UP[4].color, EDGE, id_saved0_carre_blanc, -1, -1)].id;
             near_cube= get_carre_on_the_same_cube(face, get_position(face, UP[4].color, EDGE, id_saved0_carre_blanc, -1, -1), EDGE);
@@ -536,7 +525,7 @@ void get_carre_blanc_on_the_white_face(carre_t *face)
                 get_edges_from_otherfaces_to_white_cross(face);
             if(face_saved!=face_from_color)
             {
-                if(face==UP)//modifié
+                if(face==UP)//modifiÃ©
                 {
                     rotate_face(face_saved,1);
                     rotate_face(face_saved,1);
@@ -556,7 +545,7 @@ void get_carre_blanc_on_the_white_face(carre_t *face)
             }
             if(get_position(face, UP[4].color, EDGE, id_saved0_carre_blanc, id_saved1_carre_blanc, -1)!=-1)
             {
-                //printf("il y a encore un autre carré blanc\n");
+                //printf("il y a encore un autre carrÃ© blanc\n");
                 //printf("position carre: %d\n", get_position(face, WHITE, EDGE, id_saved0_carre_blanc, id_saved1_carre_blanc, -1));
                 unsigned char id_saved2_carre_blanc = face[get_position(face, UP[4].color, EDGE, id_saved0_carre_blanc, id_saved1_carre_blanc, -1)].id;
                 near_cube= get_carre_on_the_same_cube(face, get_position(face, UP[4].color, EDGE, id_saved0_carre_blanc, id_saved1_carre_blanc, -1), EDGE);
@@ -589,7 +578,7 @@ void get_carre_blanc_on_the_white_face(carre_t *face)
                 }
                 if(get_position(face, UP[4].color, EDGE, id_saved0_carre_blanc, id_saved1_carre_blanc, id_saved2_carre_blanc)!=-1)
                 {
-                    // printf("il y a encore encore un autre carré blanc\n");
+                    // printf("il y a encore encore un autre carrÃ© blanc\n");
                     //printf("position carre: %d\n", get_position(face, WHITE, EDGE, id_saved0_carre_blanc, id_saved1_carre_blanc, id_saved2_carre_blanc));
                     near_cube= get_carre_on_the_same_cube(face, get_position(face, UP[4].color, EDGE, id_saved0_carre_blanc, id_saved1_carre_blanc, id_saved2_carre_blanc), EDGE);
                     unsigned char id_saved3_near_cube=near_cube->id;
@@ -775,20 +764,26 @@ void get_corner_on_the_white_face(carre_t *face)
                 switch(init_position)
                 {
                 case 0:
+                    rotate_face(FRONT, 0);
                     rotate_face(DOWN, 1);
+                    rotate_face(FRONT, 1);
+                    break;
+                case 2:
+                    rotate_face(RIGHT,0);
+                    rotate_face(DOWN, 1);
+                    rotate_face(RIGHT, 1);
                     break;
                 case 6:
-                    rotate_face(DOWN, 0);
-                    rotate_face(DOWN, 0);
+                    rotate_face(LEFT, 0);
+                    rotate_face(DOWN, 1);
+                    rotate_face(LEFT, 1);
                     break;
                 case 8:
+                    rotate_face(RIGHT, 1);
                     rotate_face(DOWN, 0);
+                    rotate_face(RIGHT, 0);
                     break;
                 }
-                rotate_face(RIGHT,0);
-                rotate_face(DOWN, 0);
-                rotate_face(DOWN, 0);
-                rotate_face(RIGHT, 1);
                 treat_this_white_corner(id_saved0);
             }
         }
@@ -796,40 +791,19 @@ void get_corner_on_the_white_face(carre_t *face)
         {
             if((init_position==0)||(init_position==2))
             {
-                carre_t *near_cube;
-                near_cube=get_carre_on_the_same_cube(get_face_from_carre(get_carre_from_id(id_saved0)), get_position_from_id(id_saved0), CORNER);
-                carre_t *face_from_near_cube=get_face_from_carre(near_cube);
-
                 if(init_position==0)
                 {
-                    rotate_face(face_from_near_cube, 1);
-                    rotate_face(DOWN, 1);
-                    rotate_face(face_from_near_cube, 0);
+                    rotate_face(face, 0);
+                    rotate_face(DOWN, 0);
+                    rotate_face(face, 1);
                 }
                 if(init_position==2)
                 {
-                    rotate_face(face_from_near_cube, 0);
-                    rotate_face(DOWN, 0);
-                    rotate_face(face_from_near_cube, 1);
-                }
-                init_position=get_position_from_id(id_saved0);//acutalisation de la position du carré blanc sur la face down
-                switch(init_position)
-                {
-                case 0:
+                    rotate_face(face, 1);
                     rotate_face(DOWN, 1);
-                    break;
-                case 6:
-                    rotate_face(DOWN, 0);
-                    rotate_face(DOWN, 0);
-                    break;
-                case 8:
-                    rotate_face(DOWN, 0);
-                    break;
+                    rotate_face(face, 0);
                 }
-                rotate_face(RIGHT,0);
-                rotate_face(DOWN, 0);
-                rotate_face(DOWN, 0);
-                rotate_face(RIGHT, 1);
+
             }
             treat_this_white_corner(id_saved0);
         }
@@ -846,19 +820,9 @@ void treat_this_white_corner(signed char id)
     signed char id_near_cube=near_cube->id;
     while(actual_face!=face_from_color)
     {
-        rotate_face(DOWN, 1);
+        rotate_face(DOWN, 0);
         actual_face =get_face_from_carre(get_carre_from_id(id_near_cube)) ;
-        //SDL_Delay(2000);
     }
-    /*for(int i=0; i<10; i++){
-        if(actual_face34==face_from_color34){
-            printf("face trouvée \n");
-            break;
-        }
-        rotate_face(DOWN, 1);
-        actual_face34 =get_face_from_carre(get_carre_from_id(id_near_cube)) ;
-        printf("i:%d\n", i);
-    }*/
     if(get_position_from_id(id)==6)
     {
         carre_t *face=get_face_from_carre(get_carre_from_id(id));
@@ -895,6 +859,7 @@ void verify_white_face(void)
 
 void step_3_do_color_edges(void)
 {
+    printf("---------------------------STEP 3---------------------------------------\n");
     get_colored_edges_on_this_face(FRONT);
     get_colored_edges_on_this_face(BACK);
     get_colored_edges_on_this_face(LEFT);
@@ -1111,11 +1076,11 @@ void affich_id(void)
 }
 void step_4_yellow_cross(void)
 {
+    printf("---------------------------STEP 4---------------------------------------\n");
     while((DOWN[1].color!=DOWN[4].color)||(DOWN[3].color!=DOWN[4].color)||(DOWN[5].color!=DOWN[4].color)||(DOWN[7].color!=DOWN[4].color))
     {
         if(get_configuration_yellow_cross()==7)
         {
-            printf("config initiale =7\n");
             treat_this_yellow_cross_configuration(1);
             treat_this_yellow_cross_configuration(get_configuration_yellow_cross());
         }
@@ -1221,6 +1186,7 @@ void treat_this_yellow_cross_configuration(unsigned char config)
 
 void step_5_yellow_corner(void)
 {
+    printf("---------------------------STEP 5---------------------------------------\n");
     unsigned char config=get_configuration_yellow_corner();
     carre_t *faceR;
     carre_t *faceU=DOWN;
@@ -1464,3 +1430,403 @@ unsigned char get_configuration_yellow_corner(void)
     }
     return returned_config;
 }
+void step_6_yellow_corner_near_cubes(void)
+{
+    printf("---------------------------STEP 6---------------------------------------\n");
+    if((FRONT[8].color==FRONT[6].color)&&(RIGHT[8].color==RIGHT[6].color)&&(LEFT[6].color==LEFT[8].color)&&(BACK[6].color==BACK[8].color))
+    {
+        while(FRONT[6].color!=FRONT[4].color)
+        {
+            rotate_face(DOWN, 0);
+        }
+    }
+    else
+    {
+        signed char config=step_6_get_config();
+        while(config==7)
+        {
+            rotate_face(DOWN, 1);
+            config=step_6_get_config();
+        }
+        if(config==1)
+        {
+            rotate_face(BACK, 1);
+            rotate_face(DOWN, 1);
+            rotate_face(BACK, 0);
+            rotate_face(DOWN, 0);
+            rotate_face(BACK, 0);
+            rotate_face(LEFT, 1);
+            rotate_face(BACK, 1);
+            rotate_face(BACK, 1);
+            rotate_face(DOWN, 0);
+            rotate_face(BACK, 0);
+            rotate_face(DOWN, 0);
+            rotate_face(BACK, 1);
+            rotate_face(DOWN, 1);
+            rotate_face(BACK, 0);
+            rotate_face(LEFT, 0);
+        }
+        else if(config==2)
+        {
+            rotate_face(LEFT, 1);
+            rotate_face(DOWN, 1);
+            rotate_face(LEFT, 0);
+            rotate_face(DOWN, 0);
+            rotate_face(LEFT, 0);
+            rotate_face(FRONT, 1);
+            rotate_face(LEFT, 1);
+            rotate_face(LEFT, 1);
+            rotate_face(DOWN, 0);
+            rotate_face(LEFT, 0);
+            rotate_face(DOWN, 0);
+            rotate_face(LEFT, 1);
+            rotate_face(DOWN, 1);
+            rotate_face(LEFT, 0);
+            rotate_face(FRONT, 0);
+        }
+        else if(config==3)
+        {
+            rotate_face(RIGHT, 1);
+            rotate_face(DOWN, 1);
+            rotate_face(RIGHT, 0);
+            rotate_face(DOWN, 0);
+            rotate_face(RIGHT, 0);
+            rotate_face(BACK, 1);
+            rotate_face(RIGHT, 1);
+            rotate_face(RIGHT, 1);
+            rotate_face(DOWN, 0);
+            rotate_face(RIGHT, 0);
+            rotate_face(DOWN, 0);
+            rotate_face(RIGHT, 1);
+            rotate_face(DOWN, 1);
+            rotate_face(RIGHT, 0);
+            rotate_face(BACK, 0);
+        }
+        else if(config==4)
+        {
+            rotate_face(FRONT, 1);
+            rotate_face(DOWN, 1);
+            rotate_face(FRONT, 0);
+            rotate_face(DOWN, 0);
+            rotate_face(FRONT, 0);
+            rotate_face(RIGHT, 1);
+            rotate_face(FRONT, 1);
+            rotate_face(FRONT, 1);
+            rotate_face(DOWN, 0);
+            rotate_face(FRONT, 0);
+            rotate_face(DOWN, 0);
+            rotate_face(FRONT, 1);
+            rotate_face(DOWN, 1);
+            rotate_face(FRONT, 0);
+            rotate_face(RIGHT, 0);
+        }
+        else if(config==5)
+        {
+            rotate_face(FRONT, 1);
+            rotate_face(LEFT, 1);
+            rotate_face(DOWN, 0);
+            rotate_face(LEFT, 0);
+            rotate_face(DOWN, 0);
+            rotate_face(LEFT, 1);
+            rotate_face(DOWN, 1);
+            rotate_face(LEFT, 0);
+            rotate_face(FRONT, 0);
+            rotate_face(LEFT, 1);
+            rotate_face(DOWN, 1);
+            rotate_face(LEFT, 0);
+            rotate_face(DOWN, 0);
+            rotate_face(LEFT, 0);
+            rotate_face(FRONT, 1);
+            rotate_face(LEFT, 1);
+            rotate_face(FRONT, 0);
+        }
+        else if(config==6)
+        {
+            rotate_face(RIGHT, 1);
+            rotate_face(FRONT, 1);
+            rotate_face(DOWN, 0);
+            rotate_face(FRONT, 0);
+            rotate_face(DOWN, 0);
+            rotate_face(FRONT, 1);
+            rotate_face(DOWN, 1);
+            rotate_face(FRONT, 0);
+            rotate_face(RIGHT, 0);
+            rotate_face(FRONT, 1);
+            rotate_face(DOWN, 1);
+            rotate_face(FRONT, 0);
+            rotate_face(DOWN, 0);
+            rotate_face(FRONT, 0);
+            rotate_face(RIGHT, 1);
+            rotate_face(FRONT, 1);
+            rotate_face(RIGHT, 0);
+        }
+    }
+
+}
+signed char step_6_get_config(void)
+{
+    signed char returned_config=0;
+    carre_t *face=0;
+    if(FRONT[6].color==FRONT[8].color)
+    {
+        signed char id_carre1=FRONT[6].id;
+        carre_t *actual_face=get_face_from_carre(&FRONT[6]);
+        carre_t *face_needed=get_face_from_color(FRONT[6].color);
+        while(actual_face!=face_needed)
+        {
+            rotate_face(DOWN, 1);
+            actual_face =get_face_from_carre(get_carre_from_id(id_carre1)) ;
+        }
+        face=actual_face;
+    }
+    else if(RIGHT[6].color==RIGHT[8].color)
+    {
+        signed char id_carre1=RIGHT[6].id;
+        carre_t *actual_face=get_face_from_carre(&RIGHT[6]);
+        carre_t *face_needed=get_face_from_color(RIGHT[6].color);
+        while(actual_face!=face_needed)
+        {
+            rotate_face(DOWN, 1);
+            actual_face =get_face_from_carre(get_carre_from_id(id_carre1)) ;
+        }
+        face=actual_face;
+    }
+    else if(LEFT[6].color==LEFT[8].color)
+    {
+        signed char id_carre1=LEFT[6].id;
+        carre_t *actual_face=get_face_from_carre(&LEFT[6]);
+        carre_t *face_needed=get_face_from_color(LEFT[6].color);
+        while(actual_face!=face_needed)
+        {
+            rotate_face(DOWN, 1);
+            actual_face =get_face_from_carre(get_carre_from_id(id_carre1)) ;
+        }
+        face=actual_face;
+    }
+    else if(BACK[6].color==BACK[8].color)
+    {
+        signed char id_carre1=BACK[6].id;
+        carre_t *actual_face=get_face_from_carre(&BACK[6]);
+        carre_t *face_needed=get_face_from_color(BACK[6].color);
+        while(actual_face!=face_needed)
+        {
+            rotate_face(DOWN, 1);
+            actual_face =get_face_from_carre(get_carre_from_id(id_carre1)) ;
+        }
+        face=actual_face;
+    }
+    else if((FRONT[6].color!=FRONT[4].color)&&(FRONT[8].color==FRONT[4].color))
+        returned_config=5;
+    else if((FRONT[8].color!=FRONT[4].color)&&(FRONT[6].color==FRONT[4].color))
+        returned_config=6;
+    else
+        returned_config=7;
+    if(returned_config==0)
+    {
+        if(face==FRONT)
+            returned_config=1;
+        else if(face==RIGHT)
+            returned_config=2;
+        else if(face==LEFT)
+            returned_config=3;
+        else if(face==BACK)
+            returned_config=4;
+        else
+            returned_config=-1;
+    }
+    return returned_config;
+}
+
+void step_7_yellow_arretes(void)
+{
+    carre_t *faceR, *faceF, *faceL;
+    signed char config=step_7_get_config();
+    switch(config)
+    {
+    case 1:
+        faceR=FRONT;
+        goto fourcarre;
+        break;
+    case 2:
+        faceR=LEFT;
+        goto fourcarre;
+        break;
+    case 3:
+        printf("cas 3");
+        rotate_face(FRONT,0);
+        rotate_face(FRONT, 0);
+        rotate_face(BACK, 1);
+        rotate_face(BACK, 1);
+        rotate_face(UP,1);
+        rotate_face(FRONT,1);
+        rotate_face(FRONT, 1);
+        rotate_face(BACK, 0);
+        rotate_face(BACK, 0);
+        rotate_face(DOWN, 1);
+        rotate_face(DOWN, 1);
+        rotate_face(FRONT,1);
+        rotate_face(FRONT, 1);
+        rotate_face(BACK, 0);
+        rotate_face(BACK, 0);
+        rotate_face(UP, 1);
+        rotate_face(FRONT,1);
+        rotate_face(FRONT, 1);
+        rotate_face(BACK, 0);
+        rotate_face(BACK, 0);
+        return;
+        break;
+    case 4:
+        faceF=RIGHT;
+        faceR=FRONT;
+        faceL=BACK;
+        goto troiscarreclockwise;
+        break;
+    case 5:
+        faceF=BACK;
+        faceR=RIGHT;
+        faceL=LEFT;
+        goto troiscarreclockwise;
+        break;
+    case 6:
+        faceF=LEFT;
+        faceR=BACK;
+        faceL=FRONT;
+        goto troiscarreclockwise;
+        break;
+    case 7:
+        faceF=FRONT;
+        faceR=LEFT;
+        faceL=RIGHT;
+        goto troiscarreclockwise;
+        break;
+    case 8:
+        faceF=LEFT;
+        faceR=BACK;
+        faceL=FRONT;
+        goto troiscarreanticlockwise;
+        break;
+    case 9:
+        faceF=BACK;
+        faceR=RIGHT;
+        faceL=LEFT;
+        goto troiscarreanticlockwise;
+        break;
+    case 10:
+        faceF=RIGHT;
+        faceR=FRONT;
+        faceL=BACK;
+        goto troiscarreanticlockwise;
+        break;
+    case 11:
+        faceF=FRONT;
+        faceR=LEFT;
+        faceL=RIGHT;
+        goto troiscarreanticlockwise;
+        break;
+    default:
+        return;
+    }
+fourcarre:
+    rotate_face(DOWN, 1);
+    rotate_face(faceR, 0);
+    rotate_face(DOWN, 0);
+    rotate_face(faceR, 1);
+    rotate_face(DOWN, 0);
+    rotate_face(faceR, 1);
+    rotate_face(DOWN, 1);
+    rotate_face(faceR, 1);
+    rotate_face(DOWN, 0);
+    rotate_face(faceR, 0);
+    rotate_face(DOWN, 1);
+    rotate_face(faceR, 1);
+    rotate_face(DOWN, 1);
+    rotate_face(faceR, 1);
+    rotate_face(faceR, 1);
+    rotate_face(DOWN, 0);
+    rotate_face(faceR, 0);
+    rotate_face(DOWN, 1);//rajoutï¿½
+    return;
+troiscarreclockwise:
+    rotate_face(faceF, 1);
+    rotate_face(faceF, 1);
+    rotate_face(DOWN, 1);
+    rotate_face(faceL, 1);
+    rotate_face(faceR, 0);
+    rotate_face(faceF, 1);
+    rotate_face(faceF, 1);
+    rotate_face(faceL, 0);
+    rotate_face(faceR, 1);
+    rotate_face(DOWN, 1);
+    rotate_face(faceF, 1);
+    rotate_face(faceF, 1);
+    return;
+troiscarreanticlockwise:
+    rotate_face(faceF, 1);
+    rotate_face(faceF, 1);
+    rotate_face(DOWN, 0);
+    rotate_face(faceL, 1);
+    rotate_face(faceR, 0);
+    rotate_face(faceF, 1);
+    rotate_face(faceF, 1);
+    rotate_face(faceL, 0);
+    rotate_face(faceR, 1);
+    rotate_face(DOWN, 0);
+    rotate_face(faceF, 1);
+    rotate_face(faceF, 1);
+    return;
+}
+
+signed char step_7_get_config(void)
+{
+    signed char returned_config=0;
+    //4carres
+    if((FRONT[7].color==RIGHT[4].color)&&(RIGHT[7].color==FRONT[4].color)&&(BACK[7].color==LEFT[4].color)&&(LEFT[7].color==BACK[4].color))
+    {
+        returned_config=1; //clockwise
+    }
+    else if((FRONT[7].color==LEFT[4].color)&&(LEFT[7].color==FRONT[4].color)&&(BACK[7].color==RIGHT[4].color)&&(RIGHT[7].color==BACK[4].color))
+    {
+        returned_config=2;//anticlockwise
+    }
+    else if((FRONT[7].color==BACK[4].color)&&(BACK[7].color==FRONT[4].color)&&(LEFT[7].color==RIGHT[4].color)&&(RIGHT[7].color==LEFT[4].color))
+    {
+        returned_config=3;//*2
+    }
+    //3 carres clockwise
+    else if((FRONT[7].color==RIGHT[4].color)&&(RIGHT[7].color==BACK[4].color)&&(BACK[7].color==FRONT[4].color))
+    {
+        returned_config=4;
+    }
+    else if((RIGHT[7].color==BACK[4].color)&&(BACK[7].color==LEFT[4].color)&&(LEFT[7].color==RIGHT[4].color))
+    {
+        returned_config=5;
+    }
+    else if((BACK[7].color==LEFT[4].color)&&(LEFT[7].color==FRONT[4].color)&&(FRONT[7].color==BACK[4].color))
+    {
+        returned_config=6;
+    }
+    else if((LEFT[7].color==FRONT[4].color)&&(FRONT[7].color==RIGHT[4].color)&&(RIGHT[7].color==LEFT[4].color))
+    {
+        returned_config=7;
+    }
+    //3carres anticlockwise
+
+    else if((FRONT[7].color==LEFT[4].color)&&(LEFT[7].color==BACK[4].color)&&(BACK[7].color==FRONT[4].color))
+    {
+        returned_config=8;
+    }
+    else if((LEFT[7].color==BACK[4].color)&&(BACK[7].color==RIGHT[4].color)&&(RIGHT[7].color==LEFT[4].color))
+    {
+        returned_config=9;
+    }
+    else if((BACK[7].color==RIGHT[4].color)&&(RIGHT[7].color==FRONT[4].color)&&(FRONT[7].color==BACK[4].color))
+    {
+        returned_config=10;
+    }
+    else if((RIGHT[7].color==FRONT[4].color)&&(FRONT[7].color==LEFT[4].color)&&(LEFT[7].color==RIGHT[4].color))
+    {
+        returned_config=11;
+    }
+    return returned_config;
+}
+

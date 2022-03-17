@@ -38,6 +38,7 @@ SDL_Rect r_step_5;
 SDL_Rect r_step_6;
 SDL_Rect r_step_7;
 
+SDL_Rect r_next_move;
 //declaration image et texture
 SDL_Surface *pic_u, *pic_au;
 SDL_Surface *pic_d, *pic_ad;
