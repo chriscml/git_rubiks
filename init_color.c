@@ -14,7 +14,6 @@ void init_color(char *FileName)
         {
             fscanf(f,"%d",&UP[i].color);//lit le fichier
         }
-
         for(char i=0; i<9; i++)
         {
             fscanf(f,"%d",&LEFT[i].color);//lit le fichier

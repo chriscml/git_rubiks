@@ -676,7 +676,7 @@
 	"movement.h"
 	"interface_graphique.h"
 
-1648120736 source:c:\users\chris\documents\github\git_rubiks\button.c
+1648162922 source:c:\users\chris\documents\github\git_rubiks\button.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
@@ -696,28 +696,31 @@
 1647510742 c:\users\chris\documents\github\git_rubiks\init.h
 	<SDL2/SDL.h>
 
-1647510742 c:\users\chris\documents\github\git_rubiks\interface_graphique.h
+1648161133 c:\users\chris\documents\github\git_rubiks\interface_graphique.h
 	<stdbool.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 	"INIT.h"
 	"solve.h"
 
-1648116466 c:\users\chris\documents\github\git_rubiks\button.h
+1648162838 c:\users\chris\documents\github\git_rubiks\button.h
 	<SDL2/SDL_mixer.h>
 	<SDL2/SDL_ttf.h>
 	"interface_graphique.h"
 	"movement.h"
 	"solve.h"
 
-1647511742 c:\users\chris\documents\github\git_rubiks\solve.h
+1648147374 c:\users\chris\documents\github\git_rubiks\solve.h
 	"INIT.h"
 	<stdbool.h>
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
 
 1647510742 source:c:\users\chris\documents\github\git_rubiks\init.c
 	"INIT.h"
 
-1647510742 source:c:\users\chris\documents\github\git_rubiks\init_color.c
+1648147301 source:c:\users\chris\documents\github\git_rubiks\init_color.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
@@ -729,13 +732,13 @@
 	<stdlib.h>
 	<conio.h>
 
-1648120178 source:c:\users\chris\documents\github\git_rubiks\interface_graphique.c
+1648162378 source:c:\users\chris\documents\github\git_rubiks\interface_graphique.c
 	"interface_graphique.h"
 	"INIT.h"
 	<stdio.h>
 	<SDL2/SDL.h>
 
-1648120574 source:c:\users\chris\documents\github\git_rubiks\main.c
+1648162905 source:c:\users\chris\documents\github\git_rubiks\main.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
@@ -747,12 +750,12 @@
 	"button.h"
 	"init_color.h"
 
-1648118053 source:c:\users\chris\documents\github\git_rubiks\movement.c
+1648120759 source:c:\users\chris\documents\github\git_rubiks\movement.c
 	"movement.h"
 	"INIT.h"
 	<stdio.h>
 
-1648118175 source:c:\users\chris\documents\github\git_rubiks\solve.c
+1648159092 source:c:\users\chris\documents\github\git_rubiks\solve.c
 	"solve.h"
 	"INIT.h"
 	<stdio.h>

@@ -34,4 +34,5 @@ void display_nb_roation(void);
 void verify_increment_color(int x, int y);
 void color_inc(color_t *color);
 
+
 #endif // INTERFACE_GRAPHIQUE_H_INCLUDED

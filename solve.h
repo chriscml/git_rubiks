@@ -1,7 +1,11 @@
 #ifndef SOLVE_H_INCLUDED
 #define SOLVE_H_INCLUDED
 #include "INIT.h"
+
 #include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include<conio.h>
 typedef enum {
     EDGE =1, CENTER=2, CORNER=3
 }type_cube_t;
@@ -10,6 +14,7 @@ typedef enum {
 carre_t *nb_rotation_sauvegarde[3];
 int indice_tab_moove;
 unsigned char nb_rotation;
+FILE* file_solution;
 
 
 carre_t *get_carre_from_id(unsigned char id);

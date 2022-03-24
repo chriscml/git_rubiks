@@ -116,8 +116,8 @@ void button_pos(void)
     r_ab.w=50;
     r_ab.h=50;
 
-    r_solve.x=200;
-    r_solve.y=630;
+    r_solve.x=675;
+    r_solve.y=400;
     r_solve.w=150;
     r_solve.h=50;
 
@@ -125,6 +125,11 @@ void button_pos(void)
     r_restart.y=630;
     r_restart.w=150;
     r_restart.h=50;
+
+    r_shuffle.x=200;
+    r_shuffle.y=630;
+    r_shuffle.w=150;
+    r_shuffle.h=50;
 
 //bouton etape
     r_step_1.x = 400;
@@ -252,6 +257,12 @@ void init_pic (SDL_Renderer* renderer,SDL_Window* window,char *picture, SDL_Rect
     {
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
+        TTF_Quit();
+        SDL_Quit();
+        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
+                                 "Missing file",
+                                 "File is missing. \nPlease upload a good picture.",
+                                 NULL);
         printf("impossible de charger l'image \n");
     }
     text_u = SDL_CreateTextureFromSurface(renderer,pic_u);
@@ -260,12 +271,24 @@ void init_pic (SDL_Renderer* renderer,SDL_Window* window,char *picture, SDL_Rect
     {
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
+        TTF_Quit();
+        SDL_Quit();
+        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
+                                 "Missing file",
+                                 "File is missing. \nPlease upload a good picture.",
+                                 NULL);
         printf("impossible de charger la texture \n");
     }
     if(SDL_RenderCopy(renderer,text_u,NULL,&rectangle))
     {
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
+        TTF_Quit();
+        SDL_Quit();
+        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
+                                 "Missing file",
+                                 "File is missing. \nPlease upload a good picture.",
+                                 NULL);
         printf("impossible de charger la texture \n");
     }
     SDL_RenderPresent(renderer);
@@ -273,6 +296,7 @@ void init_pic (SDL_Renderer* renderer,SDL_Window* window,char *picture, SDL_Rect
 
 void button_press_moove (SDL_Rect rect,moove_t moove,SDL_Event events)
 {
+    remplissage_carre(renderer);
     indice_tableau_next=0;
     if(events.button.button == SDL_BUTTON_LEFT)
     {

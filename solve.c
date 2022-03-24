@@ -112,7 +112,6 @@ void step_1_do_white_cross(void)
     verify_white_cross();
     verify_white_cross();
     verify_white_cross();
-
 }
 
 void step_2_do_white_face(void)
@@ -430,31 +429,112 @@ void rotate_face(carre_t *face, signed char clockwise)
     {
     case 1:
         if(face==UP)
+        {
             rotate_moove(U,renderer);
+            fprintf(file_solution,"Rotate UP \n");
+
+        }
         else if(face==DOWN)
+        {
             rotate_moove(D,renderer);
+            if(file_solution!=NULL)
+            {
+                fprintf(file_solution,"Rotate DOWN \n");
+            }
+        }
+
         else if(face==LEFT)
+        {
             rotate_moove(L,renderer);
+            if(file_solution!=NULL)
+            {
+                fprintf(file_solution,"Rotate LEFT \n");
+            }
+        }
+
         else if(face==RIGHT)
+        {
             rotate_moove(R,renderer);
+            if(file_solution!=NULL)
+            {
+                fprintf(file_solution,"Rotate RIGHT \n");
+            }
+        }
+
         else if(face==FRONT)
+        {
             rotate_moove(F,renderer);
+            if(file_solution!=NULL)
+            {
+                fprintf(file_solution,"Rotate FRONT \n");
+            }
+        }
+
         else if(face==BACK)
+        {
             rotate_moove(B,renderer);
+            if(file_solution!=NULL)
+            {
+                fprintf(file_solution,"Rotate BACK \n");
+            }
+        }
+
         break;
     case 0:
         if(face==UP)
+        {
             rotate_moove(AU,renderer);
+            if(file_solution!=NULL)
+            {
+                fprintf(file_solution,"Rotate ANTI-UP \n");
+            }
+        }
+
         else if(face==DOWN)
+        {
             rotate_moove(AD,renderer);
+            if(file_solution!=NULL)
+            {
+                fprintf(file_solution,"Rotate ANTI-UP \n");
+            }
+        }
+
         else if(face==LEFT)
+        {
             rotate_moove(AL,renderer);
+            if(file_solution!=NULL)
+            {
+                fprintf(file_solution,"Rotate ANTI-UP \n");
+            }
+        }
+
         else if(face==RIGHT)
+        {
             rotate_moove(AR,renderer);
+            if(file_solution!=NULL)
+            {
+                fprintf(file_solution,"Rotate ANTI-UP \n");
+            }
+        }
+
         else if(face==FRONT)
+        {
             rotate_moove(AF,renderer);
+            if(file_solution!=NULL)
+            {
+                fprintf(file_solution,"Rotate ANTI-UP \n");
+            }
+        }
+
         else if(face==BACK)
+        {
             rotate_moove(AB,renderer);
+            if(file_solution!=NULL)
+            {
+                fprintf(file_solution,"Rotate ANTI-UP \n");
+            }
+        }
+
         break;
     default:
         printf("erreur");
@@ -713,7 +793,6 @@ void verify_white_cross(void)
             get_carre_blanc_on_the_white_face(FRONT);
         if(get_position(BACK, UP[4].color, EDGE, -1,-1, -1)!=-1)
             get_carre_blanc_on_the_white_face(BACK);
-
     }
 }
 

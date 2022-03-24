@@ -12,8 +12,40 @@
 
 int main(int argc, char** argv)
 {
-
-    flag=0;
+    /*------------------------------------------------------------------------*/
+    const SDL_MessageBoxButtonData buttons[] =
+    {
+        {/* .flags, .buttonid, .text */ SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT, 1, "yes" },
+        { 0, 0, "no" }
+    };
+    const SDL_MessageBoxColorScheme colorScheme =
+    {
+        { /* .colors (.r, .g, .b) */
+            /* [SDL_MESSAGEBOX_COLOR_BACKGROUND] */
+            { 255,   255,   0 },
+            /* [SDL_MESSAGEBOX_COLOR_TEXT] */
+            {   55, 255,   0 },
+            /* [SDL_MESSAGEBOX_COLOR_BUTTON_BORDER] */
+            { 255, 255,   0 },
+            /* [SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND] */
+            {   200,   0, 255 },
+            /* [SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED] */
+            { 255,   0, 255 }
+        }
+    };
+    const SDL_MessageBoxData messageboxdata =
+    {
+        SDL_MESSAGEBOX_WARNING, /* .flags */
+        window, /* .window */
+        "RESTART", /* .title */
+        "Do you really want to restart ?", /* .message */
+        SDL_arraysize(buttons), /* .numbuttons */
+        buttons, /* .buttons */
+        &colorScheme /* .colorScheme */
+    };
+    int buttonid;
+    /*-----------------------------------------------------------------------------------------------*/
+    flag_display=0;
     global_init();
     nb_rotation=0;
     for(int i=0; i<9; i++)
@@ -188,13 +220,23 @@ int main(int argc, char** argv)
             {
                 if( ((events.button.x >= r_restart.x) && (events.button.x <= (r_restart.x + r_restart.w))) && ((events.button.y >= r_restart.y) && (events.button.y <= (r_restart.y + r_restart.h))))
                 {
-                    init_color("monfichier.txt");
-                    Mix_PlayChannel(-1,Restart_Sound,2);
-                    Mix_VolumeChunk(Restart_Sound,100);
-                    remplissage_carre(renderer);
+                    if (SDL_ShowMessageBox(&messageboxdata, &buttonid) < 0)
+                    {
+                        SDL_Log("error displaying message box");
+                        break;
+                    }
+                    if (buttonid == 1)
+                    {
+                        init_color("monfichier.txt");
+                        Mix_PlayChannel(-1,Restart_Sound,2);
+                        Mix_VolumeChunk(Restart_Sound,100);
+                        remplissage_carre(renderer);
+                    }
                 }
                 if( ((events.button.x >= r_solve.x) && (events.button.x <= (r_solve.x + r_solve.w))) && ((events.button.y >= r_solve.y) && (events.button.y <= (r_solve.y + r_solve.h))))
                 {
+
+                    file_solution=fopen("solution.txt", "w"); //C'est en ecriture seule
                     for(int i=0; i<200; i++)
                     {
                         tableau_next[i]=15;
@@ -214,6 +256,12 @@ int main(int argc, char** argv)
                     printf("\n Nombre de rotation : %d \n",nb_rotation);
                     display_nb_roation();
                     remplissage_carre(renderer);
+                }
+                if( ((events.button.x >= r_shuffle.x) && (events.button.x <= (r_shuffle.x + r_shuffle.w))) && ((events.button.y >= r_shuffle.y) && (events.button.y <= (r_shuffle.y + r_shuffle.h))))
+                {
+                    indice_next=0;
+                    indice_tableau_next=0;
+                    shuffle_rubik();
                 }
                 if(((events.button.x >= r_step_1.x) && (events.button.x <= (r_step_1.x + r_step_1.w))) && ((events.button.y >= r_step_1.y) && (events.button.y <= (r_step_1.y + r_step_1.h))))
                     step_1_do_white_cross();
@@ -242,6 +290,7 @@ int main(int argc, char** argv)
             button_step(r_solve,"Solve_mouse.bmp","Solve.bmp",events,Tic_Sound);
             button_step(r_next_move,"next_move_mouse.bmp","next_move.bmp",events,Tic_Sound);
             button_step(r_restart,"Restart_mouse.bmp","Restart.bmp",events,Tic_Sound);
+            button_step(r_shuffle,"Shuffle_mouse.bmp","Shuffle.bmp",events,Tic_Sound);
             //mouvement
             button_step(r_u,"Up_MOUSE.bmp","Up.bmp",events,Tic_Sound);
             button_step(r_d,"Down_MOUSE.bmp","Down.bmp",events,Tic_Sound);
@@ -266,9 +315,9 @@ int main(int argc, char** argv)
             button_step(r_step_5,"STEP_5_MOUSE.bmp","STEP_5.bmp",events,Tic_Sound);
             button_step(r_step_4,"STEP_4_MOUSE.bmp","STEP_4.bmp",events,Tic_Sound);
         }
-        if(flag==0)
+        if(flag_display==0)
         {
-            flag=1;
+            flag_display=1;
             display_nb_roation();
             init_pic(renderer,window,"Up.bmp",r_u);
             init_pic(renderer,window,"Anti_Up.bmp",r_au);
@@ -292,6 +341,7 @@ int main(int argc, char** argv)
             init_pic(renderer,window,"Solve.bmp",r_solve);
             init_pic(renderer,window,"Restart.bmp",r_restart);
             init_pic(renderer,window,"next_move.bmp",r_next_move);
+            init_pic(renderer,window,"Shuffle.bmp",r_shuffle);
         }
     }
     SDL_DestroyRenderer(renderer);

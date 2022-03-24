@@ -484,8 +484,8 @@ void display_nb_roation(void)
     Color_white.r=255;
     Color_white.g=255;
     Color_white.b=255;
-    Rect_text.y  =300;
-    Rect_text.x  =700;
+    Rect_text.y  =635;
+    Rect_text.x  =525;
 
     SDL_SetRenderDrawColor(renderer,55,55,125,255);
     SDL_RenderFillRect(renderer, &Rect_text);
@@ -583,3 +583,5 @@ void color_inc(color_t *color)
         (*color)++;
     }
 }
+
+

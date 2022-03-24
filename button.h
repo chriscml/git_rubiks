@@ -11,7 +11,7 @@ Mix_Chunk *Rotation_Sound;
 Mix_Chunk *Solve_Sound;
 Mix_Chunk *Restart_Sound;
 Mix_Chunk *Tic_Sound,*Tic_Sound2,*Tic_Sound3;
-char flag;
+char flag_display;
 
 SDL_Rect anc_rectangle;
 SDL_Rect r_u;
@@ -26,6 +26,7 @@ SDL_Rect r_f;
 SDL_Rect r_af;
 SDL_Rect r_b;
 SDL_Rect r_ab;
+SDL_Rect r_shuffle;
 
 SDL_Rect r_fleche_u;
 SDL_Rect r_fleche_au;
