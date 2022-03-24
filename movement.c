@@ -5,7 +5,7 @@ void rotate_moove (moove_t moove,SDL_Renderer* renderer)
 {
     carre_t temp;
     remplissage_carre(renderer);
-    affiche_fleche(moove);
+    //affiche_fleche(moove);
     switch(moove)
     {
     case U:

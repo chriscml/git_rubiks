@@ -456,6 +456,8 @@ void affiche_fleche (moove_t moove)
     case AD:
         init_pic(renderer,window,"fleche_anti.bmp",r_fleche_ad);
         break;
+    default:
+        break;
     }
 }
 

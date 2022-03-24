@@ -239,7 +239,6 @@ int main(int argc, char** argv)
         }
         else if (events.type==SDL_MOUSEMOTION)
         {
-
             button_step(r_solve,"Solve_mouse.bmp","Solve.bmp",events,Tic_Sound);
             button_step(r_next_move,"next_move_mouse.bmp","next_move.bmp",events,Tic_Sound);
             button_step(r_restart,"Restart_mouse.bmp","Restart.bmp",events,Tic_Sound);
@@ -266,8 +265,6 @@ int main(int argc, char** argv)
             button_step(r_step_6,"STEP_6_MOUSE.bmp","STEP_6.bmp",events,Tic_Sound);
             button_step(r_step_5,"STEP_5_MOUSE.bmp","STEP_5.bmp",events,Tic_Sound);
             button_step(r_step_4,"STEP_4_MOUSE.bmp","STEP_4.bmp",events,Tic_Sound);
-
-
         }
         if(flag==0)
         {
@@ -294,8 +291,8 @@ int main(int argc, char** argv)
             init_pic(renderer,window,"STEP_6.bmp",r_step_6);
             init_pic(renderer,window,"Solve.bmp",r_solve);
             init_pic(renderer,window,"Restart.bmp",r_restart);
+            init_pic(renderer,window,"next_move.bmp",r_next_move);
         }
-
     }
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
