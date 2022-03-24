@@ -52,79 +52,83 @@ int main(int argc, char** argv)
         }
         else if (events.type==SDL_KEYDOWN)
         {
+            for(int i=0; i<200; i++)
+            {
+                tableau_next[i]=15;
+            }
             switch(events.key.keysym.sym)
             {
             case SDLK_a:
                 flag2=0;
                 indice_next=0;
                 indice_tableau_next=0;
-                rotate_moove(F);
+                rotate_moove(F,renderer);
                 break;
             case SDLK_b:
                 flag2=0;
                 indice_next=0;
                 indice_tableau_next=0;
-                rotate_moove(AF);
+                rotate_moove(AF,renderer);
                 break;
             case SDLK_c:
                 flag2=0;
                 indice_next=0;
                 indice_tableau_next=0;
-                rotate_moove(R);
+                rotate_moove(R,renderer);
                 break;
             case SDLK_d:
                 flag2=0;
                 indice_next=0;
                 indice_tableau_next=0;
-                rotate_moove(AR);
+                rotate_moove(AR,renderer);
                 break;
             case SDLK_e:
                 flag2=0;
                 indice_next=0;
                 indice_tableau_next=0;
-                rotate_moove(U);
+                rotate_moove(U,renderer);
                 break;
             case SDLK_f:
                 flag2=0;
                 indice_next=0;
                 indice_tableau_next=0;
-                rotate_moove(AU);
+                rotate_moove(AU,renderer);
                 break;
             case SDLK_g:
                 flag2=0;
                 indice_next=0;
                 indice_tableau_next=0;
-                rotate_moove(B);
+                rotate_moove(B,renderer);
                 break;
             case SDLK_h:
                 flag2=0;
                 indice_next=0;
                 indice_tableau_next=0;
-                rotate_moove(AB);
+                rotate_moove(AB,renderer);
                 break;
             case SDLK_i:
                 flag2=0;
                 indice_next=0;
                 indice_tableau_next=0;
-                rotate_moove(L);
+                rotate_moove(L,renderer);
                 break;
             case SDLK_j:
                 flag2=0;
                 indice_next=0;
                 indice_tableau_next=0;
-                rotate_moove(AL);
+                rotate_moove(AL,renderer);
                 break;
             case SDLK_k:
                 flag2=0;
                 indice_next=0;
                 indice_tableau_next=0;
-                rotate_moove(D);
+                rotate_moove(D,renderer);
                 break;
             case SDLK_l:
                 flag2=0;
                 indice_next=0;
                 indice_tableau_next=0;
-                rotate_moove(AD);
+                rotate_moove(AD,renderer);
                 break;
             case SDLK_z:
                 flag2=0;
@@ -136,10 +140,10 @@ int main(int argc, char** argv)
                 flag2=0;
                 indice_next=0;
                 indice_tableau_next=0;
-                for(int i=0;i<200;i++)
-                    {
-                      tableau_next[i]=15;
-                    }
+                for(int i=0; i<200; i++)
+                {
+                    tableau_next[i]=15;
+                }
                 printf("--------------------------solve----------------------\n");
                 nb_rotation=0;
                 indice_tab_moove=0;
@@ -152,10 +156,6 @@ int main(int argc, char** argv)
                 step_7_yellow_arretes();
                 printf("\n Nombre de rotation : %d \n",nb_rotation);
                 display_nb_roation();
-                for(int i=0;i<200;i++)
-                    {
-                      printf("tableau[%d] = %d\n",i,tableau_next[i]);
-                    }
                 break;
             case SDLK_m:
                 //flag2=0;
@@ -191,12 +191,13 @@ int main(int argc, char** argv)
                     init_color("monfichier.txt");
                     Mix_PlayChannel(-1,Restart_Sound,2);
                     Mix_VolumeChunk(Restart_Sound,100);
+                    remplissage_carre(renderer);
                 }
                 if( ((events.button.x >= r_solve.x) && (events.button.x <= (r_solve.x + r_solve.w))) && ((events.button.y >= r_solve.y) && (events.button.y <= (r_solve.y + r_solve.h))))
                 {
-                    for(int i=0;i<200;i++)
+                    for(int i=0; i<200; i++)
                     {
-                      tableau_next[i]=15;
+                        tableau_next[i]=15;
                     }
                     printf("--------------------------solve----------------------\n");
                     nb_rotation=0;
@@ -212,10 +213,7 @@ int main(int argc, char** argv)
                     Mix_VolumeChunk(Solve_Sound,15);
                     printf("\n Nombre de rotation : %d \n",nb_rotation);
                     display_nb_roation();
-                    for(int i=0;i<200;i++)
-                    {
-                      printf("tableau[%d] = %d\n",i,tableau_next[i]);
-                    }
+                    remplissage_carre(renderer);
                 }
                 if(((events.button.x >= r_step_1.x) && (events.button.x <= (r_step_1.x + r_step_1.w))) && ((events.button.y >= r_step_1.y) && (events.button.y <= (r_step_1.y + r_step_1.h))))
                     step_1_do_white_cross();
@@ -234,13 +232,17 @@ int main(int argc, char** argv)
                 }
                 if(((events.button.x >= r_next_move.x) && (events.button.x <= (r_next_move.x + r_next_move.w))) && ((events.button.y >= r_next_move.y) && (events.button.y <= (r_next_move.y + r_next_move.h))))
                 {
-                    fonction_next();
+                    fonction_next(renderer,window);
                 }
                 verify_increment_color(events.button.x, events.button.y);
             }
         }
         else if (events.type==SDL_MOUSEMOTION)
         {
+
+            button_step(r_solve,"Solve_mouse.bmp","Solve.bmp",events,Tic_Sound);
+            button_step(r_next_move,"next_move_mouse.bmp","next_move.bmp",events,Tic_Sound);
+            button_step(r_restart,"Restart_mouse.bmp","Restart.bmp",events,Tic_Sound);
             //mouvement
             button_step(r_u,"Up_MOUSE.bmp","Up.bmp",events,Tic_Sound);
             button_step(r_d,"Down_MOUSE.bmp","Down.bmp",events,Tic_Sound);
@@ -264,9 +266,9 @@ int main(int argc, char** argv)
             button_step(r_step_6,"STEP_6_MOUSE.bmp","STEP_6.bmp",events,Tic_Sound);
             button_step(r_step_5,"STEP_5_MOUSE.bmp","STEP_5.bmp",events,Tic_Sound);
             button_step(r_step_4,"STEP_4_MOUSE.bmp","STEP_4.bmp",events,Tic_Sound);
-        }
 
-        remplissage_carre(renderer);
+
+        }
         if(flag==0)
         {
             flag=1;
@@ -290,10 +292,10 @@ int main(int argc, char** argv)
             init_pic(renderer,window,"STEP_4.bmp",r_step_4);
             init_pic(renderer,window,"STEP_5.bmp",r_step_5);
             init_pic(renderer,window,"STEP_6.bmp",r_step_6);
+            init_pic(renderer,window,"Solve.bmp",r_solve);
+            init_pic(renderer,window,"Restart.bmp",r_restart);
         }
-        init_pic(renderer,window,"Solve.bmp",r_solve);
-        init_pic(renderer,window,"Restart.bmp",r_restart);
-        init_pic(renderer, window, "next_move.bmp", r_next_move);
+
     }
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);

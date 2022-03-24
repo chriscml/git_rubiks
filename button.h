@@ -27,6 +27,20 @@ SDL_Rect r_af;
 SDL_Rect r_b;
 SDL_Rect r_ab;
 
+SDL_Rect r_fleche_u;
+SDL_Rect r_fleche_au;
+SDL_Rect r_fleche_d;
+SDL_Rect r_fleche_ad;
+SDL_Rect r_fleche_l;
+SDL_Rect r_fleche_al;
+SDL_Rect r_fleche_r;
+SDL_Rect r_fleche_ar;
+SDL_Rect r_fleche_f;
+SDL_Rect r_fleche_af;
+SDL_Rect r_fleche_b;
+SDL_Rect r_fleche_ab;
+
+
 SDL_Rect r_solve;
 SDL_Rect r_restart;
 
@@ -65,5 +79,7 @@ void init_pic (SDL_Renderer* renderer,SDL_Window* window,char *picture, SDL_Rect
 void button_press_moove (SDL_Rect rect,moove_t moove,SDL_Event events);
 void button_step (SDL_Rect rect1,char *file_mouse,char *file,SDL_Event events,Mix_Chunk *Sound);
 void shuffle_rubik(void);
+void fonction_next (SDL_Renderer* renderer,SDL_Window* window);
+void affiche_fleche (moove_t moove);
 
 #endif // SDL_H_INCLUDED

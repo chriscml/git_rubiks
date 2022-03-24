@@ -1,10 +1,11 @@
 #include "movement.h"
 #include "INIT.h"
 #include <stdio.h>
-void rotate_moove (moove_t moove )
+void rotate_moove (moove_t moove,SDL_Renderer* renderer)
 {
     carre_t temp;
-
+    remplissage_carre(renderer);
+    affiche_fleche(moove);
     switch(moove)
     {
     case U:

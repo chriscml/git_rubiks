@@ -430,31 +430,31 @@ void rotate_face(carre_t *face, signed char clockwise)
     {
     case 1:
         if(face==UP)
-            rotate_moove(U);
+            rotate_moove(U,renderer);
         else if(face==DOWN)
-            rotate_moove(D);
+            rotate_moove(D,renderer);
         else if(face==LEFT)
-            rotate_moove(L);
+            rotate_moove(L,renderer);
         else if(face==RIGHT)
-            rotate_moove(R);
+            rotate_moove(R,renderer);
         else if(face==FRONT)
-            rotate_moove(F);
+            rotate_moove(F,renderer);
         else if(face==BACK)
-            rotate_moove(B);
+            rotate_moove(B,renderer);
         break;
     case 0:
         if(face==UP)
-            rotate_moove(AU);
+            rotate_moove(AU,renderer);
         else if(face==DOWN)
-            rotate_moove(AD);
+            rotate_moove(AD,renderer);
         else if(face==LEFT)
-            rotate_moove(AL);
+            rotate_moove(AL,renderer);
         else if(face==RIGHT)
-            rotate_moove(AR);
+            rotate_moove(AR,renderer);
         else if(face==FRONT)
-            rotate_moove(AF);
+            rotate_moove(AF,renderer);
         else if(face==BACK)
-            rotate_moove(AB);
+            rotate_moove(AB,renderer);
         break;
     default:
         printf("erreur");

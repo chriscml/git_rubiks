@@ -161,6 +161,88 @@ void button_pos(void)
     r_next_move.y = 500;
     r_next_move.w = 200;
     r_next_move.h = 100;
+    /*-----------------------------------------*/
+    r_fleche_u.x = 150;
+    r_fleche_u.y = 0;
+    r_fleche_u.w = 260;
+    r_fleche_u.h = 150;
+
+    r_fleche_au.x = 150;
+    r_fleche_au.y = 0;
+    r_fleche_au.w = 260;
+    r_fleche_au.h = 150;
+
+    r_fleche_l.x = 0;
+    r_fleche_l.y = 150;
+    r_fleche_l.w = 260;
+    r_fleche_l.h = 150;
+
+    r_fleche_al.x = 0;
+    r_fleche_al.y = 150;
+    r_fleche_al.w = 260;
+    r_fleche_al.h = 150;
+
+    r_fleche_f.x = 50;
+    r_fleche_f.y = 150;
+    r_fleche_f.w = 260;
+    r_fleche_f.h = 150;
+
+    r_fleche_af.x = 50;
+    r_fleche_af.y = 150;
+    r_fleche_af.w = 260;
+    r_fleche_af.h = 150;
+
+    r_fleche_r.x = 100;
+    r_fleche_r.y = 150;
+    r_fleche_r.w = 260;
+    r_fleche_r.h = 150;
+
+    r_fleche_ar.x = 100;
+    r_fleche_ar.y = 150;
+    r_fleche_ar.w = 260;
+    r_fleche_ar.h = 150;
+
+    r_fleche_b.x = 150;
+    r_fleche_b.y = 150;
+    r_fleche_b.w = 260;
+    r_fleche_b.h = 150;
+
+    r_fleche_ab.x = 150;
+    r_fleche_ab.y = 150;
+    r_fleche_ab.w = 260;
+    r_fleche_ab.h = 150;
+
+    r_fleche_d.x = 150;
+    r_fleche_d.y = 300;
+    r_fleche_d.w = 260;
+    r_fleche_d.h = 150;
+
+    r_fleche_ad.x = 150;
+    r_fleche_ad.y = 300;
+    r_fleche_ad.w = 260;
+    r_fleche_ad.h = 150;
+
+
+
+    r_fleche_u.x = UP[4].rect.x+((UP[4].rect.w - r_fleche_u.w)/2);
+    r_fleche_au.x = UP[4].rect.x+((UP[4].rect.w - r_fleche_au.w)/2);
+
+    r_fleche_l.x = LEFT[4].rect.x+((LEFT[4].rect.w - r_fleche_l.w)/2);
+    r_fleche_al.x = LEFT[4].rect.x+((LEFT[4].rect.w - r_fleche_al.w)/2);
+
+    r_fleche_f.x = FRONT[4].rect.x+((FRONT[4].rect.w - r_fleche_f.w)/2);
+    r_fleche_af.x = FRONT[4].rect.x+((FRONT[4].rect.w - r_fleche_af.w)/2);
+
+    r_fleche_r.x = RIGHT[4].rect.x+((RIGHT[4].rect.w - r_fleche_r.w)/2);
+    r_fleche_ar.x = RIGHT[4].rect.x+((RIGHT[4].rect.w - r_fleche_af.w)/2);
+
+    r_fleche_b.x = BACK[4].rect.x+((BACK[4].rect.w - r_fleche_b.w)/2);
+    r_fleche_ab.x = BACK[4].rect.x+((BACK[4].rect.w - r_fleche_ab.w)/2);
+
+    r_fleche_d.x = DOWN[4].rect.x+((DOWN[4].rect.w - r_fleche_d.w)/2);
+    r_fleche_ad.x = DOWN[4].rect.x+((DOWN[4].rect.w - r_fleche_ad.w)/2);
+
+
 }
 
 void init_pic (SDL_Renderer* renderer,SDL_Window* window,char *picture, SDL_Rect rectangle)
@@ -191,16 +273,15 @@ void init_pic (SDL_Renderer* renderer,SDL_Window* window,char *picture, SDL_Rect
 
 void button_press_moove (SDL_Rect rect,moove_t moove,SDL_Event events)
 {
-    //flag2=0;
-    //indice_next=0;
     indice_tableau_next=0;
     if(events.button.button == SDL_BUTTON_LEFT)
     {
         if( ((events.button.x >= rect.x) && (events.button.x <= (rect.x + rect.w))) && ((events.button.y >= rect.y) && (events.button.y <= (rect.y + rect.h))))
         {
-            rotate_moove(moove);
+            rotate_moove(moove,renderer);
             Mix_PlayChannel(-1,Rotation_Sound,0);
             Mix_VolumeChunk(Rotation_Sound,40);
+            flag2=0;
 
         }
     }
@@ -213,20 +294,21 @@ void button_step (SDL_Rect rect1,char *file_mouse,char *file,SDL_Event events,Mi
         if( ((events.motion.x >= rect1.x) && (events.motion.x <= (rect1.x + rect1.w))) && ((events.motion.y >= rect1.y) && (events.motion.y <= (rect1.y + rect1.h))))
         {
             init_pic(renderer,window,file_mouse,rect1);
-            if((anc_rectangle.x != rect1.y) && (anc_rectangle.y != rect1.y))
+            if(Sound != NULL)
             {
-                Mix_PlayChannel(-1,Sound,0);
+                if((anc_rectangle.x != rect1.y) && (anc_rectangle.y != rect1.y))
+                {
+                    Mix_PlayChannel(-1,Sound,0);
+                }
+                if((anc_rectangle.x != rect1.x) && (anc_rectangle.y != rect1.x))
+                {
+                    Mix_PlayChannel(-1,Sound,0);
+                    Mix_VolumeChunk(Sound,50);
+                }
             }
             else
             {
-            }
-            if((anc_rectangle.x != rect1.x) && (anc_rectangle.y != rect1.x))
-            {
-                Mix_PlayChannel(-1,Sound,0);
-                Mix_VolumeChunk(Sound,50);
-            }
-            else
-            {
+
             }
             anc_rectangle.x = rect1.x;
             anc_rectangle.y = rect1.y;
@@ -245,11 +327,11 @@ void shuffle_rubik(void)
     for(int i=0; i<100; i++)
     {
         face_rand = rand() % 12;
-        rotate_moove(face_rand);
+        rotate_moove(face_rand,renderer);
     }
 }
 
-void fonction_next (void)
+void fonction_next (SDL_Renderer* renderer,SDL_Window* window)
 {
     carre_t sauv_up[9];
     carre_t sauv_down[9];
@@ -257,7 +339,8 @@ void fonction_next (void)
     carre_t sauv_right[9];
     carre_t sauv_left[9];
     carre_t sauv_front[9];
-    printf("flag2 :%d", flag2);
+    printf("next moove : \n");
+    // printf("flag2 :%d", flag2);
     if(flag2==0)
     {
         for(int i=0; i<9; i++)
@@ -317,7 +400,7 @@ void fonction_next (void)
         }
         flag2=10;
     }
-    rotate_moove(tableau_next[indice_next]);
+    rotate_moove(tableau_next[indice_next],renderer);
     if(indice_next>=200)
     {
         indice_next=0;
@@ -326,8 +409,54 @@ void fonction_next (void)
     {
         indice_next++;
     }
-    printf("indice next : %d\n",indice_next);
+    affiche_fleche(tableau_next[indice_next]);
 
+    //printf("indice next : %d\n",indice_next);
+
+}
+
+void affiche_fleche (moove_t moove)
+{
+
+    switch(moove)
+    {
+    case U:
+        init_pic(renderer,window,"fleche.bmp",r_fleche_u);
+        break;
+    case AU:
+        init_pic(renderer,window,"fleche_anti.bmp",r_fleche_au);
+        break;
+    case L:
+        init_pic(renderer,window,"fleche.bmp",r_fleche_l);
+        break;
+    case AL:
+        init_pic(renderer,window,"fleche_anti.bmp",r_fleche_al);
+        break;
+    case F:
+        init_pic(renderer,window,"fleche.bmp",r_fleche_f);
+        break;
+    case AF:
+        init_pic(renderer,window,"fleche_anti.bmp",r_fleche_af);
+        break;
+    case R:
+        init_pic(renderer,window,"fleche.bmp",r_fleche_r);
+        break;
+    case AR:
+        init_pic(renderer,window,"fleche_anti.bmp",r_fleche_ar);
+        break;
+    case B:
+        init_pic(renderer,window,"fleche.bmp",r_fleche_b);
+        break;
+    case AB:
+        init_pic(renderer,window,"fleche_anti.bmp",r_fleche_ab);
+        break;
+    case D:
+        init_pic(renderer,window,"fleche.bmp",r_fleche_d);
+        break;
+    case AD:
+        init_pic(renderer,window,"fleche_anti.bmp",r_fleche_ad);
+        break;
+    }
 }
 
 

@@ -676,7 +676,7 @@
 	"movement.h"
 	"interface_graphique.h"
 
-1647515084 source:c:\users\chris\documents\github\git_rubiks\button.c
+1648118438 source:c:\users\chris\documents\github\git_rubiks\button.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
@@ -690,7 +690,7 @@
 	"interface_graphique.h"
 	"button.h"
 
-1647513702 c:\users\chris\documents\github\git_rubiks\movement.h
+1648118066 c:\users\chris\documents\github\git_rubiks\movement.h
 	"INIT.h"
 
 1647510742 c:\users\chris\documents\github\git_rubiks\init.h
@@ -703,7 +703,7 @@
 	"INIT.h"
 	"solve.h"
 
-1647514892 c:\users\chris\documents\github\git_rubiks\button.h
+1648116466 c:\users\chris\documents\github\git_rubiks\button.h
 	<SDL2/SDL_mixer.h>
 	<SDL2/SDL_ttf.h>
 	"interface_graphique.h"
@@ -735,7 +735,7 @@
 	<stdio.h>
 	<SDL2/SDL.h>
 
-1647514984 source:c:\users\chris\documents\github\git_rubiks\main.c
+1648118308 source:c:\users\chris\documents\github\git_rubiks\main.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
@@ -747,12 +747,12 @@
 	"button.h"
 	"init_color.h"
 
-1647513702 source:c:\users\chris\documents\github\git_rubiks\movement.c
+1648118053 source:c:\users\chris\documents\github\git_rubiks\movement.c
 	"movement.h"
 	"INIT.h"
 	<stdio.h>
 
-1647511742 source:c:\users\chris\documents\github\git_rubiks\solve.c
+1648118175 source:c:\users\chris\documents\github\git_rubiks\solve.c
 	"solve.h"
 	"INIT.h"
 	<stdio.h>
