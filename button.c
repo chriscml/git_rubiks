@@ -302,6 +302,13 @@ void button_press_moove (SDL_Rect rect,moove_t moove,SDL_Event events)
     {
         if( ((events.button.x >= rect.x) && (events.button.x <= (rect.x + rect.w))) && ((events.button.y >= rect.y) && (events.button.y <= (rect.y + rect.h))))
         {
+            flag2=0;
+            indice_next=0;
+            indice_tableau_next=0;
+            for(int i=0; i<200; i++)
+            {
+                tableau_next[i]=15;
+            }
             rotate_moove(moove,renderer);
             Mix_PlayChannel(-1,Rotation_Sound,0);
             Mix_VolumeChunk(Rotation_Sound,40);
@@ -357,6 +364,7 @@ void shuffle_rubik(void)
 
 void fonction_next (SDL_Renderer* renderer,SDL_Window* window)
 {
+    remplissage_carre(renderer);
     carre_t sauv_up[9];
     carre_t sauv_down[9];
     carre_t sauv_back[9];
@@ -367,6 +375,7 @@ void fonction_next (SDL_Renderer* renderer,SDL_Window* window)
     // printf("flag2 :%d", flag2);
     if(flag2==0)
     {
+        nb_rotation=0;
         for(int i=0; i<9; i++)
         {
             sauv_up[i]=UP[i];
@@ -398,6 +407,8 @@ void fonction_next (SDL_Renderer* renderer,SDL_Window* window)
         step_5_yellow_corner();
         step_6_yellow_corner_near_cubes();
         step_7_yellow_arretes();
+        printf("\n Nombre de rotation : %d \n",nb_rotation);
+        display_nb_roation();
         for(int i=0; i<9; i++)
         {
             UP[i]= sauv_up[i];
@@ -425,6 +436,8 @@ void fonction_next (SDL_Renderer* renderer,SDL_Window* window)
         flag2=10;
     }
     rotate_moove(tableau_next[indice_next],renderer);
+    nb_rotation--;
+    display_nb_roation();
     if(indice_next>=200)
     {
         indice_next=0;
@@ -434,14 +447,11 @@ void fonction_next (SDL_Renderer* renderer,SDL_Window* window)
         indice_next++;
     }
     affiche_fleche(tableau_next[indice_next]);
-
-    //printf("indice next : %d\n",indice_next);
-
 }
 
 void affiche_fleche (moove_t moove)
 {
-
+    remplissage_carre(renderer);
     switch(moove)
     {
     case U:
@@ -482,6 +492,18 @@ void affiche_fleche (moove_t moove)
         break;
     default:
         break;
+    }
+}
+
+void init_next_move (void)
+{
+
+    flag2=0;
+    indice_next=0;
+    indice_tableau_next=0;
+    for(int i=0; i<200; i++)
+    {
+        tableau_next[i]=15;
     }
 }
 

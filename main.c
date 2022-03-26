@@ -13,26 +13,27 @@
 int main(int argc, char** argv)
 {
     /*------------------------------------------------------------------------*/
+    /* POUR BOITE DE DIALOGUE */
     const SDL_MessageBoxButtonData buttons[] =
     {
         {/* .flags, .buttonid, .text */ SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT, 1, "yes" },
         { 0, 0, "no" }
     };
-    const SDL_MessageBoxColorScheme colorScheme =
+   /* const SDL_MessageBoxColorScheme colorScheme =
     {
-        { /* .colors (.r, .g, .b) */
-            /* [SDL_MESSAGEBOX_COLOR_BACKGROUND] */
+        { .colors (.r, .g, .b)
+            [SDL_MESSAGEBOX_COLOR_BACKGROUND]
             { 255,   255,   0 },
-            /* [SDL_MESSAGEBOX_COLOR_TEXT] */
-            {   55, 255,   0 },
-            /* [SDL_MESSAGEBOX_COLOR_BUTTON_BORDER] */
+            /* [SDL_MESSAGEBOX_COLOR_TEXT]
+            {  55, 255,   0 },
+            /* [SDL_MESSAGEBOX_COLOR_BUTTON_BORDER]
             { 255, 255,   0 },
-            /* [SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND] */
+            /* [SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND]
             {   200,   0, 255 },
-            /* [SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED] */
+            /* [SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED]
             { 255,   0, 255 }
         }
-    };
+    };*/
     const SDL_MessageBoxData messageboxdata =
     {
         SDL_MESSAGEBOX_WARNING, /* .flags */
@@ -41,7 +42,7 @@ int main(int argc, char** argv)
         "Do you really want to restart ?", /* .message */
         SDL_arraysize(buttons), /* .numbuttons */
         buttons, /* .buttons */
-        &colorScheme /* .colorScheme */
+       // &colorScheme /* .colorScheme */
     };
     int buttonid;
     /*-----------------------------------------------------------------------------------------------*/
@@ -84,10 +85,7 @@ int main(int argc, char** argv)
         }
         else if (events.type==SDL_KEYDOWN)
         {
-            for(int i=0; i<200; i++)
-            {
-                tableau_next[i]=15;
-            }
+            init_next_move();
             switch(events.key.keysym.sym)
             {
             case SDLK_a:
@@ -220,6 +218,7 @@ int main(int argc, char** argv)
             {
                 if( ((events.button.x >= r_restart.x) && (events.button.x <= (r_restart.x + r_restart.w))) && ((events.button.y >= r_restart.y) && (events.button.y <= (r_restart.y + r_restart.h))))
                 {
+
                     if (SDL_ShowMessageBox(&messageboxdata, &buttonid) < 0)
                     {
                         SDL_Log("error displaying message box");
@@ -236,6 +235,8 @@ int main(int argc, char** argv)
                 if( ((events.button.x >= r_solve.x) && (events.button.x <= (r_solve.x + r_solve.w))) && ((events.button.y >= r_solve.y) && (events.button.y <= (r_solve.y + r_solve.h))))
                 {
 
+                    Mix_PlayChannel(-1,Tic_Sound2,0);
+                    Mix_VolumeChunk(Solve_Sound,15);
                     file_solution=fopen("solution.txt", "w"); //C'est en ecriture seule
                     for(int i=0; i<200; i++)
                     {
@@ -251,8 +252,6 @@ int main(int argc, char** argv)
                     step_5_yellow_corner();
                     step_6_yellow_corner_near_cubes();
                     step_7_yellow_arretes();
-                    Mix_PlayChannel(-1,Solve_Sound,0);
-                    Mix_VolumeChunk(Solve_Sound,15);
                     printf("\n Nombre de rotation : %d \n",nb_rotation);
                     display_nb_roation();
                     remplissage_carre(renderer);
@@ -261,6 +260,7 @@ int main(int argc, char** argv)
                 {
                     indice_next=0;
                     indice_tableau_next=0;
+                    Mix_PlayChannel(-1,Tic_Sound3,0);
                     shuffle_rubik();
                 }
                 if(((events.button.x >= r_step_1.x) && (events.button.x <= (r_step_1.x + r_step_1.w))) && ((events.button.y >= r_step_1.y) && (events.button.y <= (r_step_1.y + r_step_1.h))))

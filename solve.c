@@ -542,7 +542,8 @@ void rotate_face(carre_t *face, signed char clockwise)
     }
     nb_rotation++;
     nb_rotation_sauvegarde[indice_tab_moove] = face;
-    if(indice_tab_moove>0)
+    //NOMBRE REEL DE ROTATION (2 ou 3 meme rotation d'affiler = 1 rotation)
+   /* if(indice_tab_moove>0)
     {
         if(nb_rotation_sauvegarde[indice_tab_moove] == nb_rotation_sauvegarde[indice_tab_moove-1] )
         {
@@ -563,7 +564,7 @@ void rotate_face(carre_t *face, signed char clockwise)
     else
     {
         indice_tab_moove++;
-    }
+    }*/
 }
 
 void get_carre_blanc_on_the_white_face(carre_t *face)

@@ -83,4 +83,6 @@ void shuffle_rubik(void);
 void fonction_next (SDL_Renderer* renderer,SDL_Window* window);
 void affiche_fleche (moove_t moove);
 
+void init_next_move (void);
+
 #endif // SDL_H_INCLUDED
