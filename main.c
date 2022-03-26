@@ -258,8 +258,7 @@ int main(int argc, char** argv)
                 }
                 if( ((events.button.x >= r_shuffle.x) && (events.button.x <= (r_shuffle.x + r_shuffle.w))) && ((events.button.y >= r_shuffle.y) && (events.button.y <= (r_shuffle.y + r_shuffle.h))))
                 {
-                    indice_next=0;
-                    indice_tableau_next=0;
+                    init_next_move();
                     Mix_PlayChannel(-1,Tic_Sound3,0);
                     shuffle_rubik();
                 }
