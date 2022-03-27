@@ -4,7 +4,7 @@
 void rotate_moove (moove_t moove,SDL_Renderer* renderer)
 {
     carre_t temp;
-    remplissage_carre(renderer);
+
     //affiche_fleche(moove);
     switch(moove)
     {
@@ -275,6 +275,7 @@ void rotate_moove (moove_t moove,SDL_Renderer* renderer)
     {
         indice_tableau_next++;
     }
+    remplissage_carre(renderer);
 }
 void rotate_matrice_clockwise(carre_t *Face) /*sens horaire*/
 {

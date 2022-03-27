@@ -845,7 +845,7 @@
 	"movement.h"
 	"interface_graphique.h"
 
-1648381515 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\button.c
+1648386366 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\button.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
@@ -872,7 +872,7 @@
 	"INIT.h"
 	"solve.h"
 
-1648243482 c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\solve.h
+1648389704 c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\solve.h
 	"INIT.h"
 	<stdbool.h>
 	<stdio.h>
@@ -919,16 +919,18 @@
 	"button.h"
 	"init_color.h"
 
-1648243482 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\movement.c
+1648389545 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\movement.c
 	"movement.h"
 	"INIT.h"
 	<stdio.h>
 
-1648379289 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\solve.c
+1648389451 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\solve.c
 	"solve.h"
 	"INIT.h"
 	<stdio.h>
 	<stdbool.h>
 	"movement.h"
 	"interface_graphique.h"
+
+1648389451 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\fonctions_annexes.c
 

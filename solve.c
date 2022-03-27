@@ -102,16 +102,16 @@ signed char get_position_from_id(signed char id)
 void step_1_do_white_cross(void)
 {
     printf("---------------------------STEP 1---------------------------------------\n");
-    get_carre_blanc_on_the_white_face(UP);
-    get_carre_blanc_on_the_white_face(DOWN);
-    get_carre_blanc_on_the_white_face(LEFT);
-    get_carre_blanc_on_the_white_face(RIGHT);
-    get_carre_blanc_on_the_white_face(FRONT);
-    get_carre_blanc_on_the_white_face(BACK);
-    verify_white_cross();
-    verify_white_cross();
-    verify_white_cross();
-    verify_white_cross();
+    step_1_get_carre_blanc_on_the_white_face(UP);
+    step_1_get_carre_blanc_on_the_white_face(DOWN);
+    step_1_get_carre_blanc_on_the_white_face(LEFT);
+    step_1_get_carre_blanc_on_the_white_face(RIGHT);
+    step_1_get_carre_blanc_on_the_white_face(FRONT);
+    step_1_get_carre_blanc_on_the_white_face(BACK);
+    step_1_verify_white_cross();
+    step_1_verify_white_cross();
+    step_1_verify_white_cross();
+    step_1_verify_white_cross();
 }
 
 void step_2_do_white_face(void)
@@ -120,14 +120,14 @@ void step_2_do_white_face(void)
     if((UP[0].color==UP[4].color)&&(UP[2].color==UP[4].color)&&(UP[6].color==UP[4].color)&&(UP[8].color==UP[4].color)&&(FRONT[0].color==FRONT[4].color)&&(FRONT[2].color==FRONT[4].color)&&(RIGHT[0].color==RIGHT[4].color)&&(RIGHT[2].color==RIGHT[4].color)&&(LEFT[0].color==LEFT[4].color)&&(LEFT[2].color==LEFT[4].color)&&(BACK[0].color==BACK[4].color)&&(BACK[2].color==BACK[4].color)) {}
     else
     {
-        get_corner_on_the_white_face(DOWN);//faire down en premier: important
-        get_corner_on_the_white_face(UP);
-        get_corner_on_the_white_face(LEFT);
-        get_corner_on_the_white_face(RIGHT);
-        get_corner_on_the_white_face(FRONT);
-        get_corner_on_the_white_face(BACK);
-        verify_white_face();
-        verify_white_face();
+        step_2_get_corner_on_the_white_face(DOWN);//faire down en premier: important
+        step_2_get_corner_on_the_white_face(UP);
+        step_2_get_corner_on_the_white_face(LEFT);
+        step_2_get_corner_on_the_white_face(RIGHT);
+        step_2_get_corner_on_the_white_face(FRONT);
+        step_2_get_corner_on_the_white_face(BACK);
+        step_2_verify_white_face();
+        step_2_verify_white_face();
     }
 }
 
@@ -567,7 +567,7 @@ void rotate_face(carre_t *face, signed char clockwise)
     }*/
 }
 
-void get_carre_blanc_on_the_white_face(carre_t *face)
+void step_1_get_carre_blanc_on_the_white_face(carre_t *face)
 {
     if(get_position(face, UP[4].color, EDGE, -1, -1, -1)!=-1) // gestion du cas ou 1, 2, 3, ou 4 carrés se trouvent déjà sur la face *face: partie fonctionnelle
     {
@@ -578,7 +578,7 @@ void get_carre_blanc_on_the_white_face(carre_t *face)
         carre_t *face_from_color= get_face_from_color(near_cube->color);
         carre_t *actual_face = get_face_from_carre(near_cube);
         if((face!=UP)&&(face!=DOWN))
-            get_edges_from_otherfaces_to_white_cross(face);
+            step_1_get_edges_from_otherfaces_to_white_cross(face);
         if((face==UP)||(face==DOWN))
         {
             while(actual_face!=face_from_color)
@@ -602,7 +602,7 @@ void get_carre_blanc_on_the_white_face(carre_t *face)
             carre_t *face_saved = get_face_from_carre(near_cube);
             face_from_color=get_face_from_color(near_cube->color);
             if((face!=UP)&&(face!=DOWN))
-                get_edges_from_otherfaces_to_white_cross(face);
+                step_1_get_edges_from_otherfaces_to_white_cross(face);
             if(face_saved!=face_from_color)
             {
                 if(face==UP)//modifié
@@ -634,7 +634,7 @@ void get_carre_blanc_on_the_white_face(carre_t *face)
                 face_from_color=get_face_from_color(near_cube->color);
                 // printf("actual_face = %d, face_needed: %d", face_saved, face_from_color);
                 if((face!=UP)&&(face!=DOWN))
-                    get_edges_from_otherfaces_to_white_cross(face);
+                    step_1_get_edges_from_otherfaces_to_white_cross(face);
                 if(face_saved!=face_from_color)
                 {
                     if(face==UP)
@@ -667,7 +667,7 @@ void get_carre_blanc_on_the_white_face(carre_t *face)
                     face_from_color=get_face_from_color(near_cube->color);
                     //printf("actual_face = %d, face_needed: %d", face_saved, face_from_color);
                     if((face!=UP)&&(face!=DOWN))
-                        get_edges_from_otherfaces_to_white_cross(face);
+                        step_1_get_edges_from_otherfaces_to_white_cross(face);
                     if(face_saved!=face_from_color)
                     {
                         if(face==UP)
@@ -702,7 +702,7 @@ void get_carre_blanc_on_the_white_face(carre_t *face)
     }
 }
 
-void get_edges_from_otherfaces_to_white_cross(carre_t *face)
+void step_1_get_edges_from_otherfaces_to_white_cross(carre_t *face)
 {
     unsigned char id_saved0_carre_blanc=face[get_position(face, UP[4].color, EDGE, -1, -1, -1)].id;
     carre_t *near_cube=get_carre_on_the_same_cube(face, get_position(face, UP[4].color, EDGE, -1, -1, -1),EDGE);
@@ -780,25 +780,25 @@ void get_edges_from_otherfaces_to_white_cross(carre_t *face)
 
 
 }
-void verify_white_cross(void)
+void step_1_verify_white_cross(void)
 {
     if((UP[1].color==UP[4].color)&&(UP[3].color==UP[4].color)&&(UP[5].color==UP[4].color)&&(UP[7].color==UP[4].color)) {}
     else
     {
         if(get_position(DOWN, UP[4].color, EDGE, -1,-1, -1)!=-1)
-            get_carre_blanc_on_the_white_face(DOWN);
+            step_1_get_carre_blanc_on_the_white_face(DOWN);
         if(get_position(LEFT, UP[4].color, EDGE, -1,-1, -1)!=-1)
-            get_carre_blanc_on_the_white_face(LEFT);
+            step_1_get_carre_blanc_on_the_white_face(LEFT);
         if(get_position(RIGHT, UP[4].color, EDGE, -1,-1, -1)!=-1)
-            get_carre_blanc_on_the_white_face(RIGHT);
+            step_1_get_carre_blanc_on_the_white_face(RIGHT);
         if(get_position(FRONT, UP[4].color, EDGE, -1,-1, -1)!=-1)
-            get_carre_blanc_on_the_white_face(FRONT);
+            step_1_get_carre_blanc_on_the_white_face(FRONT);
         if(get_position(BACK, UP[4].color, EDGE, -1,-1, -1)!=-1)
-            get_carre_blanc_on_the_white_face(BACK);
+            step_1_get_carre_blanc_on_the_white_face(BACK);
     }
 }
 
-void get_corner_on_the_white_face(carre_t *face)
+void step_2_get_corner_on_the_white_face(carre_t *face)
 {
     signed char init_position=get_position(face, UP[4].color, CORNER, -1, -1, -1);
     if(init_position!=-1)
@@ -814,26 +814,26 @@ void get_corner_on_the_white_face(carre_t *face)
                 rotate_face(LEFT, 0);
                 rotate_face(DOWN, 0);
                 rotate_face(LEFT, 1);
-                treat_this_white_corner(id_saved0);
+                step_2_treat_this_white_corner(id_saved0);
                 break;
 
             case 2:
                 rotate_face(RIGHT, 1);
                 rotate_face(DOWN, 1);
                 rotate_face(RIGHT, 0);
-                treat_this_white_corner(id_saved0);
+                step_2_treat_this_white_corner(id_saved0);
                 break;
             case 6:
                 rotate_face(LEFT, 1);
                 rotate_face(DOWN, 1);
                 rotate_face(LEFT, 0);
-                treat_this_white_corner(id_saved0);
+                step_2_treat_this_white_corner(id_saved0);
                 break;
             case 8:
                 rotate_face(RIGHT, 0);
                 rotate_face(DOWN, 0);
                 rotate_face(RIGHT, 1);
-                treat_this_white_corner(id_saved0);
+                step_2_treat_this_white_corner(id_saved0);
                 break;
             }
         }
@@ -864,7 +864,7 @@ void get_corner_on_the_white_face(carre_t *face)
                     rotate_face(RIGHT, 0);
                     break;
                 }
-                treat_this_white_corner(id_saved0);
+                step_2_treat_this_white_corner(id_saved0);
             }
         }
         else
@@ -885,12 +885,12 @@ void get_corner_on_the_white_face(carre_t *face)
                 }
 
             }
-            treat_this_white_corner(id_saved0);
+            step_2_treat_this_white_corner(id_saved0);
         }
     }
 }
 
-void treat_this_white_corner(signed char id)
+void step_2_treat_this_white_corner(signed char id)
 {
     carre_t *white_corner=get_carre_from_id(id);
     carre_t *near_cube;
@@ -923,18 +923,18 @@ void treat_this_white_corner(signed char id)
 
 }
 
-void verify_white_face(void)
+void step_2_verify_white_face(void)
 {
     if(get_position(DOWN, UP[4].color, CORNER, -1, -1, -1)!=-1)
-        get_corner_on_the_white_face(DOWN);
+        step_2_get_corner_on_the_white_face(DOWN);
     if(get_position(LEFT, UP[4].color, CORNER, -1, -1, -1)!=-1)
-        get_corner_on_the_white_face(LEFT);
+        step_2_get_corner_on_the_white_face(LEFT);
     if(get_position(RIGHT, UP[4].color, CORNER, -1, -1, -1)!=-1)
-        get_corner_on_the_white_face(RIGHT);
+        step_2_get_corner_on_the_white_face(RIGHT);
     if(get_position(BACK, UP[4].color, CORNER, -1, -1, -1)!=-1)
-        get_corner_on_the_white_face(BACK);
+        step_2_get_corner_on_the_white_face(BACK);
     if(get_position(FRONT, UP[4].color, CORNER, -1, -1, -1)!=-1)
-        get_corner_on_the_white_face(FRONT);
+        step_2_get_corner_on_the_white_face(FRONT);
 }
 
 void step_3_do_color_edges(void)
@@ -952,16 +952,16 @@ void get_colored_edges_on_this_face(carre_t *face)
     {}
     else
     {
-        signed char id_of_searched_cube=get_id_from_searched_cube(face[4].color, ((get_face_from_carre(get_carre_on_the_same_cube(face, 3, EDGE)))[4]).color);
+        signed char id_of_searched_cube=step_3_get_id_from_searched_cube(face[4].color, ((get_face_from_carre(get_carre_on_the_same_cube(face, 3, EDGE)))[4]).color);
         signed char position=get_position_from_id(id_of_searched_cube);
         if(position==3)
         {
-            get_this_edge_in_the_right_place(&(get_face_from_carre(get_carre_from_id(id_of_searched_cube))[7]), 1);
+            step_3_get_this_edge_in_the_right_place(&(get_face_from_carre(get_carre_from_id(id_of_searched_cube))[7]), 1);
             id_of_searched_cube=get_carre_on_the_same_cube(get_face_from_carre(get_carre_from_id(id_of_searched_cube)),get_position_from_id(id_of_searched_cube), EDGE)->id;
         }
         if(position==5)
         {
-            get_this_edge_in_the_right_place(&(get_face_from_carre(get_carre_from_id(id_of_searched_cube))[7]), 0);
+            step_3_get_this_edge_in_the_right_place(&(get_face_from_carre(get_carre_from_id(id_of_searched_cube))[7]), 0);
             id_of_searched_cube=get_carre_on_the_same_cube(get_face_from_carre(get_carre_from_id(id_of_searched_cube)),get_position_from_id(id_of_searched_cube), EDGE)->id;
         }
         carre_t *actual_face=get_face_from_carre(get_carre_from_id(id_of_searched_cube));
@@ -976,20 +976,20 @@ void get_colored_edges_on_this_face(carre_t *face)
             }
         }
         if(get_carre_on_the_same_cube(actual_face, 7, EDGE)->color==get_face_from_carre(get_carre_on_the_same_cube(actual_face, 3, EDGE))[4].color)
-            get_this_edge_in_the_right_place(get_carre_from_id(id_of_searched_cube), 1);
+            step_3_get_this_edge_in_the_right_place(get_carre_from_id(id_of_searched_cube), 1);
         else if(get_carre_on_the_same_cube(actual_face, 7, EDGE)->color==get_face_from_carre(get_carre_on_the_same_cube(actual_face, 5, EDGE))[4].color)
-            get_this_edge_in_the_right_place(get_carre_from_id(id_of_searched_cube), 0);
+            step_3_get_this_edge_in_the_right_place(get_carre_from_id(id_of_searched_cube), 0);
         else
             printf("erreur\n");
     }
 }
 
 //PARTIES ENTIEREMENT FONCTIONNELLE VERIFIEE
-void get_this_edge_in_the_right_place(carre_t * carre, signed char cote) //cote droit: 1, cote gauche: 0
+void step_3_get_this_edge_in_the_right_place(carre_t * carre, signed char cote) //cote droit: 1, cote gauche: 0
 {
     carre_t *face=get_face_from_carre(carre);
-    carre_t *face_right=get_face_on_the_right(face);
-    carre_t *face_left=get_face_on_the_left(face);
+    carre_t *face_right=step_3_get_face_on_the_right(face);
+    carre_t *face_left=step_3_get_face_on_the_left(face);
     if(cote)
     {
         rotate_face(DOWN, 1);
@@ -1013,7 +1013,7 @@ void get_this_edge_in_the_right_place(carre_t * carre, signed char cote) //cote 
         rotate_face(face, 0);
     }
 }
-carre_t *get_face_on_the_right(carre_t *face)
+carre_t *step_3_get_face_on_the_right(carre_t *face)
 {
     carre_t *retour;
     if(face==LEFT)
@@ -1027,7 +1027,7 @@ carre_t *get_face_on_the_right(carre_t *face)
     return retour;
 }
 
-carre_t *get_face_on_the_left(carre_t *face)
+carre_t *step_3_get_face_on_the_left(carre_t *face)
 {
     carre_t *retour;
     if(face==LEFT)
@@ -1042,7 +1042,7 @@ carre_t *get_face_on_the_left(carre_t *face)
 }
 
 
-signed char get_id_from_searched_cube(color_t color1, color_t color2)
+signed char step_3_get_id_from_searched_cube(color_t color1, color_t color2)
 {
     signed char id_returned=0;
     signed char position0 = 0;
@@ -1159,18 +1159,18 @@ void step_4_yellow_cross(void)
     printf("---------------------------STEP 4---------------------------------------\n");
     while((DOWN[1].color!=DOWN[4].color)||(DOWN[3].color!=DOWN[4].color)||(DOWN[5].color!=DOWN[4].color)||(DOWN[7].color!=DOWN[4].color))
     {
-        if(get_configuration_yellow_cross()==7)
+        if(step_4_get_configuration_yellow_cross()==7)
         {
-            treat_this_yellow_cross_configuration(1);
-            treat_this_yellow_cross_configuration(get_configuration_yellow_cross());
+            step_4_treat_this_yellow_cross_configuration(1);
+            step_4_treat_this_yellow_cross_configuration(step_4_get_configuration_yellow_cross());
         }
         else
-            treat_this_yellow_cross_configuration(get_configuration_yellow_cross());
+            step_4_treat_this_yellow_cross_configuration(step_4_get_configuration_yellow_cross());
     }
 
 }
 
-unsigned char get_configuration_yellow_cross(void)
+unsigned char step_4_get_configuration_yellow_cross(void)
 {
     unsigned char returned_config;
     if((DOWN[3].color==DOWN[4].color)&&(DOWN[5].color==DOWN[4].color))
@@ -1204,7 +1204,7 @@ unsigned char get_configuration_yellow_cross(void)
     return returned_config;
 }
 
-void treat_this_yellow_cross_configuration(unsigned char config)
+void step_4_treat_this_yellow_cross_configuration(unsigned char config)
 {
     switch(config)
     {
@@ -1259,7 +1259,7 @@ void treat_this_yellow_cross_configuration(unsigned char config)
     case 7:
         break;
     default:
-        printf("erreur fonction treat_this_yellow_cross_configuration");
+        printf("erreur fonction step_4_treat_this_yellow_cross_configuration");
         break;
     }
 }
@@ -1267,7 +1267,7 @@ void treat_this_yellow_cross_configuration(unsigned char config)
 void step_5_yellow_corner(void)
 {
     printf("---------------------------STEP 5---------------------------------------\n");
-    unsigned char config=get_configuration_yellow_corner();
+    unsigned char config=step_5_get_configuration_yellow_corner();
     carre_t *faceR;
     carre_t *faceU=DOWN;
     carre_t *faceL;
@@ -1431,7 +1431,7 @@ void step_5_yellow_corner(void)
         rotate_face(faceR, 1);
     }
 }
-unsigned char get_configuration_yellow_corner(void)
+unsigned char step_5_get_configuration_yellow_corner(void)
 {
     unsigned char returned_config=0;//https://www.theologeek.ch/rubiks-cube/
 

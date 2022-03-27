@@ -314,9 +314,8 @@ int main(int argc, char** argv)
                     step_4_yellow_cross();
                     step_5_yellow_corner();
                     step_6_yellow_corner_near_cubes();
-                    step_6_yellow_corner_near_cubes();
-                    remplissage_carre(renderer);
                     step_7_yellow_arretes();
+                    remplissage_carre(renderer);
                 }
                 if(((events.button.x >= r_next_move.x) && (events.button.x <= (r_next_move.x + r_next_move.w))) && ((events.button.y >= r_next_move.y) && (events.button.y <= (r_next_move.y + r_next_move.h))))
                 {
