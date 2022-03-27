@@ -654,6 +654,7 @@ void get_carre_blanc_on_the_white_face(carre_t *face)
                         }
                         rotate_face(face_from_color,1);
                         rotate_face(face_from_color,1);
+                        rotate_face(face_from_color,1);
                     }
                 }
                 if(get_position(face, UP[4].color, EDGE, id_saved0_carre_blanc, id_saved1_carre_blanc, id_saved2_carre_blanc)!=-1)
@@ -1731,7 +1732,6 @@ void step_7_yellow_arretes(void)
         goto fourcarre;
         break;
     case 3:
-        printf("cas 3");
         rotate_face(FRONT,0);
         rotate_face(FRONT, 0);
         rotate_face(BACK, 1);

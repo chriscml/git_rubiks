@@ -32,7 +32,7 @@
 	"INIT.h"
 	<stdio.h>
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl.h
 	"SDL_main.h"
 	"SDL_stdinc.h"
 	"SDL_assert.h"
@@ -69,12 +69,12 @@
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_main.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_main.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_stdinc.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_stdinc.h
 	"SDL_config.h"
 	<sys/types.h>
 	<stdio.h>
@@ -103,28 +103,28 @@
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_config.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_config.h
 	"SDL_platform.h"
 	<winsdkver.h>
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_platform.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_platform.h
 	"AvailabilityMacros.h"
 	"TargetConditionals.h"
 	<winapifamily.h>
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\begin_code.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\begin_code.h
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\close_code.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\close_code.h
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_assert.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_assert.h
 	"SDL_config.h"
 	"begin_code.h"
 	<signal.h>
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_atomic.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_atomic.h
 	"SDL_stdinc.h"
 	"SDL_platform.h"
 	"begin_code.h"
@@ -132,7 +132,7 @@
 	<mbarrier.h>
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_audio.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_audio.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_endian.h"
@@ -142,12 +142,12 @@
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_error.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_error.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_endian.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_endian.h
 	"SDL_stdinc.h"
 	<intrin.h>
 	<endian.h>
@@ -156,13 +156,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_mutex.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_mutex.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_thread.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_thread.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_atomic.h"
@@ -173,18 +173,18 @@
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_rwops.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_rwops.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_clipboard.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_clipboard.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_cpuinfo.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_cpuinfo.h
 	"SDL_stdinc.h"
 	<intrin.h>
 	<intrin.h>
@@ -204,7 +204,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_events.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_events.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -218,7 +218,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_video.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_video.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -226,13 +226,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_pixels.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_pixels.h
 	"SDL_stdinc.h"
 	"SDL_endian.h"
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_rect.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_rect.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_pixels.h"
@@ -240,7 +240,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_surface.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_surface.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -249,11 +249,11 @@
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_blendmode.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_blendmode.h
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_keyboard.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_keyboard.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_keycode.h"
@@ -261,27 +261,27 @@
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_keycode.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_keycode.h
 	"SDL_stdinc.h"
 	"SDL_scancode.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_scancode.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_scancode.h
 	"SDL_stdinc.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_mouse.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_mouse.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_joystick.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_joystick.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_gamecontroller.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_gamecontroller.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_rwops.h"
@@ -290,17 +290,17 @@
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_sensor.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_sensor.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_quit.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_quit.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_gesture.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_gesture.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -308,70 +308,70 @@
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_touch.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_touch.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_filesystem.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_filesystem.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_haptic.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_haptic.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_joystick.h"
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_hidapi.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_hidapi.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_hints.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_hints.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_loadso.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_loadso.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_log.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_log.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_messagebox.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_messagebox.h
 	"SDL_stdinc.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_metal.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_metal.h
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_power.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_power.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_render.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_render.h
 	"SDL_stdinc.h"
 	"SDL_rect.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_shape.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_shape.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -380,7 +380,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_system.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_system.h
 	"SDL_stdinc.h"
 	"SDL_keyboard.h"
 	"SDL_render.h"
@@ -388,24 +388,24 @@
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_timer.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_timer.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_version.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_version.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_locale.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_locale.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1641849092 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_misc.h
+1641852692 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_misc.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -550,7 +550,7 @@
 	<stdlib.h>
 	<conio.h>
 
-1540998018 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_mixer.h
+1541001618 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_mixer.h
 	"SDL_stdinc.h"
 	"SDL_rwops.h"
 	"SDL_audio.h"
@@ -559,7 +559,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1641928995 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_ttf.h
+1376156551 c:\program files\codeblocks\sdl2-2.0.20\x86_64-w64-mingw32\include\sdl2\sdl_ttf.h
 	"SDL.h"
 	"begin_code.h"
 	"close_code.h"
@@ -845,7 +845,7 @@
 	"movement.h"
 	"interface_graphique.h"
 
-1647508412 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\button.c
+1648381515 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\button.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
@@ -859,52 +859,55 @@
 	"interface_graphique.h"
 	"button.h"
 
-1647454187 c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\movement.h
+1648243482 c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\movement.h
 	"INIT.h"
 
-1647453881 c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\init.h
+1647457481 c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\init.h
 	<SDL2/SDL.h>
 
-1647462651 c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\interface_graphique.h
+1648243482 c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\interface_graphique.h
 	<stdbool.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 	"INIT.h"
 	"solve.h"
 
-1647508256 c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\solve.h
+1648243482 c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\solve.h
 	"INIT.h"
 	<stdbool.h>
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
 
-1647508464 c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\button.h
+1648379051 c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\button.h
 	<SDL2/SDL_mixer.h>
 	<SDL2/SDL_ttf.h>
 	"interface_graphique.h"
 	"movement.h"
 	"solve.h"
 
-1647453933 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\init.c
+1647457533 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\init.c
 	"INIT.h"
 
-1647188312 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\init_color.c
+1648243482 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\init_color.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
 	"init_color.h"
 	"INIT.h"
 
-1647188312 c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\init_color.h
+1647191912 c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\init_color.h
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
 
-1647466990 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\interface_graphique.c
+1648381051 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\interface_graphique.c
 	"interface_graphique.h"
 	"INIT.h"
 	<stdio.h>
 	<SDL2/SDL.h>
 
-1647508323 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\main.c
+1648380770 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\main.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
@@ -916,12 +919,12 @@
 	"button.h"
 	"init_color.h"
 
-1647456916 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\movement.c
+1648243482 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\movement.c
 	"movement.h"
 	"INIT.h"
 	<stdio.h>
 
-1647508230 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\solve.c
+1648379289 source:c:\users\jeufr\desktop\iut\mo\programme 3.1  tentative de changements radicaux\git_rubiks\solve.c
 	"solve.h"
 	"INIT.h"
 	<stdio.h>

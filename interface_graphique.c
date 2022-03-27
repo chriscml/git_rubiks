@@ -504,10 +504,8 @@ void verify_increment_color(int x, int y)
     {
         if((x>=FRONT[i].rect.x)&&(x<=FRONT[i].rect.x+FRONT[i].rect.w)&&(y>=FRONT[i].rect.y)&&(y<=FRONT[i].rect.y+FRONT[i].rect.h))
         {
-            remplissage_carre(renderer);
             color_inc(&FRONT[i].color);
-            SDL_SetRenderDrawColor(renderer,get_red(FRONT[i].color), get_green(FRONT[i].color), get_blue(FRONT[i].color), 255 );
-            SDL_RenderFillRect(renderer, &FRONT[i].rect);
+            remplissage_carre(renderer);
             return;
         }
     }
@@ -515,10 +513,8 @@ void verify_increment_color(int x, int y)
     {
         if((x>=UP[i].rect.x)&&(x<=UP[i].rect.x+UP[i].rect.w)&&(y>=UP[i].rect.y)&&(y<=UP[i].rect.y+UP[i].rect.h))
         {
-            remplissage_carre(renderer);
             color_inc(&UP[i].color);
-            SDL_SetRenderDrawColor(renderer,get_red(UP[i].color), get_green(UP[i].color), get_blue(UP[i].color), 255 );
-            SDL_RenderFillRect(renderer, &UP[i].rect);
+            remplissage_carre(renderer);
             return;
         }
     }
@@ -527,10 +523,8 @@ void verify_increment_color(int x, int y)
     {
         if((x>=LEFT[i].rect.x)&&(x<=LEFT[i].rect.x+LEFT[i].rect.w)&&(y>=LEFT[i].rect.y)&&(y<=LEFT[i].rect.y+LEFT[i].rect.h))
         {
-            remplissage_carre(renderer);
             color_inc(&LEFT[i].color);
-            SDL_SetRenderDrawColor(renderer,get_red(LEFT[i].color), get_green(LEFT[i].color), get_blue(LEFT[i].color), 255 );
-            SDL_RenderFillRect(renderer, &LEFT[i].rect);
+            remplissage_carre(renderer);
             return;
         }
     }
@@ -539,10 +533,8 @@ void verify_increment_color(int x, int y)
     {
         if((x>=RIGHT[i].rect.x)&&(x<=RIGHT[i].rect.x+RIGHT[i].rect.w)&&(y>=RIGHT[i].rect.y)&&(y<=RIGHT[i].rect.y+RIGHT[i].rect.h))
         {
-            remplissage_carre(renderer);
             color_inc(&RIGHT[i].color);
-            SDL_SetRenderDrawColor(renderer,get_red(RIGHT[i].color), get_green(RIGHT[i].color), get_blue(RIGHT[i].color), 255 );
-            SDL_RenderFillRect(renderer, &RIGHT[i].rect);
+            remplissage_carre(renderer);
             return;
         }
     }
@@ -551,10 +543,8 @@ void verify_increment_color(int x, int y)
     {
         if((x>=BACK[i].rect.x)&&(x<=BACK[i].rect.x+BACK[i].rect.w)&&(y>=BACK[i].rect.y)&&(y<=BACK[i].rect.y+BACK[i].rect.h))
         {
-            remplissage_carre(renderer);
             color_inc(&BACK[i].color);
-            SDL_SetRenderDrawColor(renderer,get_red(BACK[i].color), get_green(BACK[i].color), get_blue(BACK[i].color), 255 );
-            SDL_RenderFillRect(renderer, &BACK[i].rect);
+            remplissage_carre(renderer);
             return;
         }
     }
@@ -563,10 +553,8 @@ void verify_increment_color(int x, int y)
     {
         if((x>=DOWN[i].rect.x)&&(x<=DOWN[i].rect.x+DOWN[i].rect.w)&&(y>=DOWN[i].rect.y)&&(y<=DOWN[i].rect.y+DOWN[i].rect.h))
         {
-            remplissage_carre(renderer);
             color_inc(&DOWN[i].color);
-            SDL_SetRenderDrawColor(renderer,get_red(DOWN[i].color), get_green(DOWN[i].color), get_blue(DOWN[i].color), 255 );
-            SDL_RenderFillRect(renderer, &DOWN[i].rect);
+            remplissage_carre(renderer);
             return;
         }
     }

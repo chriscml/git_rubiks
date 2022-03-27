@@ -19,21 +19,21 @@ int main(int argc, char** argv)
         {/* .flags, .buttonid, .text */ SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT, 1, "yes" },
         { 0, 0, "no" }
     };
-   /* const SDL_MessageBoxColorScheme colorScheme =
-    {
-        { .colors (.r, .g, .b)
-            [SDL_MESSAGEBOX_COLOR_BACKGROUND]
-            { 255,   255,   0 },
-            /* [SDL_MESSAGEBOX_COLOR_TEXT]
-            {  55, 255,   0 },
-            /* [SDL_MESSAGEBOX_COLOR_BUTTON_BORDER]
-            { 255, 255,   0 },
-            /* [SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND]
-            {   200,   0, 255 },
-            /* [SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED]
-            { 255,   0, 255 }
-        }
-    };*/
+    /* const SDL_MessageBoxColorScheme colorScheme =
+     {
+         { .colors (.r, .g, .b)
+             [SDL_MESSAGEBOX_COLOR_BACKGROUND]
+             { 255,   255,   0 },
+             /* [SDL_MESSAGEBOX_COLOR_TEXT]
+             {  55, 255,   0 },
+             /* [SDL_MESSAGEBOX_COLOR_BUTTON_BORDER]
+             { 255, 255,   0 },
+             /* [SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND]
+             {   200,   0, 255 },
+             /* [SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED]
+             { 255,   0, 255 }
+         }
+     };*/
     const SDL_MessageBoxData messageboxdata =
     {
         SDL_MESSAGEBOX_WARNING, /* .flags */
@@ -42,7 +42,7 @@ int main(int argc, char** argv)
         "Do you really want to restart ?", /* .message */
         SDL_arraysize(buttons), /* .numbuttons */
         buttons, /* .buttons */
-       // &colorScheme /* .colorScheme */
+        // &colorScheme /* .colorScheme */
     };
     int buttonid;
     /*-----------------------------------------------------------------------------------------------*/
@@ -266,57 +266,57 @@ int main(int argc, char** argv)
                 {
                     init_next_move();
                     step_1_do_white_cross();
-                     remplissage_carre(renderer);
+                    remplissage_carre(renderer);
                 }
 
                 if(((events.button.x >= r_step_2.x) && (events.button.x <= (r_step_2.x + r_step_2.w))) && ((events.button.y >= r_step_2.y) && (events.button.y <= (r_step_2.y + r_step_2.h))))
                 {
                     init_next_move();
-                   step_1_do_white_cross();
-                   step_2_do_white_face();
+                    step_1_do_white_cross();
+                    step_2_do_white_face();
                     remplissage_carre(renderer);
                 }
                 if(((events.button.x >= r_step_3.x) && (events.button.x <= (r_step_3.x + r_step_3.w))) && ((events.button.y >= r_step_3.y) && (events.button.y <= (r_step_3.y + r_step_3.h))))
                 {
                     init_next_move();
                     step_1_do_white_cross();
-                   step_2_do_white_face();
-                     step_3_do_color_edges();
-                      remplissage_carre(renderer);
+                    step_2_do_white_face();
+                    step_3_do_color_edges();
+                    remplissage_carre(renderer);
                 }
 
                 if(((events.button.x >= r_step_4.x) && (events.button.x <= (r_step_4.x + r_step_4.w))) && ((events.button.y >= r_step_4.y) && (events.button.y <= (r_step_4.y + r_step_4.h))))
                 {
                     init_next_move();
                     step_1_do_white_cross();
-                   step_2_do_white_face();
-                     step_3_do_color_edges();
-                   step_4_yellow_cross();
+                    step_2_do_white_face();
+                    step_3_do_color_edges();
+                    step_4_yellow_cross();
                     remplissage_carre(renderer);
                 }
                 if(((events.button.x >= r_step_5.x) && (events.button.x <= (r_step_5.x + r_step_5.w))) && ((events.button.y >= r_step_5.y) && (events.button.y <= (r_step_5.y + r_step_5.h))))
                 {
                     init_next_move();
-                     step_1_do_white_cross();
-                   step_2_do_white_face();
-                     step_3_do_color_edges();
-                   step_4_yellow_cross();
+                    step_1_do_white_cross();
+                    step_2_do_white_face();
+                    step_3_do_color_edges();
+                    step_4_yellow_cross();
                     step_5_yellow_corner();
-                     remplissage_carre(renderer);
+                    remplissage_carre(renderer);
                 }
 
                 if(((events.button.x >= r_step_6.x) && (events.button.x <= (r_step_6.x + r_step_6.w))) && ((events.button.y >= r_step_6.y) && (events.button.y <= (r_step_6.y + r_step_6.h))))
                 {
                     init_next_move();
                     step_1_do_white_cross();
-                   step_2_do_white_face();
-                     step_3_do_color_edges();
-                   step_4_yellow_cross();
+                    step_2_do_white_face();
+                    step_3_do_color_edges();
+                    step_4_yellow_cross();
                     step_5_yellow_corner();
                     step_6_yellow_corner_near_cubes();
                     step_6_yellow_corner_near_cubes();
-                     remplissage_carre(renderer);
-                    //step_7_yellow_arretes();
+                    remplissage_carre(renderer);
+                    step_7_yellow_arretes();
                 }
                 if(((events.button.x >= r_next_move.x) && (events.button.x <= (r_next_move.x + r_next_move.w))) && ((events.button.y >= r_next_move.y) && (events.button.y <= (r_next_move.y + r_next_move.h))))
                 {

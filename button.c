@@ -438,6 +438,7 @@ void fonction_next (SDL_Renderer* renderer,SDL_Window* window)
     rotate_moove(tableau_next[indice_next],renderer);
     nb_rotation--;
     display_nb_roation();
+    affiche_fleche(tableau_next[indice_next]);
     if(indice_next>=200)
     {
         indice_next=0;
@@ -446,7 +447,6 @@ void fonction_next (SDL_Renderer* renderer,SDL_Window* window)
     {
         indice_next++;
     }
-    affiche_fleche(tableau_next[indice_next]);
 }
 
 void affiche_fleche (moove_t moove)
