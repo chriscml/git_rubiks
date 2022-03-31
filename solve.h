@@ -30,7 +30,8 @@ bool isinthetableau(carre_t *carre, carre_t *addressecarre);
 carre_t *get_face_from_carre(carre_t *carre);
 void rotate_face(carre_t *face, signed char clockwise);
 void affich_id(void);
-
+bool is_rubiks_done_face(carre_t *face);
+bool is_rubiks_done(void);
 
 
 /////////////////////////////////////////////////////////////////////

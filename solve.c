@@ -1909,3 +1909,15 @@ signed char step_7_get_config(void)
     return returned_config;
 }
 
+bool is_rubiks_done(void){
+    return is_rubiks_done_face(UP)&&is_rubiks_done_face(DOWN)&&is_rubiks_done_face(LEFT)&&is_rubiks_done_face(RIGHT)&&is_rubiks_done_face(FRONT)&&is_rubiks_done_face(BACK);
+}
+
+bool is_rubiks_done_face(carre_t *face){
+    for(int i=0; i<9; i++){
+        if(face[i].color!=face[4].color){
+            return false;
+        }
+    }
+    return true;
+}
