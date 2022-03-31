@@ -479,17 +479,20 @@ void display_nb_roation(void)
 
     sprintf(nb_rotation_txt, "rotations:%d",nb_rotation);
 
-    police = TTF_OpenFont("arial.ttf",30);
+    //definition de la police, de la couleur, et de l'mplacement du texte
+    police = TTF_OpenFont("arial.ttf",40);
     Color_white.a=255;
-    Color_white.r=255;
-    Color_white.g=255;
-    Color_white.b=255;
-    Rect_text.y  =635;
-    Rect_text.x  =525;
+    Color_white.r=242;
+    Color_white.g=121;
+    Color_white.b=224;
+    Rect_text.y  =200;
+    Rect_text.x  =650;
 
+
+    //a changer pour que ca marche tout le temps, faire une constante !!!!!
+    //pour que le fond du texte ait la meme couleur que le fonds de l'app
     SDL_SetRenderDrawColor(renderer,55,55,125,255);
     SDL_RenderFillRect(renderer, &Rect_text);
-
 
     texte=TTF_RenderText_Solid(police, nb_rotation_txt,Color_white);
     text_texte = SDL_CreateTextureFromSurface(renderer,texte);

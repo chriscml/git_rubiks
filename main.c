@@ -72,7 +72,8 @@ int main(int argc, char** argv)
     Restart_Sound = Mix_LoadWAV("restart.wav");
     Tic_Sound = Mix_LoadWAV("tic.wav");
     Tic_Sound2 = Mix_LoadWAV("tic_pes2.wav");
-    Tic_Sound3 = Mix_LoadWAV("tic_pes3.wav");
+    Tic_Sound3 = Mix_LoadWAV("tic_pes.wav");
+    Tic_Sound4 = Mix_LoadWAV("tic_pes3.wav");
 
     isOpen=true;
     flag2=0;
@@ -83,6 +84,7 @@ int main(int argc, char** argv)
         {
             isOpen=false;
         }
+        //A METTRE DANS UNE DONCTION ET A SIMPLIFIER flag etc !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         else if (events.type==SDL_KEYDOWN)
         {
             init_next_move();
@@ -236,7 +238,7 @@ int main(int argc, char** argv)
                 {
 
                     Mix_PlayChannel(-1,Tic_Sound2,0);
-                    Mix_VolumeChunk(Solve_Sound,15);
+                    Mix_VolumeChunk(Tic_Sound2,50);
                     file_solution=fopen("solution.txt", "w"); //C'est en ecriture seule
                     for(int i=0; i<200; i++)
                     {
@@ -260,10 +262,13 @@ int main(int argc, char** argv)
                 {
                     init_next_move();
                     Mix_PlayChannel(-1,Tic_Sound3,0);
+                    Mix_VolumeChunk(Tic_Sound3,35);
                     shuffle_rubik();
                 }
                 if(((events.button.x >= r_step_1.x) && (events.button.x <= (r_step_1.x + r_step_1.w))) && ((events.button.y >= r_step_1.y) && (events.button.y <= (r_step_1.y + r_step_1.h))))
                 {
+                    Mix_PlayChannel(-1,Tic_Sound4,0);
+                    Mix_VolumeChunk(Tic_Sound4,35);
                     init_next_move();
                     step_1_do_white_cross();
                     remplissage_carre(renderer);
@@ -271,6 +276,8 @@ int main(int argc, char** argv)
 
                 if(((events.button.x >= r_step_2.x) && (events.button.x <= (r_step_2.x + r_step_2.w))) && ((events.button.y >= r_step_2.y) && (events.button.y <= (r_step_2.y + r_step_2.h))))
                 {
+                    Mix_PlayChannel(-1,Tic_Sound4,0);
+                    Mix_VolumeChunk(Tic_Sound4,35);
                     init_next_move();
                     step_1_do_white_cross();
                     step_2_do_white_face();
@@ -278,6 +285,8 @@ int main(int argc, char** argv)
                 }
                 if(((events.button.x >= r_step_3.x) && (events.button.x <= (r_step_3.x + r_step_3.w))) && ((events.button.y >= r_step_3.y) && (events.button.y <= (r_step_3.y + r_step_3.h))))
                 {
+                    Mix_PlayChannel(-1,Tic_Sound4,0);
+                    Mix_VolumeChunk(Tic_Sound4,35);
                     init_next_move();
                     step_1_do_white_cross();
                     step_2_do_white_face();
@@ -287,6 +296,8 @@ int main(int argc, char** argv)
 
                 if(((events.button.x >= r_step_4.x) && (events.button.x <= (r_step_4.x + r_step_4.w))) && ((events.button.y >= r_step_4.y) && (events.button.y <= (r_step_4.y + r_step_4.h))))
                 {
+                    Mix_PlayChannel(-1,Tic_Sound4,0);
+                    Mix_VolumeChunk(Tic_Sound4,35);
                     init_next_move();
                     step_1_do_white_cross();
                     step_2_do_white_face();
@@ -296,6 +307,8 @@ int main(int argc, char** argv)
                 }
                 if(((events.button.x >= r_step_5.x) && (events.button.x <= (r_step_5.x + r_step_5.w))) && ((events.button.y >= r_step_5.y) && (events.button.y <= (r_step_5.y + r_step_5.h))))
                 {
+                    Mix_PlayChannel(-1,Tic_Sound4,0);
+                    Mix_VolumeChunk(Tic_Sound4,35);
                     init_next_move();
                     step_1_do_white_cross();
                     step_2_do_white_face();
@@ -307,6 +320,8 @@ int main(int argc, char** argv)
 
                 if(((events.button.x >= r_step_6.x) && (events.button.x <= (r_step_6.x + r_step_6.w))) && ((events.button.y >= r_step_6.y) && (events.button.y <= (r_step_6.y + r_step_6.h))))
                 {
+                    Mix_PlayChannel(-1,Tic_Sound4,0);
+                    Mix_VolumeChunk(Tic_Sound4,35);
                     init_next_move();
                     step_1_do_white_cross();
                     step_2_do_white_face();
@@ -319,6 +334,8 @@ int main(int argc, char** argv)
                 }
                 if(((events.button.x >= r_next_move.x) && (events.button.x <= (r_next_move.x + r_next_move.w))) && ((events.button.y >= r_next_move.y) && (events.button.y <= (r_next_move.y + r_next_move.h))))
                 {
+                    Mix_PlayChannel(-1,Rotation_Sound,0);
+                    Mix_VolumeChunk(Rotation_Sound,40);
                     fonction_next(renderer,window);
                 }
                 verify_increment_color(events.button.x, events.button.y);

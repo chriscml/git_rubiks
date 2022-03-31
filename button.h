@@ -10,7 +10,7 @@
 Mix_Chunk *Rotation_Sound;
 Mix_Chunk *Solve_Sound;
 Mix_Chunk *Restart_Sound;
-Mix_Chunk *Tic_Sound,*Tic_Sound2,*Tic_Sound3;
+Mix_Chunk *Tic_Sound,*Tic_Sound2,*Tic_Sound3,*Tic_Sound4;
 char flag_display;
 
 SDL_Rect anc_rectangle;
